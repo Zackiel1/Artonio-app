@@ -1,15 +1,17 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  sequelize.define("order", {
+  sequelize.define("Cart", {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    selectProduct: {
+    clothesSelect: {
       type: DataTypes.ARRAY(DataTypes.INTEGER),
-      allowNull: false,
+    },
+    paintingSelect: {
+      type: DataTypes.ARRAY(DataTypes.INTEGER),
     },
     totalPrice: {
       type: DataTypes.FLOAT(2),

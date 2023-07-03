@@ -1,10 +1,10 @@
+const { postUserHandler } = require('../handlres/userHandlers')
 const { Router } = require('express');
+
 
 const userRouter = Router();
 
 
-userRouter.get('/', (req, res) => {
-    res.status(200).send("okk")
-});
+userRouter.post('/', postUserHandler);
 
 module.exports = userRouter;

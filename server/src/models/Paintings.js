@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  sequelize.define("Clothes", {
+  sequelize.define("Painting", {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -14,10 +14,6 @@ module.exports = (sequelize) => {
     description: {
       type: DataTypes.STRING,
       allowNull: true,
-    },
-    size: {
-      type: DataTypes.ARRAY(DataTypes.STRING(5)),
-      allowNull: false,
     },
     price: {
       type: DataTypes.FLOAT(2),

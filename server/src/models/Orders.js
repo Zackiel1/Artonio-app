@@ -1,24 +1,23 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  sequelize.define("painting", {
+  sequelize.define("Order", {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
-      type: DataTypes.STRING,
+    selectProduct: {
+      type: DataTypes.ARRAY(DataTypes.INTEGER),
       allowNull: false,
     },
-    description: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    price: {
+    totalPrice: {
       type: DataTypes.FLOAT(2),
       allowNull: false,
-      defaultValue: "0",
+    },
+    status: {
+      type: DataTypes.ENUM("in process", "success"),
+      defaultValue: "in process",
     },
   });
 };
