@@ -7,6 +7,10 @@ module.exports = (sequelize) => {
       primaryKey: true,
       autoIncrement: true,
     },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -18,8 +22,7 @@ module.exports = (sequelize) => {
     },
     phone: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      unique: true,
+      allowNull: false
     },
     is_verified: {
       type: DataTypes.BOOLEAN,
