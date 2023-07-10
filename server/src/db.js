@@ -1,11 +1,11 @@
 require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
-const cartModel = require('./models/Carts')
-const clothesModel = require('./models/Clothes')
-const orderModel = require('./models/Orders')
-const paintingModel = require('./models/Paintings')
-const userModel = require('./models/Users')
+const cartModel = require("./models/Carts");
+const clothesModel = require("./models/Clothes");
+const orderModel = require("./models/Orders");
+const paintingModel = require("./models/Paintings");
+const userModel = require("./models/Users");
 
 const sequelize = new Sequelize(
   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/artonio`,
@@ -21,19 +21,19 @@ orderModel(sequelize);
 paintingModel(sequelize);
 userModel(sequelize);
 
-const { User, Cart, Clothes, Painting, Order } = sequelize.models;
+const { Users, Carts, Clothes, Paintings, Orders } = sequelize.models;
 
-User.hasMany(Cart);
-Cart.belongsTo(User);
+Users.hasMany(Carts);
+Carts.belongsTo(Users);
 
-Cart.hasOne(Order);
-Order.belongsTo(Cart);
+Carts.hasOne(Orders);
+Orders.belongsTo(Carts);
 
-Cart.belongsToMany(Clothes, { through: 'CartClothing' });
-Clothes.belongsToMany(Cart, { through: 'CartClothing' });
+Carts.belongsToMany(Clothes, { through: "CartsClothings" });
+Clothes.belongsToMany(Carts, { through: "CartsClothings" });
 
-Cart.belongsToMany(Painting, { through: 'CartPainting' });
-Painting.belongsToMany(Cart, { through: 'CartPainting' });
+Carts.belongsToMany(Paintings, { through: "CartsPaintings" });
+Paintings.belongsToMany(Carts, { through: "CartsPaintings" });
 
 //console.log(sequelize.models);
-module.exports = { sequelize, ...sequelize.models }
+module.exports = { sequelize, ...sequelize.models };
