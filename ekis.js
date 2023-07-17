@@ -3,8 +3,11 @@
  * 
  * rutas del usuario
  * 
- * post /user crear usuario
- * get /user buscar usuario
+ * post /user crear usuario // listo  post / http://localhost:3001/user/createUser
+ * get / verificar token de usuario // get / http://localhost:3001/user/verifi?toke=123&userId=1
+ * get /user buscar usuario // listo get /
+ * 
+ * hacer un login
  * 
  * -  PUT /user/:id : para actualizar la información de un usuario existente. 
 -  DELETE /user/:id : para eliminar un usuario existente. 

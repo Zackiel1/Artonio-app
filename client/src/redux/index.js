@@ -1,0 +1,2 @@
+export const POST_CREATE_USER = "POST_CREATE_USER";
+export const CLEAR_MESSAGE = "CLEAR_MESSAGE";

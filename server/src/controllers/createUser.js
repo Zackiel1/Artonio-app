@@ -17,7 +17,7 @@ const createUser = async (name, email, password, phone) => {
   const token = generateToken(userId);
 
   // enviar correo de verificaion de email
-  await sendMail(name, email, token, userId);
+  //await sendMail(name, email, token, userId);
 
   return `Cuenta Creada. Porfavor, revisa tu correo electronico
    y verificalo para poder continuar,

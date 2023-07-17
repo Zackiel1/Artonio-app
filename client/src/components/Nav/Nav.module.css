@@ -1,0 +1,15 @@
+.navContainer {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  height: 35px;
+  background-color: aqua;
+  margin: 10px;
+}
+
+.navContainer a {
+  text-decoration: none;
+  margin: 4px;
+  color: black;
+  font-weight: bold;
+}
