@@ -1,7 +1,8 @@
-import { POST_CREATE_USER, CLEAR_MESSAGE } from "./index.js";
+import { POST_CREATE_USER, CLEAR_MESSAGE, POST_LOGIN } from "./index.js";
 
 const inicialState = {
   messageUser: null,
+  sessionToken: null,
 };
 
 const reducer = (state = inicialState, action) => {
@@ -14,7 +15,12 @@ const reducer = (state = inicialState, action) => {
     case CLEAR_MESSAGE:
       return {
         ...state,
-        messageUser: null,
+        [action.payload]: null,
+      };
+    case POST_LOGIN:
+      return {
+        ...state,
+        sessionToken: action.payload,
       };
     default:
       return { ...state };

@@ -1,6 +1,7 @@
 const createUser = require("../controllers/createUser");
 const statusVerify = require("../controllers/statusVerify");
 const tokenVerify = require("../controllers/tokenVerify");
+const userLogin = require("../controllers/userLogin");
 
 const postUserHandler = async (req, res) => {
   const { name, email, password, phone } = req.body;
@@ -33,7 +34,22 @@ const getVerifyHandler = async (req, res) => {
   }
 };
 
+const postLoginHandler = async (req, res) => {
+  const { email, password } = req.body;
+
+  const email_LC = email.toLowerCase();
+
+  try {
+    const login = await userLogin(email_LC, password);
+    res.cookie("token", login, { httpOnly: true });
+    res.status(200).json(login);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
 module.exports = {
   postUserHandler,
   getVerifyHandler,
+  postLoginHandler,
 };

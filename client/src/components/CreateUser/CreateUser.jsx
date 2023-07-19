@@ -30,7 +30,7 @@ const CreateUser = () => {
   };
 
   useEffect(() => {
-    dispatch(clearMessage());
+    dispatch(clearMessage("messageUser"));
   }, [location.pathname]);
 
   return (

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { POST_CREATE_USER, CLEAR_MESSAGE } from "./index.js";
+import { POST_CREATE_USER, CLEAR_MESSAGE, POST_LOGIN } from "./index.js";
 
 export const postCreateUser = (data) => {
   return async (dispatch) => {
@@ -15,9 +15,27 @@ export const postCreateUser = (data) => {
   };
 };
 
-export const clearMessage = () => {
+export const clearMessage = (data) => {
   return {
     type: CLEAR_MESSAGE,
+    payload: data,
+  };
+};
+
+export const postLogin = (data) => {
+  return async (dispatch) => {
+    await axios
+      .post("http://localhost:3001/user/login", data)
+      .then((response) => {
+        dispatch({ type: POST_LOGIN, payload: response.data });
+      })
+      .catch((err) => window.alert(err.response.data));
+    // try {
+    //   let response = await axios.post("http://localhost:3001/user/login", data);
+    //   dispatch({ type: POST_LOGIN, payload: response.data });
+    // } catch (error) {
+    //   err => window.alert('Id o Name no exist')
+    // }
   };
 };
 
