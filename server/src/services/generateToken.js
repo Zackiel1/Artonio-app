@@ -4,6 +4,7 @@ const generateToken = (user) => {
   const secret = process.env.JWT_SECRET;
   const payload = {
     userId: user.id,
+    is_verified: user.is_verified,
   };
 
   const options = {

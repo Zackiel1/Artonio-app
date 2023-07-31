@@ -7,7 +7,11 @@
  * get / verificar token de usuario // get / http://localhost:3001/user/verifi?toke=123&userId=1
  * get /user buscar usuario // listo get /
  * 
- * hacer un login
+ * hacer un login http://localhost:3001/user/login
+ * 
+ * entrar en la cuenta http://localhost:3000/account
+ * 
+ * 
  * 
  * -  PUT /user/:id : para actualizar la información de un usuario existente. 
 -  DELETE /user/:id : para eliminar un usuario existente. 

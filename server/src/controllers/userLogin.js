@@ -6,11 +6,21 @@ const userLogin = async (email, password) => {
     where: { email: email, password: password },
   });
 
-  if (!user) throw new Error("message: email o password incorrectas");
+  if (!user) throw new Error("email o password incorrectas");
+
+  //const userForToken =
 
   const token = generateToken(user);
 
-  return token;
+  const userInfo = {
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    is_verified: user.is_verified,
+    token: token,
+  };
+
+  return userInfo;
 };
 
 module.exports = userLogin;

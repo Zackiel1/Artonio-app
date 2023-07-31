@@ -5,8 +5,18 @@ import Home from "./view/Home/Home";
 import Login from "./view/Login/Login";
 import CreateUser from "./components/CreateUser/CreateUser";
 import Account from "./view/Account/Account";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { clearMessage, reLogin } from "./redux/actions";
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  const loginUserJSON = window.localStorage.getItem("userInfo");
+  const user = JSON.parse(loginUserJSON);
+
+  loginUserJSON !== null && dispatch(reLogin(user));
+
   return (
     <>
       <Nav />

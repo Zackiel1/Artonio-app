@@ -1,7 +1,9 @@
 const createUser = require("../controllers/createUser");
+const putPass = require("../controllers/putPass");
 const statusVerify = require("../controllers/statusVerify");
-const tokenVerify = require("../controllers/tokenVerify");
+const tokenVerify = require("../services/tokenVerify");
 const userLogin = require("../controllers/userLogin");
+const Cookies = require("universal-cookie");
 
 const postUserHandler = async (req, res) => {
   const { name, email, password, phone } = req.body;
@@ -41,8 +43,24 @@ const postLoginHandler = async (req, res) => {
 
   try {
     const login = await userLogin(email_LC, password);
-    res.cookie("token", login, { httpOnly: true });
+    console.log(login);
+    // res.cookie("token", login.token, {
+    //   httpOnly: false,
+    //   expires: new Date(Date.now() + 3600000),
+    // });
+    // console.log(req.cookies);
     res.status(200).json(login);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
+const putPasswordHandler = async (req, res) => {
+  const { userId, newPassword } = req.body;
+
+  try {
+    let data = await putPass(userId, newPassword);
+    res.status(200).json(data);
   } catch (error) {
     res.status(400).json(error.message);
   }
@@ -52,4 +70,5 @@ module.exports = {
   postUserHandler,
   getVerifyHandler,
   postLoginHandler,
+  putPasswordHandler,
 };

@@ -1,16 +1,23 @@
 import axios from "axios";
-import { POST_CREATE_USER, CLEAR_MESSAGE, POST_LOGIN } from "./index.js";
+import {
+  POST_CREATE_USER,
+  CLEAR_MESSAGE,
+  POST_LOGIN,
+  PUT_PASS,
+  MESSAGE_ERROR,
+  RE_LOGIN,
+} from "./index.js";
 
 export const postCreateUser = (data) => {
-  return async (dispatch) => {
+  return async () => {
     try {
-      let response = await axios.post(
+      const response = await axios.post(
         "http://localhost:3001/user/createUser",
         data
       );
-      dispatch({ type: POST_CREATE_USER, payload: response.data });
+      return response.data;
     } catch (error) {
-      dispatch({ type: POST_CREATE_USER, payload: error.response.data });
+      throw error;
     }
   };
 };
@@ -27,21 +34,32 @@ export const postLogin = (data) => {
     await axios
       .post("http://localhost:3001/user/login", data)
       .then((response) => {
+        window.localStorage.setItem("userInfo", JSON.stringify(response.data));
         dispatch({ type: POST_LOGIN, payload: response.data });
       })
-      .catch((err) => window.alert(err.response.data));
-    // try {
-    //   let response = await axios.post("http://localhost:3001/user/login", data);
-    //   dispatch({ type: POST_LOGIN, payload: response.data });
-    // } catch (error) {
-    //   err => window.alert('Id o Name no exist')
-    // }
+      .catch((err) => {
+        throw err;
+      });
   };
 };
 
-// export const postCreateUser = (data) => {
-//   return {
-//     type: "POST_CREATE_USER",
-//     payload: data,
-//   };
-// };
+export const putPass = (data) => {
+  return async () => {
+    try {
+      const response = await axios.put(
+        "http://localhost:3001/user/updatePass",
+        data
+      );
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  };
+};
+
+export const reLogin = (data) => {
+  return {
+    type: RE_LOGIN,
+    payload: data,
+  };
+};

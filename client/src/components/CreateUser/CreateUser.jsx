@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { postCreateUser, clearMessage } from "../../redux/actions";
 import { useLocation } from "react-router-dom";
+import validations from "../../services/validations";
 
 const CreateUser = () => {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  const messageUser = useSelector((state) => state.messageUser);
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState({});
 
   const [createUser, setCreateUser] = useState({
     name: "",
@@ -20,17 +22,23 @@ const CreateUser = () => {
     let property = event.target.name;
     let value = event.target.value;
 
+    setError(validations({ ...createUser, [property]: value }));
     setCreateUser({ ...createUser, [property]: value });
   };
 
-  const handlerSubmit = (event) => {
+  const handlerSubmit = async (event) => {
     event.preventDefault();
 
-    dispatch(postCreateUser(createUser));
+    try {
+      let response = await dispatch(postCreateUser(createUser));
+      setMessage(response);
+    } catch (error) {
+      setMessage(error.response.data);
+    }
   };
 
   useEffect(() => {
-    dispatch(clearMessage("messageUser"));
+    dispatch(clearMessage("messageSuccess"));
   }, [location.pathname]);
 
   return (
@@ -47,16 +55,18 @@ const CreateUser = () => {
             value={createUser.name}
             placeholder="Nombre"
           />
+          <label>{error.name}</label>
         </div>
         <div>
           <label>Email: </label>
           <input
-            type="email"
+            type="text"
             name="email"
             onChange={handlerChange}
             value={createUser.email}
             placeholder="Email"
           />
+          <label>{error.email}</label>
         </div>
         <div>
           <label>Contraseña: </label>
@@ -67,6 +77,7 @@ const CreateUser = () => {
             value={createUser.password}
             placeholder="Contraseña"
           />
+          <label>{error.password}</label>
         </div>
 
         <div>
@@ -83,7 +94,7 @@ const CreateUser = () => {
         <button type="submit">Crear Cuenta</button>
       </form>
 
-      {messageUser && <p>{messageUser}</p>}
+      {message && <p>{message}</p>}
     </div>
   );
 };

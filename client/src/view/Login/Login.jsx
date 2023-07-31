@@ -8,7 +8,9 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const sessionToken = useSelector((state) => state.sessionToken);
+  const userInfo = useSelector((state) => state.userInfo);
+
+  const [message, setMessage] = useState("");
 
   const [user, setUser] = useState({
     email: "",
@@ -22,17 +24,21 @@ const Login = () => {
     setUser({ ...user, [property]: value });
   };
 
-  const handlerSubmit = (event) => {
+  const handlerSubmit = async (event) => {
     event.preventDefault();
 
-    dispatch(postLogin(user));
+    try {
+      await dispatch(postLogin(user));
+    } catch (error) {
+      setMessage(error.response.data);
+    }
   };
 
   useEffect(() => {
-    if (sessionToken !== null) {
+    if (userInfo !== null) {
       navigate("/");
     }
-  }, [sessionToken]);
+  }, [userInfo]);
 
   return (
     <div>
@@ -46,7 +52,7 @@ const Login = () => {
             name="email"
             value={user.email}
             onChange={handlerChange}
-            placeholder="Email perraco"
+            placeholder="Email"
           />
         </div>
         <div>
@@ -64,6 +70,8 @@ const Login = () => {
 
         <button type="submit">Login</button>
       </form>
+
+      {message && <p>{message}</p>}
     </div>
   );
 };

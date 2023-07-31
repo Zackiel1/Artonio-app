@@ -11,6 +11,10 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    image: {
+      type: DataTypes.BLOB,
+      allowNull: true,
+    },
     description: {
       type: DataTypes.STRING,
       allowNull: true,
