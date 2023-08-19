@@ -7,7 +7,9 @@ import CreateUser from "./components/CreateUser/CreateUser";
 import Account from "./view/Account/Account";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { clearMessage, reLogin } from "./redux/actions";
+import { clearMessage, reLogin, getImg } from "./redux/actions";
+import Admin from "./view/Admin/Admin";
+import Gallery from "./view/gallery/Gallery";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -26,6 +28,8 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/createUser" element={<CreateUser />} />
         <Route path="/account" element={<Account />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/gallery" element={<Gallery />} />
       </Routes>
     </>
   );

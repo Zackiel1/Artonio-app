@@ -1,8 +1,15 @@
 const { Router } = require("express");
-const postUpImg = require("../controllers/postUpImg");
+const {
+  postUpload,
+  searchImg,
+  deleteImg,
+} = require("../handlres/galeryHandlers");
+const fileUpload = require("../services/configMulter");
 
 const galeryRouter = Router();
 
-galeryRouter.post("/upImg", postUpImg);
+galeryRouter.post("/upload", fileUpload, postUpload);
+galeryRouter.get("/searchImg", searchImg);
+galeryRouter.delete("/deleteImg", deleteImg);
 
 module.exports = galeryRouter;

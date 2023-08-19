@@ -3,12 +3,14 @@ import {
   CLEAR_MESSAGE,
   POST_LOGIN,
   RE_LOGIN,
+  GET_IMAGES,
 } from "./index.js";
 
 const inicialState = {
   messageSuccess: null,
   messageError: null,
   userInfo: null,
+  images: [],
 };
 
 const reducer = (state = inicialState, action) => {
@@ -32,6 +34,11 @@ const reducer = (state = inicialState, action) => {
       return {
         ...state,
         userInfo: action.payload,
+      };
+    case GET_IMAGES:
+      return {
+        ...state,
+        images: action.payload,
       };
     default:
       return { ...state };

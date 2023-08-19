@@ -7,6 +7,6 @@ const mainRouter = Router();
 //mainRouter.use('/pokemons', pokemonRouter);
 //http://localhost:3001/auth/
 mainRouter.use("/user", userRouter);
-galeryRouter.use("/galery", galeryRouter);
+mainRouter.use("/gallery", galeryRouter);
 
 module.exports = mainRouter;

@@ -12,6 +12,9 @@ const Nav = () => {
 
       {userInfo && <Link to="/account">account</Link>}
       {!userInfo && <Link to="/login">Login</Link>}
+
+      <Link to="/Admin">Admin</Link>
+      <Link to="/gallery">Gallery</Link>
     </div>
   );
 };

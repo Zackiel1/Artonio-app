@@ -1,10 +1,14 @@
 const { Paintings } = require("../db.js");
 
-const postUpImg = async (req, res) => {
-  const { name, image, description, price } = req.body;
-
-  const ekis = await Paintings.create({ name, image, description, price });
-  console.log(ekis);
+const postUpImg = async (name, filename, image, description, price) => {
+  const upImg = await Paintings.create({
+    name: name,
+    filename: filename,
+    image: image,
+    description: description,
+    price: price,
+  });
+  return upImg;
 };
 
 module.exports = postUpImg;

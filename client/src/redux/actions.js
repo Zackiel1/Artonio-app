@@ -6,6 +6,7 @@ import {
   PUT_PASS,
   MESSAGE_ERROR,
   RE_LOGIN,
+  GET_IMAGES,
 } from "./index.js";
 
 export const postCreateUser = (data) => {
@@ -61,5 +62,28 @@ export const reLogin = (data) => {
   return {
     type: RE_LOGIN,
     payload: data,
+  };
+};
+
+export const uploadImg = (data) => {
+  return async () => {
+    try {
+      await axios.post("http://localhost:3001/gallery/upload", data);
+      //console.log(response);
+      return;
+    } catch (error) {
+      throw error;
+    }
+  };
+};
+
+export const getImg = () => {
+  return async (dispatch) => {
+    try {
+      const images = await axios.get("http://localhost:3001/gallery/searchImg");
+      dispatch({ type: GET_IMAGES, payload: images.data });
+    } catch (error) {
+      throw error;
+    }
   };
 };
