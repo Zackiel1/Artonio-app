@@ -79,43 +79,29 @@ button {
 }
 
 @media (max-width: 700px) {
-  /* .openMenu {
-    display: block;
-  }
-
-  .navContainer ul {
-    display: none;
-  } */
-
   .navContainer ul {
     display: none;
     margin-right: 0px;
   }
 
-  .openMenu {
-    display: block;
+  .navItems.close {
+    display: none;
   }
 
-  .navContainer {
-    position: absolute;
-  }
-
-  .navItems {
+  .navItems.open {
+    display: flex;
+    flex-direction: column;
     top: 60px;
     right: 0;
     height: 100vh;
     position: absolute;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 1rem;
 
     background-color: #000000;
     padding: 1rem;
 
     box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
-  }
-
-  .navContainer .navItems {
-    display: flex;
   }
 
   button {

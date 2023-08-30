@@ -11,10 +11,6 @@ const Nav = () => {
     setMenuOpen(!menuOpen);
   };
 
-  const closeMenu = () => {
-    setMenuOpen(false);
-  };
-
   return (
     <>
       <Link className={style.icono} to="/"></Link>
@@ -29,7 +25,10 @@ const Nav = () => {
           <div></div>
         </button>
 
-        <ul className={!menuOpen ? `${style.navItems}` : ""} onClick={menu}>
+        <ul
+          className={`${style.navItems} ${menuOpen ? style.open : style.close}`}
+          onClick={menu}
+        >
           <li>
             <NavLink to="/">Inicio</NavLink>
           </li>
