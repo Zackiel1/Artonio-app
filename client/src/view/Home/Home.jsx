@@ -1,8 +1,10 @@
+import style from "./home.module.css";
+
 const Home = () => {
   return (
-    <>
-      <h4>Soy el Home</h4>
-    </>
+    <main className={style.homeContainer}>
+      
+    </main>
   );
 };
 

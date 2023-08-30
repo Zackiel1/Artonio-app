@@ -1,21 +1,61 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import style from "./Nav.module.css";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 const Nav = () => {
   const userInfo = useSelector((state) => state.userInfo);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const menu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
 
   return (
-    <div className={style.navContainer}>
-      <Link to="/">Home</Link>
+    <>
+      <Link className={style.icono} to="/"></Link>
+      <nav className={style.navContainer}>
+        {/* <button onClick={menu} className={style.openMenu}>
+          Abrir
+        </button> */}
 
-      {userInfo && <Link to="/account">account</Link>}
-      {!userInfo && <Link to="/login">Login</Link>}
+        <button onClick={menu}>
+          <div></div>
+          <div></div>
+          <div></div>
+        </button>
 
-      <Link to="/Admin">Admin</Link>
-      <Link to="/gallery">Gallery</Link>
-    </div>
+        <ul className={!menuOpen ? `${style.navItems}` : ""} onClick={menu}>
+          <li>
+            <NavLink to="/">Inicio</NavLink>
+          </li>
+
+          <li>
+            <NavLink to="/gallery">Galeria</NavLink>
+          </li>
+
+          <li>
+            <NavLink to="/contact">Contacto</NavLink>
+          </li>
+
+          {userInfo && (
+            <li>
+              <Link to="/account">Cuenta</Link>
+            </li>
+          )}
+
+          {!userInfo && (
+            <li>
+              <Link to="/login">Iniciar Sesion</Link>
+            </li>
+          )}
+        </ul>
+      </nav>
+    </>
   );
 };
 
