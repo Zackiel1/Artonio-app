@@ -1,4 +1,5 @@
 import axios from "axios";
+import style from "../gallery/gallery.module.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getImg } from "../../redux/actions";

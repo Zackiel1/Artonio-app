@@ -38,7 +38,7 @@ const Nav = () => {
           </li>
 
           <li>
-            <NavLink to="/contact">Contacto</NavLink>
+            <NavLink to="/admin">Admin</NavLink>
           </li>
 
           {userInfo && (

@@ -1,10 +1,9 @@
 const { Paintings } = require("../db.js");
 
-const postUpImg = async (name, filename, image, description, price) => {
+const postUpImg = async (name, imageUrl, description, price) => {
   const upImg = await Paintings.create({
     name: name,
-    filename: filename,
-    image: image,
+    imageUrl: imageUrl,
     description: description,
     price: price,
   });

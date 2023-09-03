@@ -9,6 +9,7 @@ const fileUpload = require("../services/configMulter");
 const galeryRouter = Router();
 
 galeryRouter.post("/upload", fileUpload, postUpload);
+//galeryRouter.post("/upload", postUpload);
 galeryRouter.get("/searchImg", searchImg);
 galeryRouter.delete("/deleteImg", deleteImg);
 

@@ -18,6 +18,7 @@ export const postCreateUser = (data) => {
       );
       return response.data;
     } catch (error) {
+      console.log(error);
       throw error;
     }
   };
@@ -68,9 +69,11 @@ export const reLogin = (data) => {
 export const uploadImg = (data) => {
   return async () => {
     try {
-      await axios.post("http://localhost:3001/gallery/upload", data);
-      //console.log(response);
-      return;
+      const res = await axios.post(
+        "http://localhost:3001/gallery/upload",
+        data
+      );
+      return res;
     } catch (error) {
       throw error;
     }

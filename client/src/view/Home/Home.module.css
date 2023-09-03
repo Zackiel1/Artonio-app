@@ -1,7 +1,7 @@
 .homeContainer {
   height: 100vh;
   display: flex;
-  background-color: black;
+  background-color: #08090d;
   background-image: url("../../../images/prueba1.jpg");
   background-size: contain;
   background-repeat: no-repeat;

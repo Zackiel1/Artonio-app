@@ -1,4 +1,5 @@
 import axios from "axios";
+import style from "../Admin/Admin.module.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { uploadImg } from "../../redux/actions";
@@ -18,11 +19,6 @@ const Admin = () => {
 
     if (property === "image") {
       value = event.target.files[0];
-
-      // const formdata = new FormData();
-      // formdata.append("image", value);
-
-      //setImg({ ...img, image: value });
     }
 
     setImg({ ...img, [property]: value });
@@ -30,19 +26,17 @@ const Admin = () => {
 
   const handlerSubmit = (event) => {
     event.preventDefault();
-
     const formData = new FormData();
     formData.append("name", img.name);
     formData.append("image", img.image);
     formData.append("price", img.price);
     formData.append("description", img.description);
-
     dispatch(uploadImg(formData));
     //limpiar state img y form
   };
 
   return (
-    <div>
+    <div className={style.container}>
       <form onSubmit={handlerSubmit}>
         <div>
           <label>Name: </label>
