@@ -19,3 +19,8 @@ const deleteImage = async (data) => {
 };
 
 module.exports = deleteImage;
+
+// cloudinary.v2.api
+//   .delete_resources(['zot3sh3dasptcebua3lh', 'oibigvyqtyb3bozhq3gr', 'ftzq2gvxtabloy7gy754', 'ruuwrfwgi7tib7iurcxp'],
+//     { type: 'upload', resource_type: 'image' })
+//   .then(console.log);

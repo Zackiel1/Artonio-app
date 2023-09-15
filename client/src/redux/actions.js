@@ -83,8 +83,11 @@ export const uploadImg = (data) => {
 export const getImg = () => {
   return async (dispatch) => {
     try {
-      const images = await axios.get("http://localhost:3001/gallery/searchImg");
-      dispatch({ type: GET_IMAGES, payload: images.data });
+      const response = await axios.get(
+        "http://localhost:3001/gallery/searchImg"
+      );
+
+      dispatch({ type: GET_IMAGES, payload: response.data });
     } catch (error) {
       throw error;
     }

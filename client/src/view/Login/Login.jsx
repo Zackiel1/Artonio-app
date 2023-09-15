@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { postLogin } from "../../redux/actions";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -72,6 +74,8 @@ const Login = () => {
       </form>
 
       {message && <p>{message}</p>}
+
+      <FontAwesomeIcon icon={faCoffee} />
     </div>
   );
 };

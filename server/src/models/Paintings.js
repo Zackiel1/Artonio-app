@@ -11,22 +11,26 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    filename: {
+    nameCloud: {
       type: DataTypes.STRING,
       allowNull: true,
     },
     imageUrl: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     price: {
       type: DataTypes.FLOAT(2),
-      allowNull: false,
+      allowNull: true,
       defaultValue: "0",
+    },
+    destination: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
   });
 };

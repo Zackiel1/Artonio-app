@@ -1,8 +1,11 @@
+import style from "../Card/Card.module.css";
+
 const Card = (props) => {
+  //console.log(props);
+
   return (
-    <div>
-      <img src={props.url} alt={props.name} />
-      <button onClick={() => props.ekis(props.filename)}>X</button>
+    <div key={props.id} className={style.cardCotainer}>
+      <img src={props.imageUrl} alt={props.name} />
     </div>
   );
 };

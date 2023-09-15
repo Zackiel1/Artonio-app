@@ -11,7 +11,8 @@ cloudinary.config({
 });
 
 const postUpload = async (req, res) => {
-  const { name, description, price } = req.body;
+  const { name, description, price, destination } = req.body;
+  console.log(req.body);
 
   try {
     //upload img Cloudinary
@@ -27,10 +28,11 @@ const postUpload = async (req, res) => {
         .end(buffer);
     });
     const imageUrl = response.secure_url;
+    const nameCloud = response.public_id;
 
     //uploda url and data img in DB
 
-    await postUpImg(name, imageUrl, description, price);
+    await postUpImg(name, nameCloud, imageUrl, description, price, destination);
 
     res.status(200).json("Imagen subida");
   } catch (error) {
@@ -40,9 +42,9 @@ const postUpload = async (req, res) => {
 
 const searchImg = async (req, res) => {
   try {
-    const images = await getImg();
+    const dataImgs = await getImg();
 
-    res.status(200).json(images);
+    res.status(200).json(dataImgs);
   } catch (error) {
     res.status(400).json(error.message);
   }

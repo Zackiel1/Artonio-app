@@ -1,0 +1,84 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+  height: 100vh;
+  height: 100%;
+  width: 100%;
+  background-color: var(--color-secundary);
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+.containerButton {
+  display: flex;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.containerButton button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6rem;
+  font-weight: bold;
+  border: 2px thick white;
+  height: 44px;
+  width: 150px;
+}
+
+.tattoButton {
+  border-radius: 50px 0px 0px 50px;
+  background-color: var(--color-secundary);
+  color: var(--color-primary);
+}
+
+.paintButton {
+  border-radius: 0px 50px 50px 0px;
+  background-color: var(--color-secundary);
+  color: var(--color-primary);
+}
+
+.activeTattoButton {
+  border-radius: 50px 0px 0px 50px;
+  background-color: var(--color-primary);
+  color: var(--color-secundary);
+}
+
+.activePaintButton {
+  border-radius: 0px 50px 50px 0px;
+  background-color: var(--color-primary);
+  color: var(--color-secundary);
+}
+
+.container h1 {
+  font-size: 3rem;
+  text-align: center;
+  font-weight: bold;
+  font-style: italic;
+  padding: 4rem;
+  color: var(--color-primary);
+}
+
+.containerImages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+@media (max-width: 1899px) {
+  .container {
+    padding-left: 15%;
+    padding-right: 15%;
+  }
+}
+
+@media (max-width: 1629px) {
+  .container {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}

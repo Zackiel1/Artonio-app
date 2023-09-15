@@ -1,0 +1,13 @@
+.cardContainer {
+  height: 300px;
+  width: 220px;
+}
+
+img {
+  height: 300px;
+  width: 220px;
+  align-self: center;
+  bottom: 7px;
+  position: relative;
+  transition: width 2s;
+}
