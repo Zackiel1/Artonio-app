@@ -2,21 +2,23 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Libre Baskerville", serif;
-  font-family: "Lobster", cursive;
-  font-family: "Lora", serif;
+  font-family: var(--font-primary);
 }
 
 html {
   font-size: 62.5%;
+  background-color: var(--color-secundary);
 }
 
 :root {
   --color-primary: #ffd300;
   --color-secundary: #08090d;
+
+  --font-primary: "Libre Baskerville", serif;
+  --font-secundary: "Dancing Script", cursive;
 }
 
-body::-webkit-scrollbar {
+/* body::-webkit-scrollbar {
   width: 0px;
 }
 
@@ -26,4 +28,4 @@ body::-webkit-scrollbar-track {
 
 body::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0);
-}
+} */

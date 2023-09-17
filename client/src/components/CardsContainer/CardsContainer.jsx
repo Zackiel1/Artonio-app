@@ -15,7 +15,7 @@ const CardsContainer = (props) => {
 
   const [slideNumber, setSlideNumber] = useState(0);
   const [openModal, setOpenModal] = useState(false);
-  const [current, setCurrent] = useState("");
+  const [current, setCurrent] = useState(tatto);
 
   useEffect(() => {
     if (props.galleryState === "tatto") {
@@ -24,6 +24,8 @@ const CardsContainer = (props) => {
       setCurrent(paint);
     }
   }, [props.galleryState]);
+
+  console.log(current);
 
   const handlerOpenModal = (index) => {
     setSlideNumber(index);

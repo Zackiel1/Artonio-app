@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 //import "./App.css";
 import Nav from "./components/Nav/Nav";
 import Home from "./view/Home/Home";
@@ -10,8 +10,13 @@ import { useDispatch } from "react-redux";
 import { clearMessage, reLogin, getImg } from "./redux/actions";
 import Admin from "./view/Admin/Admin";
 import Gallery from "./view/gallery/Gallery";
+import Contact from "./view/Contact/Contact";
+import SpanPromo from "./view/SpanPromo/SpanPromo";
 
 const App = () => {
+  const location = useLocation();
+  const showScrollableContent = location.pathname === "/";
+
   const dispatch = useDispatch();
 
   const loginUserJSON = window.localStorage.getItem("userInfo");
@@ -22,14 +27,20 @@ const App = () => {
   return (
     <>
       <Nav />
-
+      {showScrollableContent && (
+        <>
+          <Home />
+          <SpanPromo />
+          <Gallery />
+        </>
+      )}
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" />
         <Route path="/login" element={<Login />} />
         <Route path="/createUser" element={<CreateUser />} />
         <Route path="/account" element={<Account />} />
         <Route path="/admin" element={<Admin />} />
-        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </>
   );

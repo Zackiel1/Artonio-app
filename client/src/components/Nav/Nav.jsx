@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 const Nav = () => {
   const userInfo = useSelector((state) => state.userInfo);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState("");
 
   const menu = () => {
     setMenuOpen(!menuOpen);
