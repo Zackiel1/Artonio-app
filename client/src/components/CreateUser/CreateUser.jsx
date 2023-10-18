@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { postCreateUser, clearMessage } from "../../redux/actions";
 import { useLocation } from "react-router-dom";
 import validations from "../../services/validations";
+import style from "./CreateUser.module.css";
 
 const CreateUser = () => {
   const dispatch = useDispatch();
@@ -10,6 +11,7 @@ const CreateUser = () => {
 
   const [message, setMessage] = useState("");
   const [error, setError] = useState({});
+  const [activeMsgErr, setActiveMsgErr] = useState(false);
 
   const [createUser, setCreateUser] = useState({
     name: "",
@@ -29,6 +31,10 @@ const CreateUser = () => {
   const handlerSubmit = async (event) => {
     event.preventDefault();
 
+    Object.keys(error).length !== 0
+      ? setActiveMsgErr(true)
+      : setActiveMsgErr(false);
+
     try {
       let response = await dispatch(postCreateUser(createUser));
       setMessage(response);
@@ -42,60 +48,68 @@ const CreateUser = () => {
   }, [location.pathname]);
 
   return (
-    <div>
-      <h4>Crear Usuario</h4>
+    <main className={style.container}>
+      <section className={style.section}>
+        <h4 className={style.title}>Crear Usuario</h4>
 
-      <form onSubmit={handlerSubmit}>
-        <div>
-          <label>Nombre: </label>
-          <input
-            type="text"
-            name="name"
-            onChange={handlerChange}
-            value={createUser.name}
-            placeholder="Nombre"
-          />
-          <label>{error.name}</label>
-        </div>
-        <div>
-          <label>Email: </label>
-          <input
-            type="text"
-            name="email"
-            onChange={handlerChange}
-            value={createUser.email}
-            placeholder="Email"
-          />
-          <label>{error.email}</label>
-        </div>
-        <div>
-          <label>Contraseña: </label>
-          <input
-            type="password"
-            name="password"
-            onChange={handlerChange}
-            value={createUser.password}
-            placeholder="Contraseña"
-          />
-          <label>{error.password}</label>
-        </div>
+        <form onSubmit={handlerSubmit} className={style.form}>
+          <div>
+            <label>Nombre: </label>
+            <input
+              className={style.input}
+              type="text"
+              name="name"
+              onChange={handlerChange}
+              value={createUser.name}
+              placeholder="Nombre"
+            />
+            <label className={style.error}>{activeMsgErr && error.name}</label>
+          </div>
+          <div>
+            <label>Email: </label>
+            <input
+              className={style.input}
+              type="text"
+              name="email"
+              onChange={handlerChange}
+              value={createUser.email}
+              placeholder="Email"
+            />
+            <label className={style.error}>{activeMsgErr && error.email}</label>
+          </div>
+          <div>
+            <label>Contraseña: </label>
+            <input
+              className={style.input}
+              type="password"
+              name="password"
+              onChange={handlerChange}
+              value={createUser.password}
+              placeholder="Contraseña"
+            />
+            <label className={style.error}>
+              {activeMsgErr && error.password}
+            </label>
+          </div>
 
-        <div>
-          <label>Telefono: </label>
-          <input
-            type="text"
-            name="phone"
-            onChange={handlerChange}
-            value={createUser.phone}
-            placeholder="Telefono"
-          />
-        </div>
+          <div>
+            <label>Telefono: </label>
+            <input
+              className={style.input}
+              type="text"
+              name="phone"
+              onChange={handlerChange}
+              value={createUser.phone}
+              placeholder="Telefono"
+            />
+          </div>
 
-        <button type="submit">Crear Cuenta</button>
-      </form>
+          <button type="submit">Crear Cuenta</button>
+        </form>
 
-      {message && <p>{message}</p>}
-    </div>
+        {message && <p className={style.error}>{message}</p>}
+      </section>
+    </main>
   );
 };
 

@@ -28,5 +28,16 @@ module.exports = (sequelize) => {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
+    discount: {
+      type: DataTypes.JSON,
+      defaultValue: JSON.stringify([{descuento:'20%',motivo:"Suscripcion en Web"}])
+    },
+    isAdmin: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    tokenRecover: {
+      type: DataTypes.INTEGER,
+    },
   });
 };

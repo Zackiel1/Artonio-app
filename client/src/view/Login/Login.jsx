@@ -5,6 +5,7 @@ import { postLogin } from "../../redux/actions";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+import style from "./Login.module.css";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -43,40 +44,42 @@ const Login = () => {
   }, [userInfo]);
 
   return (
-    <div>
-      <h4>Soy Login</h4>
+    <main className={style.container}>
+      <section className={style.section}>
+        <form className={style.form} onSubmit={handlerSubmit}>
+          <h2>Inicia Sesion</h2>
+          <p>
+            <label>Correo Electronico:</label>
+            <input
+              className={style.input}
+              type="text"
+              name="email"
+              value={user.email}
+              onChange={handlerChange}
+              placeholder="Email"
+            />
+          </p>
+          <p>
+            <label>Contraseña: </label>
+            <input
+              type="password"
+              name="password"
+              className={style.input}
+              value={user.password}
+              onChange={handlerChange}
+              placeholder="Password"
+            />
+          </p>
 
-      <form onSubmit={handlerSubmit}>
-        <div>
-          <label>Email: </label>
-          <input
-            type="text"
-            name="email"
-            value={user.email}
-            onChange={handlerChange}
-            placeholder="Email"
-          />
-        </div>
-        <div>
-          <label>Password: </label>
-          <input
-            type="password"
-            name="password"
-            value={user.password}
-            onChange={handlerChange}
-            placeholder="Password"
-          />
-        </div>
+          <Link to="/createUser">Crear Usuario</Link>
+          <Link to="/forgetPass">¿Olvidaste tu contraseña?</Link>
 
-        <Link to="/createUser">Crear Usuario</Link>
+          <button type="submit">Iniciar</button>
+        </form>
 
-        <button type="submit">Login</button>
-      </form>
-
-      {message && <p>{message}</p>}
-
-      <FontAwesomeIcon icon={faCoffee} />
-    </div>
+        {message && <p>{message}</p>}
+      </section>
+    </main>
   );
 };
 

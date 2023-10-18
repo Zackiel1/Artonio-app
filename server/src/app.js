@@ -27,9 +27,6 @@ app.use((req, res, next) => {
 app.use(express.static(__dirname + "/images"));
 
 app.use(mainRouter);
-// app.get("/", (req, res) => {
-//   res.send("hola mierda");
-// });
 
 // app.get("/x", (req, res) => {
 //   res.cookie("cokkie", "12333334");

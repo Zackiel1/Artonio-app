@@ -1,4 +1,3 @@
-import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import style from "../gallery/gallery.module.css";
 import { useEffect, useState, useRef } from "react";
@@ -10,6 +9,10 @@ const Gallery = () => {
   const dispatch = useDispatch();
   const [galleryState, setGalleryState] = useState("tatto");
   const dataImgs = useSelector((state) => state.dataImgs);
+  const tatto = useSelector((state) => state.tatto);
+  const paint = useSelector((state) => state.paint);
+
+  const galleryRef = useRef(null);
 
   useEffect(() => {
     if (dataImgs.length === 0) {
@@ -22,8 +25,8 @@ const Gallery = () => {
   };
 
   return (
-    <div className={style.container}>
-      <h1>Galleria</h1>
+    <div className={style.container} ref={galleryRef}>
+      <h2>Galleria</h2>
 
       <div className={style.containerButton}>
         <button
@@ -51,7 +54,11 @@ const Gallery = () => {
       </div>
 
       <section className={style.containerImages}>
-        <CardsContainer galleryState={galleryState} />
+        <CardsContainer
+          galleryState={galleryState}
+          tatto={tatto}
+          paint={paint}
+        />
       </section>
     </div>
   );

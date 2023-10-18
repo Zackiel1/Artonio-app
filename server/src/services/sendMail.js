@@ -2,8 +2,9 @@ require("dotenv").config();
 const { ID_CLIENT, SECRET_CLIENT, REFRESH_TOKEN, EMAIL_USERNAME } = process.env;
 const nodemailer = require("nodemailer");
 const oAuth2 = require("./oAuth2");
+const { Error } = require("sequelize");
 
-const sendMail = async (name, email, token, userId) => {
+const sendMail = async (email, subject, text) => {
   try {
     const accessToken = await oAuth2();
 
@@ -22,16 +23,14 @@ const sendMail = async (name, email, token, userId) => {
     const mailOptions = {
       from: "del universo",
       to: email,
-      subject: "prueba",
-      text: `Hola ${name}, para verificar tu correlo electronico haz click en el siguiente enlace, 
-      http://localhost:3001/user/verify?token=${token}&userId=${userId}
-      de la contrario ignora dicho mensage`,
+      subject: subject,
+      text: text,
     };
 
     const result = await transporter.sendMail(mailOptions);
     return result;
   } catch (error) {
-    console.log(error);
+    throw new Error(error);
   }
 };
 

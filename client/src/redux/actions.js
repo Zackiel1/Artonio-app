@@ -7,6 +7,7 @@ import {
   MESSAGE_ERROR,
   RE_LOGIN,
   GET_IMAGES,
+  POST_FORGET_PASS,
 } from "./index.js";
 
 export const postCreateUser = (data) => {
@@ -18,7 +19,6 @@ export const postCreateUser = (data) => {
       );
       return response.data;
     } catch (error) {
-      console.log(error);
       throw error;
     }
   };
@@ -45,7 +45,21 @@ export const postLogin = (data) => {
   };
 };
 
+export const postForgetPass = (data) => {
+  return async () => {
+    return await axios
+      .post("http://localhost:3001/user/recover", data)
+      .then((response) => {
+        return response.data;
+      })
+      .catch((err) => {
+        throw err;
+      });
+  };
+};
+
 export const putPass = (data) => {
+  console.log(data);
   return async () => {
     try {
       const response = await axios.put(
@@ -88,6 +102,20 @@ export const getImg = () => {
       );
 
       dispatch({ type: GET_IMAGES, payload: response.data });
+    } catch (error) {
+      throw error;
+    }
+  };
+};
+
+export const getVerifyToken = (token) => {
+  return async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/user/verifyToken", {token: token}
+      );
+
+      return response.data.userId;
     } catch (error) {
       throw error;
     }

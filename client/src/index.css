@@ -7,15 +7,33 @@
 
 html {
   font-size: 62.5%;
-  background-color: var(--color-secundary);
+  background-color: var(--color-bg);
+  
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: var(--color-bg-input);
+}
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: var(--color-font);
 }
 
 :root {
   --color-primary: #ffd300;
   --color-secundary: #08090d;
 
+  --color-trx: #ffd300;
+  --color-bg: #08090d;
+  --color-bg-s: linear-gradient(0deg, #2c2c2c, var(--color-bg));
+  --color-font: #fdfefe;
+  --color-bg-input: 0 0 0px 1000px rgba(0, 0, 0, 0.9) inset;
+
   --font-primary: "Libre Baskerville", serif;
   --font-secundary: "Dancing Script", cursive;
+  --font-ancha: "Dela Gothic One", cursive;
 }
 
 /* body::-webkit-scrollbar {

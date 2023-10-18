@@ -1,7 +1,8 @@
 const { Users } = require("../db.js");
 
 const getUserByEmail = async (data) => {
-  const email = data.userEmail.toLowerCase();
+
+  const email = data.toLowerCase();
 
   const user = await Users.findOne({ where: { email: email } });
 

@@ -11,6 +11,9 @@ const generateToken = (user) => {
     expiresIn: "24h",
   };
 
-  return jwt.sign(payload, secret, options);
+  let token = jwt.sign(payload, secret, options);
+  
+  return token;
 };
+
 module.exports = generateToken;

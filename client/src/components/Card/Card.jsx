@@ -5,7 +5,7 @@ const Card = (props) => {
 
   return (
     <div key={props.id} className={style.cardCotainer}>
-      <img src={props.imageUrl} alt={props.name} />
+      <img className={style.image} src={props.imageUrl} alt={props.name} />
     </div>
   );
 };

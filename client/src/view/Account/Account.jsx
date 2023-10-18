@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import validations from "../../services/validations";
 import Cookies from "universal-cookie";
+import style from "./Account.module.css";
 
 //tengo que implementas contraseña actual y verificar bien lo de si coinsiden las contraseñas
 
@@ -12,7 +13,7 @@ const Account = () => {
   const navigate = useNavigate();
 
   const userInfo = useSelector((state) => state.userInfo);
-
+  console.log(userInfo);
   const [message, setMessage] = useState("");
   const [error, setError] = useState({});
 
@@ -63,7 +64,7 @@ const Account = () => {
   };
 
   return (
-    <div>
+    <div className={style.container}>
       <h3>Hola {userInfo?.name}</h3>
       <h4>email: {userInfo?.email}</h4>
       {!newPass.chancePass && (

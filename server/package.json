@@ -25,6 +25,7 @@
     "nodemon": "^2.0.22",
     "pg": "^8.11.0",
     "pg-hstore": "^2.3.4",
+    "resend": "^1.1.0",
     "sequelize": "^6.32.1",
     "universal-cookie": "^4.0.4"
   }

@@ -10,12 +10,14 @@ import style from "../CardsContainer/CardsContainer.module.css";
 import { useEffect, useState } from "react";
 
 const CardsContainer = (props) => {
-  const tatto = useSelector((state) => state.tatto);
-  const paint = useSelector((state) => state.paint);
+  const tatto = props.tatto;
+  const paint = props.paint;
 
   const [slideNumber, setSlideNumber] = useState(0);
   const [openModal, setOpenModal] = useState(false);
   const [current, setCurrent] = useState(tatto);
+
+  console.log(current);
 
   useEffect(() => {
     if (props.galleryState === "tatto") {
@@ -24,8 +26,6 @@ const CardsContainer = (props) => {
       setCurrent(paint);
     }
   }, [props.galleryState]);
-
-  console.log(current);
 
   const handlerOpenModal = (index) => {
     setSlideNumber(index);

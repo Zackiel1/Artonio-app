@@ -1,5 +1,5 @@
 import style from "./home.module.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -8,12 +8,12 @@ const Home = () => {
         <p>
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut dolorem
           temporibus, quam aspernatur quibusdam tempora atque perferendis
-          aliquam accusantium?""
+          aliquam accusantium?"
         </p>
 
-        <Link to={"/contact"}>
+        <NavLink to={{ pathname: "/", hash: "#contact" }}>
           <button>Cuentame tu Idea</button>
-        </Link>
+        </NavLink>
       </article>
       {/* <article className={style.articlePhoto}></article> */}
     </main>

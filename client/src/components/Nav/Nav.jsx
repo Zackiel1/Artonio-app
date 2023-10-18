@@ -1,14 +1,15 @@
 import { Link, NavLink } from "react-router-dom";
+import React, { useRef } from "react";
 import style from "./Nav.module.css";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
-const Nav = () => {
+const Nav = ({ onContactClick }) => {
   const userInfo = useSelector((state) => state.userInfo);
-  const [menuOpen, setMenuOpen] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const menu = () => {
-    setMenuOpen(!menuOpen);
+    menuOpen === true ? setMenuOpen(false) : setMenuOpen(true);
   };
 
   return (
@@ -19,7 +20,7 @@ const Nav = () => {
           Abrir
         </button> */}
 
-        <button onClick={menu}>
+        <button className={style.menu} onClick={menu}>
           <div></div>
           <div></div>
           <div></div>
@@ -30,7 +31,11 @@ const Nav = () => {
           onClick={menu}
         >
           <li>
-            <NavLink to="/">Inicio</NavLink>
+            <NavLink to={{ pathname: "/", hash: "#home" }}>Inicio</NavLink>
+          </li>
+
+          <li>
+            <NavLink to={{ pathname: "/", hash: "#about" }}>Quien soy</NavLink>
           </li>
 
           <li>
@@ -38,8 +43,12 @@ const Nav = () => {
           </li>
 
           <li>
-            <NavLink to="/admin">Admin</NavLink>
+            <NavLink to={{ pathname: "/", hash: "#contact" }}>Contacto</NavLink>
           </li>
+
+          {/* <li>
+            <NavLink to="/admin">Admin</NavLink>
+          </li> */}
 
           {userInfo && (
             <li>

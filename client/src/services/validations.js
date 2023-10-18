@@ -5,27 +5,31 @@ const validations = (data) => {
   const regexName = /^[a-zA-Z]{3,}$/;
   const regexPassword = /^((?!.*[\s])(?=.*[a-z])(?=.*\d).{3,10})/;
 
-  if (!regexEmail.test(data.email)) {
+  if (data.email && !regexEmail.test(data.email)) {
     errors.email = "Formato de email incorrecto";
   }
 
-  if (!regexPassword.test(data.password)) {
+  if (data.password && !regexPassword.test(data.password)) {
     errors.password =
       "La clave tiene que contener entre 3 y 10 caracteres y debe contener numeros y letras";
   }
 
-  if (!regexName.test(data.name)) {
+  if (data.name && !regexName.test(data.name)) {
     errors.name = "Solo se acepta letras y tiene que tener mas de 3 caracteres";
   }
 
-  if (!regexPassword.test(data.newPassword)) {
+  if (data.newPassword && !regexPassword.test(data.newPassword)) {
     errors.newPassword =
       "La clave tiene que contener entre 3 y 10 caracteres y debe contener numeros y letras";
   }
 
-  if (!regexPassword.test(data.confirmPassword)) {
+  if (data.confirmPassword && !regexPassword.test(data.confirmPassword)) {
     errors.confirmPassword =
       "La clave tiene que contener entre 3 y 10 caracteres y debe contener numeros y letras";
+  }
+
+  if(data.newPassword && data.confirmPassword && data.newPassword !== data.confirmPassword) {
+    errors.differentPassword = "Las contraseñas no coinsiden"
   }
 
   return errors;

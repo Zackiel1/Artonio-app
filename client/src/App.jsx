@@ -1,4 +1,6 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Outlet, Route, Routes, useLocation } from "react-router-dom";
+import { Element, scroller } from "react-scroll";
+import React, { useRef } from "react";
 //import "./App.css";
 import Nav from "./components/Nav/Nav";
 import Home from "./view/Home/Home";
@@ -12,9 +14,25 @@ import Admin from "./view/Admin/Admin";
 import Gallery from "./view/gallery/Gallery";
 import Contact from "./view/Contact/Contact";
 import SpanPromo from "./view/SpanPromo/SpanPromo";
+import About from "./view/About/About";
+import SpanRedes from "./view/SpanRedes/SpanRedes";
+import SampleGallery from "./view/SampleGallery/SampleGallery";
+import RecoverPass from "./view/RecoverPass/RecoverPass";
+import ForgetPass from "./view/ForgetPass/ForgetPass";
 
 const App = () => {
   const location = useLocation();
+
+  useEffect(() => {
+    const scrollToSection = location.hash;
+    if (scrollToSection) {
+      scroller.scrollTo(scrollToSection.slice(1), {
+        duration: 500,
+        smooth: true,
+      });
+    }
+  }, [location]);
+
   const showScrollableContent = location.pathname === "/";
 
   const dispatch = useDispatch();
@@ -29,9 +47,18 @@ const App = () => {
       <Nav />
       {showScrollableContent && (
         <>
-          <Home />
+          <Element name="home">
+            <Home />
+          </Element>
+          <Element name="about">
+            <About />
+          </Element>
           <SpanPromo />
-          <Gallery />
+          <SampleGallery />
+          <SpanRedes />
+          <Element name="contact">
+            <Contact />
+          </Element>
         </>
       )}
       <Routes>
@@ -40,7 +67,9 @@ const App = () => {
         <Route path="/createUser" element={<CreateUser />} />
         <Route path="/account" element={<Account />} />
         <Route path="/admin" element={<Admin />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/recoverPass" element={<RecoverPass />} />
+        <Route path="/forgetPass" element={<ForgetPass />} />
       </Routes>
     </>
   );

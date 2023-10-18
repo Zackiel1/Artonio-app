@@ -22,7 +22,7 @@
   align-items: center;
 }
 
-input,
+/* input,
 textarea {
   background-color: #1b1b1b;
   color: var(--color-primary);
@@ -34,4 +34,4 @@ textarea {
 
 label {
   display: block;
-}
+} */
