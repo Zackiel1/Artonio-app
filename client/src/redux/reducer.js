@@ -4,6 +4,12 @@ import {
   POST_LOGIN,
   RE_LOGIN,
   GET_IMAGES,
+  SEARCH_USER,
+  USE_DISCOUNT,
+  ADD_DISCOUNT,
+  MESSAGE_ERROR,
+  CLEAR_USER_INFO,
+  MESSAGE_SUCCESS,
 } from "./index.js";
 
 const inicialState = {
@@ -13,6 +19,8 @@ const inicialState = {
   dataImgs: [],
   tatto: [],
   paint: [],
+  searchInfoUser: null,
+  
 };
 
 const reducer = (state = inicialState, action) => {
@@ -25,7 +33,23 @@ const reducer = (state = inicialState, action) => {
     case CLEAR_MESSAGE:
       return {
         ...state,
+        messageSuccess: null,
+        messageError: null,
+      };
+    case CLEAR_USER_INFO:
+      return {
+        ...state,
         [action.payload]: null,
+      };
+    case MESSAGE_ERROR:
+      return {
+        ...state,
+        messageError: action.payload,
+      };
+    case MESSAGE_SUCCESS:
+      return {
+        ...state,
+        messageSuccess: action.payload,
       };
     case POST_LOGIN:
       return {
@@ -50,6 +74,21 @@ const reducer = (state = inicialState, action) => {
         tatto: tattos,
         paint: paints,
       };
+    case SEARCH_USER:
+      return {
+        ...state,
+        searchInfoUser: action.payload,
+      };  
+    case USE_DISCOUNT:
+    return {
+      ...state,
+      messageSuccess: action.payload,
+    };
+    case ADD_DISCOUNT:
+    return {
+      ...state,
+      messageSuccess: action.payload,
+    };
     default:
       return { ...state };
   }

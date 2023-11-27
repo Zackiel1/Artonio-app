@@ -1,18 +1,20 @@
 .container {
   height: calc(100vh - 60px);
   max-width: 1200px;
-  color: var(--color-primary);
+  color: var(--color-font);
 
   padding: 3em 1.5em;
-
   margin-left: auto;
   margin-right: auto;
+  
 }
 
 .container h2 {
   padding: 50px;
+  font-family: var(--font-sub);
   text-align: center;
-  font-size: 3em;
+  font-size: var(--font-size-title);
+  margin-bottom: 0;
 }
 
 .contactWapper {
@@ -24,12 +26,15 @@
 }
 
 .contactForm {
-  background: #222222;
+  background-color: var(--color-bg-form);
+  margin-top: 12px;
 }
 
 .contactForm form p {
   margin: 0;
   padding: 1em;
+  font-size: var(--font-size-text);
+  font-family: var(--font-primary);
 }
 
 .contactForm form {
@@ -44,32 +49,42 @@
 .contactForm form button,
 .contactForm form input,
 .contactForm form textarea {
+  color: var(--color-font);
   width: 100%;
   padding: 0.7em;
   border: none;
   background: none;
   outline: none;
-  border-bottom: 1px solid var(--color-primary);
+  border-bottom: 1px solid var(--color-border-form);
+  resize: none;
+}
+
+.contactForm form button:focus,
+.contactForm form input:focus,
+.contactForm form textarea:focus{
+  border-bottom: 1px solid var(--color-trx);
 }
 
 .contactForm form button {
   display: block;
-  font-size: 1.5rem;
+  font-family: var(--font-sub);
+  font-size: var(--font-sub);
   font-weight: bold;
+  color: var(--color-bg-form);
   background: var(--color-primary);
   border: 0;
-  text-transform: uppercase;
   padding: 1em;
 }
 
 .contactForm form button:hover,
 .contactForm form button:focus {
   background: #ffd300;
+  
 }
 
 .contactInfo {
   background: #000;
-  font-size: 1.4rem;
+  font-size: var(--font-size-text);
 }
 
 .contactInfo h4,

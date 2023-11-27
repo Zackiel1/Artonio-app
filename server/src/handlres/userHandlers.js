@@ -18,7 +18,6 @@ const postUserHandler = async (req, res) => {
     const newUser = await createUser(name, email_LC, password, phone);
     res.status(200).json(newUser);
   } catch (error) {
-    console.log(error);
     res.status(400).json(error.message);
   }
 };
@@ -33,13 +32,12 @@ const getVerifyHandler = async (req, res) => {
     //change verify status
     const verifyAccount = await statusVerify(userId);
 
-    res.status(200).json(verifyAccount);
+    res.redirect(302, `http://localhost:3000/verifyUser/${verifyAccount}`);
+
   } catch (error) {
-    if (error.name === "TokenExpiredError") {
-      res.status(400).send("Token has expired");
-    } else {
-      res.status(400).send("Token is invalid");
-    }
+    //const errorMessage = error.message || "An unknown error occurred.";
+    res.redirect(302, `http://localhost:3000/verifyUser/${error.message}`);
+
   }
 };
 
@@ -68,7 +66,6 @@ const postLoginHandler = async (req, res) => {
 
   try {
     const login = await userLogin(email_LC, password);
-    console.log(login);
     // res.cookie("token", login.token, {
     //   httpOnly: false,
     //   expires: new Date(Date.now() + 3600000),

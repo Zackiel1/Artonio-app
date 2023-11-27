@@ -9,13 +9,16 @@ const userLogin = async (email, password) => {
   if (!user) throw new Error("email o password incorrectas");
 
   //const userForToken =
-
+  console.log(user);
   const token = generateToken(user);
-
+  
   const userInfo = {
     id: user.id,
     name: user.name,
     email: user.email,
+    phone: user.phone,
+    discount: user.discount,
+    isAdmin: user.isAdmin,
     is_verified: user.is_verified,
     token: token,
   };

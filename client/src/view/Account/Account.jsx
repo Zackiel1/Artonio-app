@@ -1,19 +1,20 @@
 import { useDispatch, useSelector } from "react-redux";
-import { clearMessage, putPass } from "../../redux/actions";
+import { clearMessage, clearUserInfo, putPass } from "../../redux/actions";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import validations from "../../services/validations";
 import Cookies from "universal-cookie";
 import style from "./Account.module.css";
-
-//tengo que implementas contraseña actual y verificar bien lo de si coinsiden las contraseñas
 
 const Account = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const userInfo = useSelector((state) => state.userInfo);
-  console.log(userInfo);
+  const infoSession = JSON.parse(localStorage.userInfo);
+  //console.log(userInfo.discount);
+  const discountData = userInfo.discount;
+
   const [message, setMessage] = useState("");
   const [error, setError] = useState({});
 
@@ -22,12 +23,6 @@ const Account = () => {
     confirmPassword: "",
     chancePass: false,
   });
-
-  useEffect(() => {
-    if (userInfo === null) {
-      navigate("/");
-    }
-  }, [userInfo]);
 
   const handlerChange = (event) => {
     let property = event.target.name;
@@ -56,57 +51,103 @@ const Account = () => {
     comparisonPass = "Las contraseñas no coinsiden";
   }
 
-  const handlerLogout = (event) => {
+  const handlerLogout = async (event) => {
     event.preventDefault();
 
     localStorage.removeItem("userInfo");
-    dispatch(clearMessage("userInfo"));
+    dispatch(clearUserInfo("userInfo"));
+    navigate("/");
   };
 
   return (
     <div className={style.container}>
-      <h3>Hola {userInfo?.name}</h3>
-      <h4>email: {userInfo?.email}</h4>
-      {!newPass.chancePass && (
-        <button onClick={() => setNewPass({ ...newPass, chancePass: true })}>
-          Cambiar contraseña
-        </button>
-      )}
+      <section className={style.sectionGrid}>
+        <h2 className={`${style.item1}  ${style.tittle}`}>Cuenta</h2>
 
-      {newPass.chancePass && (
-        <form onSubmit={handlerSubmit}>
-          <div>
-            <label>Nueva contraseña:</label>
-            <input
-              type="password"
-              name="newPassword"
-              onChange={handlerChange}
-              value={newPass.newPassword}
-              placeholder="Nueva Contraseña"
-            />
-            <label>{error.newPassword}</label>
-          </div>
-          <div>
-            <label>Confirma la nueva contraseña:</label>
-            <input
-              type="password"
-              name="confirmPassword"
-              onChange={handlerChange}
-              value={newPass.confirmPassword}
-              placeholder="repite la nueva Contraseña"
-            />
-            <label>{error.confirmPassword}</label>
-          </div>
-          <label>{comparisonPass}</label>
+        {infoSession.isAdmin && (
+          <Link to="/admin" className={style.admin}>
+            Admin
+          </Link>
+        )}
 
-          <button type="submit" disabled={comparisonPass.length !== 0}>
-            Enviar nueva contraseña
+        <div className={`${style.item3} ${style.info}`}>
+          <h4>Informacion</h4>
+          <p className={`${style.name}`}>Nombre: {userInfo?.name}</p>
+          <p className={`${style.email}`}>Correo: {userInfo?.email}</p>
+          <p className={`${style.phone}`}>Telefono: {userInfo?.phone}</p>
+        </div>
+
+        <div className={`${style.item6}  ${style.discount}`}>
+          <h3>descuentos</h3>
+          <div>
+            {discountData.map((item, index) => (
+              <div className={style.chillDiscount} key={index}>
+                <p>Motivo: {item.reason}</p>
+                <p>Descuento: {item.discount}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {!newPass.chancePass && (
+          <button
+            className={`${style.item7}  ${style.changePass}`}
+            onClick={() => setNewPass({ ...newPass, chancePass: true })}
+          >
+            Cambiar contraseña
           </button>
-        </form>
-      )}
-      {message && <p>{message}</p>}
+        )}
 
-      <button onClick={handlerLogout}>logout</button>
+        {newPass.chancePass && (
+          <form
+            className={`${style.item8}  ${style.formChangePass}`}
+            onSubmit={handlerSubmit}
+          >
+            <div>
+              <label>Nueva contraseña:</label>
+              <input
+                type="password"
+                name="newPassword"
+                onChange={handlerChange}
+                value={newPass.newPassword}
+                placeholder="Nueva Contraseña"
+              />
+              <label className={style.errorMsg}>{error.newPassword}</label>
+            </div>
+            <div>
+              <label>Confirma la nueva contraseña:</label>
+              <input
+                type="password"
+                name="confirmPassword"
+                onChange={handlerChange}
+                value={newPass.confirmPassword}
+                placeholder="repite la nueva Contraseña"
+              />
+              <label className={style.errorMsg}>{error.confirmPassword}</label>
+            </div>
+            <label className={style.errorMsg}>{comparisonPass}</label>
+
+            <button
+              type="submit"
+              disabled={
+                !newPass.newPassword ||
+                !newPass.confirmPassword ||
+                comparisonPass.length !== 0
+              }
+            >
+              Enviar nueva contraseña
+            </button>
+          </form>
+        )}
+        {message && <p className={`${style.item9}  ${style.msg}`}>{message}</p>}
+
+        <button
+          className={`${style.item10}  ${style.logout}`}
+          onClick={handlerLogout}
+        >
+          Cerrar Seccion
+        </button>
+      </section>
     </div>
   );
 };

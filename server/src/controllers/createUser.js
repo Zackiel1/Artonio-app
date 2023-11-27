@@ -34,7 +34,7 @@ const createUser = async (name, email, password, phone) => {
     
     Nota: Si no te ha llegado el correo, revisa bien en Spam o Correo no deseado`
   } else {
-    return "Hubo un Error"
+    throw Error(send.message)
   }
   
 };

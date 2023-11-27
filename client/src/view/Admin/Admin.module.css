@@ -1,20 +1,29 @@
 .container {
+  height: 100%;
+  margin-top: 60px;
   display: flex;
-  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+
   background: #1b1b1b;
   font-size: 1.6rem;
   padding: 4px;
-  color: var(--color-primary);
+  color: var(--color-font);
 }
 
-.container form {
-  margin: 90px 20px;
+.formUploadImg {
+  margin: 10px;
+  margin-top: 90px;
+
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  padding: 10px;
+
+  border: 1px solid red;
 }
 
-.container button {
+.formUploadImg button {
   display: block;
   height: 5rem;
   width: 10rem;
@@ -22,16 +31,43 @@
   align-items: center;
 }
 
-/* input,
-textarea {
-  background-color: #1b1b1b;
-  color: var(--color-primary);
-}
-
-textarea {
+.formUploadImg textarea{
+  width: 100%;
   resize: none;
 }
 
-label {
-  display: block;
-} */
+.addDiscount{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 1px solid red;
+  align-items: center;
+  gap: 10px;
+}
+
+.addDiscount input{
+  width: 300px;
+}
+
+.addDiscount button,
+.searchUser button
+{
+  width: 150px;
+}
+
+.searchUser{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 10px;
+}
+
+.searchUser input{
+  width: 300px;
+}
+
+.info, .chillDiscount, .discount, .searchUser{
+  border: 1px solid red;
+  padding: 10px;
+}

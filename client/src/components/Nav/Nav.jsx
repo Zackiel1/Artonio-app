@@ -6,7 +6,34 @@ import { useEffect, useState } from "react";
 
 const Nav = ({ onContactClick }) => {
   const userInfo = useSelector((state) => state.userInfo);
+
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  //const [currentUserInfo, setCurrentUserInfo] = useState(false);
+
+  // setCurrentUserInfo(userInfo);
+
+  // useEffect(() => {
+  //   setCurrentUserInfo(userInfo);
+  // }, [userInfo]);
+
+  // console.log(userInfo);
+  // console.log(current);
+
+  let current = 0;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 60;
+      setScrolled(isScrolled);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const menu = () => {
     menuOpen === true ? setMenuOpen(false) : setMenuOpen(true);
@@ -15,7 +42,9 @@ const Nav = ({ onContactClick }) => {
   return (
     <>
       <Link className={style.icono} to="/"></Link>
-      <nav className={style.navContainer}>
+      <nav
+        className={`${style.navContainer} ${scrolled ? style.scrolled : ""}`}
+      >
         {/* <button onClick={menu} className={style.openMenu}>
           Abrir
         </button> */}
@@ -30,7 +59,7 @@ const Nav = ({ onContactClick }) => {
           className={`${style.navItems} ${menuOpen ? style.open : style.close}`}
           onClick={menu}
         >
-          <li>
+          <li className={style.firstLi}>
             <NavLink to={{ pathname: "/", hash: "#home" }}>Inicio</NavLink>
           </li>
 
@@ -52,7 +81,7 @@ const Nav = ({ onContactClick }) => {
 
           {userInfo && (
             <li>
-              <Link to="/account">Cuenta</Link>
+              <Link to="/account">Perfil</Link>
             </li>
           )}
 

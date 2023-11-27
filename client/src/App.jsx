@@ -1,14 +1,13 @@
 import { Outlet, Route, Routes, useLocation } from "react-router-dom";
 import { Element, scroller } from "react-scroll";
 import React, { useRef } from "react";
-//import "./App.css";
 import Nav from "./components/Nav/Nav";
 import Home from "./view/Home/Home";
 import Login from "./view/Login/Login";
 import CreateUser from "./components/CreateUser/CreateUser";
 import Account from "./view/Account/Account";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { clearMessage, reLogin, getImg } from "./redux/actions";
 import Admin from "./view/Admin/Admin";
 import Gallery from "./view/gallery/Gallery";
@@ -19,6 +18,8 @@ import SpanRedes from "./view/SpanRedes/SpanRedes";
 import SampleGallery from "./view/SampleGallery/SampleGallery";
 import RecoverPass from "./view/RecoverPass/RecoverPass";
 import ForgetPass from "./view/ForgetPass/ForgetPass";
+import style from "./App.module.css";
+import VerifyUser from "./components/VerifyUser/VerifyUser";
 
 const App = () => {
   const location = useLocation();
@@ -43,7 +44,7 @@ const App = () => {
   loginUserJSON !== null && dispatch(reLogin(user));
 
   return (
-    <>
+    <main className={style.appContainer}>
       <Nav />
       {showScrollableContent && (
         <>
@@ -70,8 +71,14 @@ const App = () => {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/recoverPass" element={<RecoverPass />} />
         <Route path="/forgetPass" element={<ForgetPass />} />
+        <Route path="/verifyUser/:infoUser" element={<VerifyUser />} />
       </Routes>
-    </>
+
+      {/* <span className={`${style.frameBorder} ${style.frameTop}`}></span>
+      <span className={`${style.frameBorder} ${style.frameBottom}`}></span>
+      <span className={`${style.frameBorder} ${style.frameRigth}`}></span>
+      <span className={`${style.frameBorder} ${style.frameLeft}`}></span> */}
+    </main>
   );
 };
 

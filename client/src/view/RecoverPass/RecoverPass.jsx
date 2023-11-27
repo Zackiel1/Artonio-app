@@ -1,30 +1,32 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import style from "./RecoverPass.module.css";
 import validations from "../../services/validations";
-import { getVerifyToken, putPass } from "../../redux/actions";
-import { useDispatch } from "react-redux";
+import { clearMessage, getVerifyToken, putPass } from "../../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { showAlertSuccess } from "../../services/showAlert";
 
 const RecoverPass = () => {
   const dispatch = useDispatch();
   const location = useLocation();
+  const navigate = useNavigate();
   const searchParams = new URLSearchParams(location.search);
   const token = searchParams.get("token");
 
-  let userId;
-
   useEffect(() => {
-    userId = dispatch(getVerifyToken(token));
+    dispatch(getVerifyToken(token)).then((resolvedUserId) => {
+      setUserId(resolvedUserId);
+    });
   }, []);
 
+  const messageSuccess = useSelector((state) => state.messageSuccess);
+
+  const [userId, setUserId] = useState("");
   const [error, setError] = useState({});
   const [activeMsgErr, setActiveMsgErr] = useState(false);
   const [message, setMessage] = useState("");
-  const [password, setPassword] = useState({
-    newPassword: "",
-    confirmPassword: "",
-  });
+  const [password, setPassword] = useState(true);
 
   const handlerChange = (event) => {
     let property = event.target.name;
@@ -34,58 +36,76 @@ const RecoverPass = () => {
     setPassword({ ...password, [property]: value });
   };
 
-  const handlerSubmit = async (event) => {
+  const handlerSubmit = (event) => {
     event.preventDefault();
 
-    Object.keys(error).length !== 0
-      ? setActiveMsgErr(true)
-      : setActiveMsgErr(false);
-
-    try {
-      let resolvedUserId = await userId;
-      let data = {
-        userId: resolvedUserId,
-        newPassword: password.newPassword,
-      };
-      let response = await dispatch(putPass(data));
-      setMessage(response);
-    } catch (error) {
-      //setMessage(error.response.data);
-      console.log(error);
-    }
+    let data = {
+      userId: userId,
+      newPassword: password.newPassword,
+    };
+    dispatch(putPass(data));
   };
 
+  useEffect(() => {
+    if (messageSuccess !== null) {
+      showAlertSuccess(messageSuccess);
+      dispatch(clearMessage());
+      navigate("/");
+    }
+  }, [messageSuccess]);
+
   return (
-    <div className={style.container}>
-      <h2>Nueva Contraseña</h2>
-      <form onSubmit={handlerSubmit}>
-        <div>
-          <label>Nueva contraseña</label>
-          <input
-            type="password"
-            name="newPassword"
-            onChange={handlerChange}
-            value={password.newPassword}
-          />
-          <label>{activeMsgErr && error.newPassword}</label>
-        </div>
-        <div>
-          <label>Repite la contraseña</label>
-          <input
-            type="password"
-            name="confirmPassword"
-            onChange={handlerChange}
-            value={password.confirmPassword}
-          />
-          <label>{activeMsgErr && error.confirmPassword}</label>
-        </div>
+    <main className={style.container}>
+      <section className={style.section}>
+        <h2 className={style.tittle}>Nueva Contraseña</h2>
+        <form onSubmit={handlerSubmit} className={style.form}>
+          <div>
+            <label className={style.label}>Nueva contraseña</label>
+            <input
+              type="password"
+              name="newPassword"
+              className={style.input}
+              onChange={handlerChange}
+              value={password.newPassword || ""}
+            />
+          </div>
+          <label>
+            {error.newPassword && (
+              <p className={style.message}>{error.newPassword}</p>
+            )}
+          </label>
 
-        <button type="submit">Cambiar Pass</button>
+          <div>
+            <label className={style.label}>Repite la contraseña</label>
+            <input
+              type="password"
+              name="confirmPassword"
+              className={style.input}
+              onChange={handlerChange}
+              value={password.confirmPassword || ""}
+            />
+          </div>
+          <label>
+            {error.confirmPassword && (
+              <p className={style.message}>{error.confirmPassword}</p>
+            )}
+          </label>
 
-        {error.differentPassword && <p>{error.differentPassword}</p>}
-      </form>
-      {message && <p>{message}</p>}
-    </div>
+          <button
+            disabled={Object.keys(error).length !== 0 || password === true}
+            type="submit"
+            className={style.button}
+          >
+            Cambiar Contraseña
+          </button>
+
+          {error.differentPassword && (
+            <p className={style.message}>{error.differentPassword}</p>
+          )}
+        </form>
+        {message && <p className={style.message}>{message}</p>}
+      </section>
+    </main>
   );
 };
 

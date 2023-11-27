@@ -18,6 +18,7 @@ const Gallery = () => {
     if (dataImgs.length === 0) {
       dispatch(getImg());
     }
+    window.scrollTo(0, 0);
   }, []);
 
   const handlerGallery = (event) => {
@@ -26,31 +27,33 @@ const Gallery = () => {
 
   return (
     <div className={style.container} ref={galleryRef}>
-      <h2>Galleria</h2>
-
-      <div className={style.containerButton}>
-        <button
-          value="tatto"
-          onClick={handlerGallery}
-          className={
-            galleryState === "tatto"
-              ? style.activeTattoButton
-              : style.tattoButton
-          }
-        >
-          Tatto
-        </button>
-        <button
-          value="paint"
-          onClick={handlerGallery}
-          className={
-            galleryState === "paint"
-              ? style.activePaintButton
-              : style.paintButton
-          }
-        >
-          Pinturas
-        </button>
+      <div className={style.tittleContainer}>
+        <h2>Galleria</h2>
+        <p>de</p>
+        <div className={style.buttonContainer}>
+          <button
+            value="tatto"
+            onClick={handlerGallery}
+            className={
+              galleryState === "tatto"
+                ? style.activeTattoButton
+                : style.tattoButton
+            }
+          >
+            Tatuajes
+          </button>
+          <button
+            value="paint"
+            onClick={handlerGallery}
+            className={
+              galleryState === "paint"
+                ? style.activePaintButton
+                : style.paintButton
+            }
+          >
+            Pinturas
+          </button>
+        </div>
       </div>
 
       <section className={style.containerImages}>

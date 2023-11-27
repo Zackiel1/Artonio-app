@@ -1,0 +1,50 @@
+.container {
+    height: 99.1111vh;
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.container section{
+  min-height: 150px;
+  max-height: 230px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 160px;
+  padding: 20px;
+  align-items: center;
+
+  color: var(--color-font);
+  background-color: var(--color-bg-form);
+  border: 4px outset rgba(133, 132, 132, 0.7);
+  box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.3);
+
+}
+
+.container h2{
+  font-size: 3rem;
+}
+
+.container p{
+  font-size: var(--font-size-text);
+}
+
+.button{
+  height: 50px;
+  width: 100px;
+  padding: 3px;
+  font-size: var(--font-size-button-s);
+  font-weight: bold;
+  font-family: var(--font-sub);
+
+  background: var(--color-trx);
+  color: var(--color-bg-form);
+  border-radius: 100px;
+  
+  &:active{
+    transform: scale(0.95);
+  }
+}
+
+

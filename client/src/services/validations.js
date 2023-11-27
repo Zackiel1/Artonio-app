@@ -32,6 +32,10 @@ const validations = (data) => {
     errors.differentPassword = "Las contraseñas no coinsiden"
   }
 
+  if(data.password && data.confirmPassword && data.password !== data.confirmPassword) {
+    errors.differentPassword = "Las contraseñas no coinsiden"
+  }
+
   return errors;
 };
 

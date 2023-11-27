@@ -1,7 +1,6 @@
 .homeContainer {
-  height: calc(90vh + 60px);
+  height: calc(100vh + 60px);
   margin-top: 60px;
-  background-color: var(--color-secundary);
   background-image: url("../../../images/3.png");
   background-size: contain;
   background-repeat: no-repeat;

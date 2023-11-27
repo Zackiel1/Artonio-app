@@ -8,25 +8,37 @@ import {
   RE_LOGIN,
   GET_IMAGES,
   POST_FORGET_PASS,
+  SEARCH_USER,
+  USE_DISCOUNT,
+  ADD_DISCOUNT,
+  CLEAR_USER_INFO,
+  MESSAGE_SUCCESS,
 } from "./index.js";
 
 export const postCreateUser = (data) => {
-  return async () => {
+  return async (dispatch) => {
     try {
       const response = await axios.post(
         "http://localhost:3001/user/createUser",
         data
       );
-      return response.data;
-    } catch (error) {
-      throw error;
+      dispatch({ type: MESSAGE_SUCCESS, payload: response.data });
+    } catch (error) {    
+      dispatch({ type: MESSAGE_ERROR, payload: error.response.data}) 
     }
   };
 };
 
-export const clearMessage = (data) => {
+export const clearMessage = () => {
   return {
     type: CLEAR_MESSAGE,
+    payload: "",
+  };
+};
+
+export const clearUserInfo = (data) => {
+  return {
+    type: CLEAR_USER_INFO,
     payload: data,
   };
 };
@@ -46,29 +58,29 @@ export const postLogin = (data) => {
 };
 
 export const postForgetPass = (data) => {
-  return async () => {
+  return async (dispatch) => {
     return await axios
       .post("http://localhost:3001/user/recover", data)
       .then((response) => {
-        return response.data;
+        dispatch({ type: MESSAGE_SUCCESS, payload: response.data})
       })
-      .catch((err) => {
-        throw err;
+      .catch((error) => {
+        dispatch({ type: MESSAGE_ERROR, payload: error.response.data}) 
       });
   };
 };
 
 export const putPass = (data) => {
-  console.log(data);
-  return async () => {
+  return async (dispatch) => {
     try {
       const response = await axios.put(
         "http://localhost:3001/user/updatePass",
         data
       );
-      return response.data;
+      dispatch({ type: MESSAGE_SUCCESS, payload: response.data})
     } catch (error) {
-      throw error;
+      console.log(error);
+      dispatch({ type: MESSAGE_ERROR, payload: error.response}) 
     }
   };
 };
@@ -114,10 +126,60 @@ export const getVerifyToken = (token) => {
       const response = await axios.post(
         "http://localhost:3001/user/verifyToken", {token: token}
       );
-
       return response.data.userId;
     } catch (error) {
       throw error;
     }
   };
 };
+
+export const searchUser = (email) => {
+  
+  return async (dispatch) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/admin/searchUser", {email: email}
+      );
+      dispatch({ type: SEARCH_USER, payload: response.data })
+      
+    } catch (error) {
+      dispatch({ type: MESSAGE_ERROR, payload: error.response}) 
+    }
+  };
+}
+
+export const useDiscount = (email, id) => {
+  
+  return async (dispatch) => {
+    try {
+      const response = await axios.delete(
+        "http://localhost:3001/admin/deleteDiscount", 
+        {
+          headers: {
+            email: email,
+            id: id,
+          },
+        },
+        );
+     dispatch({ type: USE_DISCOUNT, payload: response})
+      
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  };
+}
+export const AddDiscount = (data) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/admin/addDiscount", data
+        );
+        
+     dispatch({ type: USE_DISCOUNT, payload: response})
+      
+    } catch (error) {
+      dispatch({ type: MESSAGE_ERROR, payload: error.response})  
+    }
+  };
+}

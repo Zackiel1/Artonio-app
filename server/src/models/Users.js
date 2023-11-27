@@ -29,8 +29,8 @@ module.exports = (sequelize) => {
       defaultValue: false,
     },
     discount: {
-      type: DataTypes.JSON,
-      defaultValue: JSON.stringify([{descuento:'20%',motivo:"Suscripcion en Web"}])
+      type: DataTypes.ARRAY(DataTypes.JSON),
+      defaultValue: [{discount:'20%',reason:"Suscripcion en Web",discountId: Math.floor(Math.random() * 1000000),}],
     },
     isAdmin: {
       type: DataTypes.BOOLEAN,

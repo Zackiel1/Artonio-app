@@ -1,5 +1,6 @@
 import { useState } from "react";
 import style from "./SampleGallery.module.css";
+import { Link } from "react-router-dom";
 
 const SampleGallery = () => {
   const [imagenActiva, setImagenActiva] = useState(null);
@@ -77,7 +78,7 @@ const SampleGallery = () => {
 
   return (
     <div className={style.container}>
-      <h3>Ultimos trabajos</h3>
+      <h2>Ultimos trabajos</h2>
 
       <section>
         {images.map((img, index) => {
@@ -95,7 +96,7 @@ const SampleGallery = () => {
       </section>
 
       <p>
-        Mira mas diseños <span>Aqui..</span>
+        Mira mas diseños <Link to="/gallery">Aqui...</Link>
       </p>
     </div>
   );

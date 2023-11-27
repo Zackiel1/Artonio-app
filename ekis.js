@@ -22,3 +22,14 @@
 -  PUT /user/:id/cart/:cartItemId : para actualizar la cantidad de un artículo en el carrito de compras de un usuario. 
 -  DELETE /user/:id/cart/:cartItemId : para eliminar un artículo del carrito de compras de un usuario. 
  */
+
+/**
+ * 
+ * hacer endpoint de admin para que pueda:
+ * 
+ * 0-agregar descuento a alguna cuenta
+ * 1-eliminar cuenta
+ * 2-ver datos de cualquier cuenta mendiante el email: info y descuentos
+ * 3-marcar como descuento usaro, cuando un cliente use el descuento
+ * 
+ */

@@ -1,12 +1,14 @@
+import { Link } from "react-router-dom";
 import style from "./SpanPromo.module.css";
 
 const SpanPromo = () => {
   return (
     <section className={style.container}>
       <article>
-        <h3>
-          LLeva un 20% de descuento registrandote <span>Aqui</span>...
-        </h3>
+        <p>
+          Obten un 20% de descuento resgistrandote{" "}
+          <Link to="/createUser">Aqui...</Link>
+        </p>
       </article>
     </section>
   );

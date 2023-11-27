@@ -10,7 +10,6 @@
   background-size: cover;
   background-position: top center;
   background-attachment: fixed;
-  z-index: -11;
 }
 
 .container::before {
@@ -33,14 +32,27 @@
   margin: auto 30px;
 }
 
-.container h3 {
+.container a{
+  font-family: var(--font-sub);
+  font-size: var(--font-size-title);
+  color: var(--color-font);
+  text-decoration: none;
+  transition: 0.5s ease;
+}
+
+.container a:hover{
+  filter: contrast(120%);
+}
+
+.container p {
   color: var(--color-primary);
-  font-family: var(--font-ancha);
-  font-size: 4rem;
+  font-family: var(--font-sub);
+  font-size: var(--font-size-title);
   letter-spacing: 2px;
   margin: 10px 20px;
   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.9);
 }
+
 
 @media (max-width: 470px) {
   .container {

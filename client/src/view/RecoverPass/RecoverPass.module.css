@@ -1,5 +1,81 @@
 .container{
-    height: 500px;
+    height: calc(100vh);
+    display: flex;
+    justify-content: center;
     margin-top: 60px;
-    background-color: aqua;
+    background: var(--color-bg-s);
+    color: var(--color-font);
+}
+
+.section{
+    height: max-content;
+    width: 400px;
+    margin: 130px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 4px outset rgba(133, 132, 132, 0.7);
+    box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding-bottom: 10px;
+}
+
+.tittle{
+    text-align: center;
+    font-size: 2.1em;
+    font-weight: bold;
+    margin: 20px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    gap: 5px;
+}
+
+.form div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.input{
+    height: 25px;
+    width: 240px;
+    color: var(--color-font);
+    border: none;
+    outline: none;
+    background: none;
+    border-bottom: 1px solid var(--color-primary);
+}
+
+.button{
+    height: 40px;
+    width: 88%;
+    font-size: var(--font-size-button-s);
+    font-family: var(--font-sub);
+    font-weight: bold;
+    margin-top: 35px;
+    background-color: var(--color-trx);
+    color: var(--color-bg-form);
+    border-radius: 30px;
+    cursor: pointer;
+  
+    &:active{
+      transform: scale(0.95);
+    }
+}
+
+.message{
+    font-size: 1.3rem;
+    color: red;
+    margin-left: 13px;
+}
+
+.label{
+    font-size: var(--font-size-msg);
 }

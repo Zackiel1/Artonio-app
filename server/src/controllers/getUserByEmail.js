@@ -6,7 +6,7 @@ const getUserByEmail = async (data) => {
 
   const user = await Users.findOne({ where: { email: email } });
 
-  if (!user) throw new Error("message: email de usuario no existente");
+  if (!user) throw new Error("Email de usuario no existente");
 
   return user;
 };

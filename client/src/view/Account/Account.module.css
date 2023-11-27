@@ -1,7 +1,194 @@
-.container{
-    height: calc(100vh - 60px);
-    margin-top: 60px;
-
+/* .container{
+    height: calc(100vh + 40px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: linear-gradient(0deg,  #37383b, var(--color-bg));
 }
 
+.section{
+    height: 600px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #37383b;
+    border: 1px solid red;
+    color: var(--color-font);
+} */
+
+.container{
+    min-height:  100vh;
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(0deg,  #37383b, var(--color-bg));
+}
+
+.sectionGrid{
+    width: 330px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    
+    border: 4px outset rgba(133, 132, 132, 0.7);
+    box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    color: var(--color-font);
+
+    padding: 10px;
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+
+.sectionGrid > *{
+    font-family: var(--font-primary);
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+.tittle{
+    font-size: var(--font-size-subTitle);
+    font-family: var( --font-sub);
+}
+
+.admin{
+    text-decoration: none;
+    color: var(--color-trx);
+    position: absolute;
+}
+
+.item1{
+    height: 50px;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    justify-self: center;
+    margin: 10px;
+}
+
+.item3{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    margin: 10px;
+}
+
+.info h4{
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.item2, .item4, .item5{
+    height: 30px;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    margin-left: 10px;
+    margin-right: 10px;
+    
+}
+
+.subTittle{
+    justify-self: center;
+    font-size: 2rem;
+    margin: 10px;
+}
+
+.item6{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    border: 4px outset rgba(133, 132, 132, 0.7);
+    box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    
+}
+
+.discount h3{
+    display: flex;
+    justify-content: center;
+    font-family: var(--font-sub);
+    font-size: 2.3rem;
+    
+}
+
+.chillDiscount{
+    padding: 10px;
+    margin: 7px;
+    border: 1px outset rgba(133, 132, 132, 0.7);
+    box-shadow: 0 0 8px 0 rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.item7, .item10{
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+.changePass, .logout{
+    height: 38px;
+    margin: 3px;
+    padding: 3px;
+    font-family: var(--font-sub);
+    background-color: var(--color-trx);
+    font-size: var(--font-size-button);
+    
+}
+
+.logout{
+    letter-spacing: 1.3px;
+}
+
+.item8{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.item8 div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formChangePass div input{
+  width: 200px;
+  padding: 0.7em;
+  color: var(--color-font);
+  border: none;
+  outline: none;
+  border-bottom: 1px solid var(--color-border-form);
+  background: none;
+}
+
+.formChangePass button{
+    height: 38px;
+    margin: 3px;
+    padding: 3px;
+    font-family: var(--font-sub);
+    background-color: var(--color-trx);
+    font-size: var(--font-size-button);
+}
+
+.item9{
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+.msg{
+    font-size: var(--font-size-msg);
+    color: green;
+    justify-self: center;
+    margin: 5px;
+}
+
+.errorMsg{
+    font-size: var(--font-size-msg);
+    color: red;
+}
+
+/* 
+@media (min-width: 984px) */

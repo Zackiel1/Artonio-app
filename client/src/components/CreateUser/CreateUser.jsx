@@ -4,10 +4,14 @@ import { postCreateUser, clearMessage } from "../../redux/actions";
 import { useLocation } from "react-router-dom";
 import validations from "../../services/validations";
 import style from "./CreateUser.module.css";
+import { showAlertError, showAlertSuccess } from "../../services/showAlert";
 
 const CreateUser = () => {
   const dispatch = useDispatch();
   const location = useLocation();
+
+  const messageSuccess = useSelector((state) => state.messageSuccess);
+  const messageError = useSelector((state) => state.messageError);
 
   const [message, setMessage] = useState("");
   const [error, setError] = useState({});
@@ -17,8 +21,23 @@ const CreateUser = () => {
     name: "",
     email: "",
     password: "",
+    confirmPassword: "",
     phone: "",
   });
+
+  useEffect(() => {
+    if (messageSuccess !== null) {
+      showAlertSuccess(messageSuccess);
+    }
+    dispatch(clearMessage("messageSuccess"));
+  }, [messageSuccess]);
+
+  useEffect(() => {
+    if (messageError !== null) {
+      showAlertError(messageError);
+    }
+    dispatch(clearMessage("messageError"));
+  }, [messageError]);
 
   const handlerChange = (event) => {
     let property = event.target.name;
@@ -35,26 +54,28 @@ const CreateUser = () => {
       ? setActiveMsgErr(true)
       : setActiveMsgErr(false);
 
-    try {
-      let response = await dispatch(postCreateUser(createUser));
-      setMessage(response);
-    } catch (error) {
-      setMessage(error.response.data);
-    }
+    dispatch(postCreateUser(createUser));
+
+    //   try {
+    //     let response = await dispatch(postCreateUser(createUser));
+    //     setMessage(response);
+    //   } catch (error) {
+    //     setMessage(error.response.data);
+    //   }
   };
 
-  useEffect(() => {
-    dispatch(clearMessage("messageSuccess"));
-  }, [location.pathname]);
+  // useEffect(() => {
+  //   dispatch(clearMessage("messageSuccess"));
+  // }, [location.pathname]);
 
   return (
     <main className={style.container}>
       <section className={style.section}>
-        <h4 className={style.title}>Crear Usuario</h4>
+        <h2 className={style.title}>Crear Usuario</h2>
 
         <form onSubmit={handlerSubmit} className={style.form}>
           <div>
-            <label>Nombre: </label>
+            <label className={style.tittleInput}>Nombre</label>
             <input
               className={style.input}
               type="text"
@@ -66,7 +87,7 @@ const CreateUser = () => {
             <label className={style.error}>{activeMsgErr && error.name}</label>
           </div>
           <div>
-            <label>Email: </label>
+            <label className={style.tittleInput}>Email</label>
             <input
               className={style.input}
               type="text"
@@ -78,7 +99,7 @@ const CreateUser = () => {
             <label className={style.error}>{activeMsgErr && error.email}</label>
           </div>
           <div>
-            <label>Contraseña: </label>
+            <label className={style.tittleInput}>Contraseña</label>
             <input
               className={style.input}
               type="password"
@@ -91,9 +112,23 @@ const CreateUser = () => {
               {activeMsgErr && error.password}
             </label>
           </div>
+          <div>
+            <label className={style.tittleInput}>Repite la contraseña</label>
+            <input
+              className={style.input}
+              type="password"
+              name="confirmPassword"
+              onChange={handlerChange}
+              value={createUser.confirmPassword}
+              placeholder="Repite la contraseña"
+            />
+            <label className={style.error}>
+              {activeMsgErr && error.differentPassword}
+            </label>
+          </div>
 
           <div>
-            <label>Telefono: </label>
+            <label className={style.tittleInput}>Telefono</label>
             <input
               className={style.input}
               type="text"

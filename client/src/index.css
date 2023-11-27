@@ -1,8 +1,10 @@
 * {
   box-sizing: border-box;
-  margin: 0;
+  /* margin-top: 10px;
+  margin-bottom: 10px; */
   padding: 0;
   font-family: var(--font-primary);
+  letter-spacing: 1px;
 }
 
 html {
@@ -30,10 +32,24 @@ input:-webkit-autofill {
   --color-bg-s: linear-gradient(0deg, #2c2c2c, var(--color-bg));
   --color-font: #fdfefe;
   --color-bg-input: 0 0 0px 1000px rgba(0, 0, 0, 0.9) inset;
+  --color-bg-app: #191919;
+  --color-bg-form: #111111;
+  --color-border-form: #929292;
 
-  --font-primary: "Libre Baskerville", serif;
-  --font-secundary: "Dancing Script", cursive;
-  --font-ancha: "Dela Gothic One", cursive;
+  --font-primary: 'Open Sans', sans-serif;
+  /* --font-sub: 'Cinzel Decorative', serif; */
+  --font-sub: 'Bebas Neue', sans-serif;
+
+  --font-size-text: 1.6rem;
+  --font-size-title: 5rem;
+  --font-size-subTitle: 3.5rem;
+  --font-size-nav: 2.75rem;
+  --font-size-error: 1.33rem;
+  --font-size-msg: 1.33rem;
+  --font-size-button-s: 1.8rem;
+  --font-size-button-m: 2.2rem;
+  --font-size-button-l: 2.9rem;
+  --font-size-button-xl: 3.2rem;
 }
 
 /* body::-webkit-scrollbar {

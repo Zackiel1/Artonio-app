@@ -16,6 +16,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@strapi/provider-upload-cloudinary": "^4.13.1",
+    "@sweetalert2/theme-dark": "^5.0.15",
     "axios": "^1.4.0",
     "cloudinary": "^1.40.0",
     "react": "^18.2.0",
@@ -26,6 +27,8 @@
     "react-scroll": "^1.8.9",
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2",
+    "reselect": "^4.1.8",
+    "sweetalert2": "^11.10.1",
     "universal-cookie": "^4.0.4"
   },
   "devDependencies": {

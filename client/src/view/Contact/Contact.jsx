@@ -13,9 +13,7 @@ const Contact = () => {
 
       <div className={style.contactWapper}>
         <div className={style.contactForm}>
-          <h3>Contactanos</h3>
-
-          <form action="">
+          <form>
             <p>
               <label>Nombre</label>
               <input type="text" name="name" />
@@ -34,7 +32,7 @@ const Contact = () => {
             </p>
             <p className={style.block}>
               <label>Mensaje</label>
-              <textarea name="message" rows="3"></textarea>
+              <textarea name="message" rows="8"></textarea>
             </p>
             <p className={style.block}>
               <button type="submit">Enviar</button>

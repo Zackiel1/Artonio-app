@@ -49,25 +49,25 @@ const Login = () => {
         <form className={style.form} onSubmit={handlerSubmit}>
           <h2>Inicia Sesion</h2>
           <p>
-            <label>Correo Electronico:</label>
+            <label>Correo Electronico</label>
             <input
               className={style.input}
               type="text"
               name="email"
               value={user.email}
               onChange={handlerChange}
-              placeholder="Email"
+              placeholder="Correo Electronico"
             />
           </p>
           <p>
-            <label>Contraseña: </label>
+            <label>Contraseña</label>
             <input
               type="password"
               name="password"
               className={style.input}
               value={user.password}
               onChange={handlerChange}
-              placeholder="Password"
+              placeholder="Contraseña"
             />
           </p>
 
@@ -77,7 +77,7 @@ const Login = () => {
           <button type="submit">Iniciar</button>
         </form>
 
-        {message && <p>{message}</p>}
+        {message && <p className={style.message}>{message}</p>}
       </section>
     </main>
   );
