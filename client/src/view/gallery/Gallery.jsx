@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import style from "../gallery/gallery.module.css";
+import style from "./Gallery.module.css";
 import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getImg } from "../../redux/actions";
