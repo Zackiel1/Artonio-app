@@ -13,6 +13,7 @@ import {
   ADD_DISCOUNT,
   CLEAR_USER_INFO,
   MESSAGE_SUCCESS,
+  RESEND_VERIFY_MESSAJE,
 } from "./index.js";
 
 export const postCreateUser = (data) => {
@@ -23,8 +24,8 @@ export const postCreateUser = (data) => {
         data
       );
       dispatch({ type: MESSAGE_SUCCESS, payload: response.data });
-    } catch (error) {    
-      dispatch({ type: MESSAGE_ERROR, payload: error.response.data}) 
+    } catch (error) {
+      dispatch({ type: MESSAGE_ERROR, payload: error.response.data });
     }
   };
 };
@@ -36,10 +37,10 @@ export const clearMessage = () => {
   };
 };
 
-export const clearUserInfo = (data) => {
+export const clearUserInfo = () => {
   return {
     type: CLEAR_USER_INFO,
-    payload: data,
+    payload: false,
   };
 };
 
@@ -62,10 +63,10 @@ export const postForgetPass = (data) => {
     return await axios
       .post("http://localhost:3001/user/recover", data)
       .then((response) => {
-        dispatch({ type: MESSAGE_SUCCESS, payload: response.data})
+        dispatch({ type: MESSAGE_SUCCESS, payload: response.data });
       })
       .catch((error) => {
-        dispatch({ type: MESSAGE_ERROR, payload: error.response.data}) 
+        dispatch({ type: MESSAGE_ERROR, payload: error.response.data });
       });
   };
 };
@@ -77,18 +78,18 @@ export const putPass = (data) => {
         "http://localhost:3001/user/updatePass",
         data
       );
-      dispatch({ type: MESSAGE_SUCCESS, payload: response.data})
+      dispatch({ type: MESSAGE_SUCCESS, payload: true });
     } catch (error) {
       console.log(error);
-      dispatch({ type: MESSAGE_ERROR, payload: error.response}) 
+      dispatch({ type: MESSAGE_ERROR, payload: error.response });
     }
   };
 };
 
-export const reLogin = (data) => {
+export const reLogin = () => {
   return {
     type: RE_LOGIN,
-    payload: data,
+    payload: true,
   };
 };
 
@@ -124,7 +125,8 @@ export const getVerifyToken = (token) => {
   return async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3001/user/verifyToken", {token: token}
+        "http://localhost:3001/user/verifyToken",
+        { token: token }
       );
       return response.data.userId;
     } catch (error) {
@@ -134,52 +136,63 @@ export const getVerifyToken = (token) => {
 };
 
 export const searchUser = (email) => {
-  
   return async (dispatch) => {
     try {
       const response = await axios.post(
-        "http://localhost:3001/admin/searchUser", {email: email}
+        "http://localhost:3001/admin/searchUser",
+        { email: email }
       );
-      dispatch({ type: SEARCH_USER, payload: response.data })
-      
+      dispatch({ type: SEARCH_USER, payload: response.data });
     } catch (error) {
-      dispatch({ type: MESSAGE_ERROR, payload: error.response}) 
+      dispatch({ type: MESSAGE_ERROR, payload: error.response });
     }
   };
-}
+};
 
 export const useDiscount = (email, id) => {
-  
   return async (dispatch) => {
     try {
       const response = await axios.delete(
-        "http://localhost:3001/admin/deleteDiscount", 
+        "http://localhost:3001/admin/deleteDiscount",
         {
           headers: {
             email: email,
             id: id,
           },
-        },
-        );
-     dispatch({ type: USE_DISCOUNT, payload: response})
-      
+        }
+      );
+      dispatch({ type: USE_DISCOUNT, payload: response });
     } catch (error) {
       console.log(error);
       throw error;
     }
   };
-}
+};
 export const AddDiscount = (data) => {
   return async (dispatch) => {
     try {
       const response = await axios.post(
-        "http://localhost:3001/admin/addDiscount", data
-        );
-        
-     dispatch({ type: USE_DISCOUNT, payload: response})
-      
+        "http://localhost:3001/admin/addDiscount",
+        data
+      );
+
+      dispatch({ type: USE_DISCOUNT, payload: response });
     } catch (error) {
-      dispatch({ type: MESSAGE_ERROR, payload: error.response})  
+      dispatch({ type: MESSAGE_ERROR, payload: error.response });
     }
   };
-}
+};
+
+export const resendVerifyMessage = (data) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/user/ResendVerifyMessage",
+        data
+      );
+      dispatch({ type: MESSAGE_SUCCESS, payload: response });
+    } catch (error) {
+      dispatch({ type: MESSAGE_ERROR, payload: error.response });
+    }
+  };
+};

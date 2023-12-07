@@ -6,6 +6,7 @@ const {
   putPasswordHandler,
   postContactHandler,
   postUserRecoverHandler,
+  postResendMessageHandler,
 } = require("../handlres/userHandlers");
 const { Router } = require("express");
 const OAuth2 = require("../services/oAuth2");
@@ -22,7 +23,6 @@ userRouter.post("/login", postLoginHandler);
 userRouter.put("/updatePass", putPasswordHandler); // actuliza la pass -- falta acomodarlo bien
 userRouter.post("/contact", postContactHandler);
 userRouter.post("/recover", postUserRecoverHandler);
+userRouter.post("/ResendVerifyMessage", postResendMessageHandler);
 
 module.exports = userRouter;
-
-

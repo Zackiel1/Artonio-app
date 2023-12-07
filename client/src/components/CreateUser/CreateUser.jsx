@@ -50,11 +50,20 @@ const CreateUser = () => {
   const handlerSubmit = async (event) => {
     event.preventDefault();
 
-    Object.keys(error).length !== 0
-      ? setActiveMsgErr(true)
-      : setActiveMsgErr(false);
-
-    dispatch(postCreateUser(createUser));
+    if (Object.keys(error).length !== 0) {
+      setActiveMsgErr(true);
+    } else {
+      setActiveMsgErr(false);
+      dispatch(postCreateUser(createUser));
+      setCreateUser({
+        name: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+        phone: "",
+      });
+    }
+    //
 
     //   try {
     //     let response = await dispatch(postCreateUser(createUser));

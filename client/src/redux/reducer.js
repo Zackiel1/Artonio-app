@@ -15,12 +15,11 @@ import {
 const inicialState = {
   messageSuccess: null,
   messageError: null,
-  userInfo: null,
+  userInfo: false,
   dataImgs: [],
   tatto: [],
   paint: [],
   searchInfoUser: null,
-  
 };
 
 const reducer = (state = inicialState, action) => {
@@ -39,7 +38,7 @@ const reducer = (state = inicialState, action) => {
     case CLEAR_USER_INFO:
       return {
         ...state,
-        [action.payload]: null,
+        userInfo: false,
       };
     case MESSAGE_ERROR:
       return {
@@ -78,17 +77,17 @@ const reducer = (state = inicialState, action) => {
       return {
         ...state,
         searchInfoUser: action.payload,
-      };  
+      };
     case USE_DISCOUNT:
-    return {
-      ...state,
-      messageSuccess: action.payload,
-    };
+      return {
+        ...state,
+        messageSuccess: action.payload,
+      };
     case ADD_DISCOUNT:
-    return {
-      ...state,
-      messageSuccess: action.payload,
-    };
+      return {
+        ...state,
+        messageSuccess: action.payload,
+      };
     default:
       return { ...state };
   }

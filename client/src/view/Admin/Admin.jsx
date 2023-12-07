@@ -246,6 +246,7 @@ const Admin = () => {
             <p className={style.name}>Nombre: {searchInfoUser?.name}</p>
             <p className={style.email}>Correo: {searchInfoUser?.email}</p>
             <p className={style.phone}>Telefono: {searchInfoUser?.phone}</p>
+            <p>Verificado: {!searchInfoUser.is_verified ? "No" : "Si"}</p>
           </div>
 
           <div className={style.discount}>

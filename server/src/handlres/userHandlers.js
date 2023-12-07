@@ -8,6 +8,7 @@ const contact = require("../controllers/contact");
 const getUserByEmail = require("../controllers/getUserByEmail");
 const recoverUser = require("../controllers/recoverUser");
 const tokenDecoded = require("../services/tokenDecoded");
+const resendMessage = require("../controllers/resendMessage");
 
 const postUserHandler = async (req, res) => {
   const { name, email, password, phone } = req.body;
@@ -33,23 +34,19 @@ const getVerifyHandler = async (req, res) => {
     const verifyAccount = await statusVerify(userId);
 
     res.redirect(302, `http://localhost:3000/verifyUser/${verifyAccount}`);
-
   } catch (error) {
     //const errorMessage = error.message || "An unknown error occurred.";
     res.redirect(302, `http://localhost:3000/verifyUser/${error.message}`);
-
   }
 };
 
 //verifica el token del correo enviado
 const getVerifyRecoverUserHandler = async (req, res) => {
   const token = req.body.token;
- 
-  try {
-  
-    let decoded = tokenDecoded(token)
-    res.status(200).json(decoded)
 
+  try {
+    let decoded = tokenDecoded(token);
+    res.status(200).json(decoded);
   } catch (error) {
     if (error.name === "TokenExpiredError") {
       res.status(400).send("Token has expired");
@@ -79,7 +76,7 @@ const postLoginHandler = async (req, res) => {
 
 const putPasswordHandler = async (req, res) => {
   const { userId, newPassword } = req.body;
-  
+
   try {
     let data = await putPass(userId, newPassword);
     res.status(200).json(data);
@@ -89,22 +86,33 @@ const putPasswordHandler = async (req, res) => {
 };
 
 const postUserRecoverHandler = async (req, res) => {
-  const { email } = req.body
+  const { email } = req.body;
 
   try {
     let response = await recoverUser(email);
 
-    res.status(200).json(response)
+    res.status(200).json(response);
   } catch (error) {
     res.status(400).json(error.message);
   }
-}
+};
 
 const postContactHandler = async (req, res) => {
   const { email, subject, text } = req.body;
 
   try {
     let data = await contact(email, subject, text);
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
+const postResendMessageHandler = async (req, res) => {
+  const { email, userId } = req.body;
+
+  try {
+    let data = await resendMessage(email, userId);
     res.status(200).json(data);
   } catch (error) {
     res.status(400).json(error.message);
@@ -119,4 +127,5 @@ module.exports = {
   putPasswordHandler,
   postContactHandler,
   postUserRecoverHandler,
+  postResendMessageHandler,
 };

@@ -5,14 +5,15 @@ import { Link, useNavigate } from "react-router-dom";
 import validations from "../../services/validations";
 import Cookies from "universal-cookie";
 import style from "./Account.module.css";
+import AccountNoVerify from "../AccountNoVerify/AccountNoVerify";
 
 const Account = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const userInfo = useSelector((state) => state.userInfo);
-  const infoSession = JSON.parse(localStorage.userInfo);
-  //console.log(userInfo.discount);
+  //const userInfo = useSelector((state) => state.userInfo);
+  const userInfo = JSON.parse(localStorage.userInfo);
+  console.log(userInfo.is_verified);
   const discountData = userInfo.discount;
 
   const [message, setMessage] = useState("");
@@ -55,16 +56,18 @@ const Account = () => {
     event.preventDefault();
 
     localStorage.removeItem("userInfo");
-    dispatch(clearUserInfo("userInfo"));
+    dispatch(clearUserInfo());
     navigate("/");
   };
 
-  return (
+  return !userInfo.is_verified ? (
+    <AccountNoVerify userInfo={userInfo} />
+  ) : (
     <div className={style.container}>
       <section className={style.sectionGrid}>
         <h2 className={`${style.item1}  ${style.tittle}`}>Cuenta</h2>
 
-        {infoSession.isAdmin && (
+        {userInfo.isAdmin && (
           <Link to="/admin" className={style.admin}>
             Admin
           </Link>

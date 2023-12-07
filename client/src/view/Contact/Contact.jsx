@@ -30,13 +30,13 @@ const Contact = () => {
               <label>Asunto</label>
               <input type="text" name="subject" />
             </p>
-            <p className={style.block}>
+            <div className={style.block}>
               <label>Mensaje</label>
               <textarea name="message" rows="8"></textarea>
-            </p>
-            <p className={style.block}>
-              <button type="submit">Enviar</button>
-            </p>
+            </div>
+            <button className={style.button} type="submit">
+              Enviar
+            </button>
           </form>
         </div>
 

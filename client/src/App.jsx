@@ -20,6 +20,8 @@ import RecoverPass from "./view/RecoverPass/RecoverPass";
 import ForgetPass from "./view/ForgetPass/ForgetPass";
 import style from "./App.module.css";
 import VerifyUser from "./components/VerifyUser/VerifyUser";
+import AccountNoVerify from "./view/AccountNoVerify/AccountNoVerify";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
   const location = useLocation();
@@ -38,10 +40,10 @@ const App = () => {
 
   const dispatch = useDispatch();
 
-  const loginUserJSON = window.localStorage.getItem("userInfo");
-  const user = JSON.parse(loginUserJSON);
+  //const loginUserJSON = window.localStorage.getItem("userInfo");
+  //const user = JSON.parse(loginUserJSON);
 
-  loginUserJSON !== null && dispatch(reLogin(user));
+  // loginUserJSON !== null && dispatch(reLogin(user));
 
   return (
     <main className={style.appContainer}>
@@ -60,8 +62,10 @@ const App = () => {
           <Element name="contact">
             <Contact />
           </Element>
+          <Footer />
         </>
       )}
+
       <Routes>
         <Route path="/" />
         <Route path="/login" element={<Login />} />
@@ -72,6 +76,7 @@ const App = () => {
         <Route path="/recoverPass" element={<RecoverPass />} />
         <Route path="/forgetPass" element={<ForgetPass />} />
         <Route path="/verifyUser/:infoUser" element={<VerifyUser />} />
+        <Route path="/accountNoVerify" element={<AccountNoVerify />} />
       </Routes>
 
       {/* <span className={`${style.frameBorder} ${style.frameTop}`}></span>
