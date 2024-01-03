@@ -10,8 +10,12 @@ import style from "./Login.module.css";
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  //pegao en login solucionar.............
+  //const userInfo = useSelector((state) => state.userInfo);
+  //const userInfos = JSON.parse(localStorage.userInfo);
+  //console.log(userInfo);
 
-  const userInfo = useSelector((state) => state.userInfo);
+  let userOnline = localStorage.userInfo;
 
   const [message, setMessage] = useState("");
 
@@ -32,16 +36,18 @@ const Login = () => {
 
     try {
       await dispatch(postLogin(user));
+      navigate("/");
     } catch (error) {
+      //console.log(error);
       setMessage(error.response.data);
     }
   };
 
   useEffect(() => {
-    if (userInfo !== false) {
+    if (userOnline !== undefined) {
       navigate("/");
     }
-  }, [userInfo]);
+  }, [userOnline]);
 
   return (
     <main className={style.container}>

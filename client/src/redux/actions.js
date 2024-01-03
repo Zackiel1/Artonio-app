@@ -14,6 +14,7 @@ import {
   CLEAR_USER_INFO,
   MESSAGE_SUCCESS,
   RESEND_VERIFY_MESSAJE,
+  DELETE_IMG,
 } from "./index.js";
 
 export const postCreateUser = (data) => {
@@ -94,15 +95,15 @@ export const reLogin = () => {
 };
 
 export const uploadImg = (data) => {
-  return async () => {
+  return async (dispatch) => {
     try {
-      const res = await axios.post(
+      const response = await axios.post(
         "http://localhost:3001/gallery/upload",
         data
       );
-      return res;
+      dispatch({ type: MESSAGE_SUCCESS, payload: response });
     } catch (error) {
-      throw error;
+      dispatch({ type: MESSAGE_ERROR, payload: error.response });
     }
   };
 };
@@ -175,7 +176,7 @@ export const AddDiscount = (data) => {
         "http://localhost:3001/admin/addDiscount",
         data
       );
-
+      console.log(response);
       dispatch({ type: USE_DISCOUNT, payload: response });
     } catch (error) {
       dispatch({ type: MESSAGE_ERROR, payload: error.response });
@@ -193,6 +194,39 @@ export const resendVerifyMessage = (data) => {
       dispatch({ type: MESSAGE_SUCCESS, payload: response });
     } catch (error) {
       dispatch({ type: MESSAGE_ERROR, payload: error.response });
+    }
+  };
+};
+
+export const deleteImg = (nameCloud) => {
+  return async (dispatch) => {
+    try {
+      await axios.delete("http://localhost:3001/gallery/deleteImg", {
+        headers: {
+          name_cloud: nameCloud,
+        },
+      });
+
+      dispatch({ type: DELETE_IMG, payload: nameCloud });
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  };
+};
+
+export const isFavoriteImg = (data) => {
+  return async (dispatch) => {
+    try {
+      let result = await axios.patch(
+        "http://localhost:3001/gallery/isFavorite",
+        data
+      );
+      console.log(result);
+      //dispatch({ type: DELETE_IMG, payload: nameCloud });
+    } catch (error) {
+      console.log(error);
+      throw error;
     }
   };
 };

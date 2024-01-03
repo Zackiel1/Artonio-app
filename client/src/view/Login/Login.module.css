@@ -4,6 +4,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+/* 
+  background-image: url("../../../images/fondo-textura-hormigon-negro-grunge.jpg");
+  background-position: center;
+  background-size: cover; */
 }
 
 .section{

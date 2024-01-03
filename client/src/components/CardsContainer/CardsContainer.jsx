@@ -8,74 +8,16 @@ import {
 import Card from "../Card/Card";
 import style from "../CardsContainer/CardsContainer.module.css";
 import { useEffect, useState } from "react";
-import tatto from "./tatto";
+import { deleteImg, isFavoriteImg } from "../../redux/actions";
 
 const CardsContainer = (props) => {
-  // const tatto = props.tatto;
-  // const paint = props.paint;
+  const dispach = useDispatch();
 
-  let paint = [
-    {
-      id: 8,
-      name: "Cucui",
-      nameCloud: "vdnz140q7pgnrzz4zkdf",
-      imageUrl:
-        "https://res.cloudinary.com/artonio/image/upload/v1694005287/vdnz140q7pgnrzz4zkdf.jpg",
-      description: "Ave CUCUI en puntillismo",
-      price: 0,
-      destination: "tatto",
-      createdAt: "2023-09-06T13:01:28.564Z",
-      updatedAt: "2023-09-06T13:01:28.564Z",
-    },
-    {
-      id: 9,
-      name: "Copa del Mundo",
-      nameCloud: "o2zmvyc6shl9npe6berw",
-      imageUrl:
-        "https://res.cloudinary.com/artonio/image/upload/v1694005352/o2zmvyc6shl9npe6berw.jpg",
-      description: "Gano Argentina papá",
-      price: 0,
-      destination: "tatto",
-      createdAt: "2023-09-06T13:02:33.489Z",
-      updatedAt: "2023-09-06T13:02:33.489Z",
-    },
-    {
-      id: 10,
-      name: "Qloq",
-      nameCloud: "corckpxeyi2ivqajsmao",
-      imageUrl:
-        "https://res.cloudinary.com/artonio/image/upload/v1694005376/corckpxeyi2ivqajsmao.jpg",
-      description: "",
-      price: 0,
-      destination: "tatto",
-      createdAt: "2023-09-06T13:02:57.441Z",
-      updatedAt: "2023-09-06T13:02:57.441Z",
-    },
-    {
-      id: 11,
-      name: "Corazon",
-      nameCloud: "ap2ziml7pkzughed6qob",
-      imageUrl:
-        "https://res.cloudinary.com/artonio/image/upload/v1694005407/ap2ziml7pkzughed6qob.jpg",
-      description: "Corazon de seda, que no lo quiere cualquiera. Ozuna",
-      price: 0,
-      destination: "tatto",
-      createdAt: "2023-09-06T13:03:28.452Z",
-      updatedAt: "2023-09-06T13:03:28.452Z",
-    },
-    {
-      id: 20,
-      name: "Flora",
-      nameCloud: "mnj2jhsnipbdvhnovviy",
-      imageUrl:
-        "https://res.cloudinary.com/artonio/image/upload/v1694119699/mnj2jhsnipbdvhnovviy.jpg",
-      description: "",
-      price: 0,
-      destination: "tatto",
-      createdAt: "2023-09-07T20:48:19.565Z",
-      updatedAt: "2023-09-07T20:48:19.565Z",
-    },
-  ];
+  const tatto = useSelector((state) => state.tatto);
+  const paint = useSelector((state) => state.paint);
+
+  //ordena las fotos asi la primera siempre sera la ultima y cada foto que agrege saldra de primero.
+  const orderTatto = tatto.sort((a, b) => b.id - a.id);
 
   const [slideNumber, setSlideNumber] = useState(0);
   const [openModal, setOpenModal] = useState(false);
@@ -114,6 +56,25 @@ const CardsContainer = (props) => {
       : setSlideNumber(slideNumber + 1);
   };
 
+  const handlerDeleteImg = (value) => {
+    dispach(deleteImg(value));
+  };
+
+  const currentTattoFav = tatto.filter((tatto) => tatto.isFavorite == true);
+
+  const handleAddFavorite = (value) => {
+    if (currentTattoFav.length < 10) {
+      dispach(isFavoriteImg({ id: value }));
+    } else {
+      alert("tiene ya los 8 favoritos");
+    }
+  };
+
+  const handleDeleteFavorite = (value) => {
+    dispach(isFavoriteImg({ id: value }));
+  };
+
+  //console.log(currentTattoFav.length);
   return (
     <div className={style.container}>
       {openModal && (
@@ -141,29 +102,48 @@ const CardsContainer = (props) => {
       )}
 
       {props.galleryState === "tatto"
-        ? tatto.map((img, index) => {
+        ? orderTatto.map((img, index) => {
             return (
-              <div key={index} onClick={() => handlerOpenModal(index)}>
-                <Card
-                  key={img.id}
-                  id={img.id}
-                  imageUrl={img.imageUrl}
-                  name={img.name}
-                  description={img.description}
-                />
+              <div>
+                <div key={index} onClick={() => handlerOpenModal(index)}>
+                  <Card
+                    key={img.id}
+                    id={img.id}
+                    imageUrl={img.imageUrl}
+                    name={img.name}
+                    nameCloud={img.nameCloud}
+                    description={img.description}
+                  />
+                </div>
+                <button onClick={() => handlerDeleteImg(img.nameCloud)}>
+                  Delete Img
+                </button>
+
+                {img.isFavorite ? (
+                  <button onClick={() => handleDeleteFavorite(img.id)}>
+                    ❤️
+                  </button>
+                ) : (
+                  <button onClick={() => handleAddFavorite(img.id)}>🤍</button>
+                )}
               </div>
             );
           })
         : paint.map((img, index) => {
             return (
-              <div key={index} onClick={() => handlerOpenModal(index)}>
-                <Card
-                  key={img.id}
-                  id={img.id}
-                  imageUrl={img.imageUrl}
-                  name={img.name}
-                  description={img.description}
-                />
+              <div>
+                <div key={index} onClick={() => handlerOpenModal(index)}>
+                  <Card
+                    key={img.id}
+                    id={img.id}
+                    imageUrl={img.imageUrl}
+                    name={img.name}
+                    description={img.description}
+                  />
+                </div>
+                <button onClick={() => handlerDeleteImg(img.nameCloud)}>
+                  Delete Img
+                </button>
               </div>
             );
           })}

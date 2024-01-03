@@ -5,7 +5,8 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 const Nav = ({ onContactClick }) => {
-  const userInfo = useSelector((state) => state.userInfo);
+  //const userInfo = useSelector((state) => state.userInfo);
+  let userOnline = localStorage.userInfo;
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -79,13 +80,13 @@ const Nav = ({ onContactClick }) => {
             <NavLink to="/admin">Admin</NavLink>
           </li> */}
 
-          {userInfo && (
+          {userOnline && (
             <li>
               <Link to="/account">Perfil</Link>
             </li>
           )}
 
-          {!userInfo && (
+          {!userOnline && (
             <li>
               <Link to="/login">Iniciar Sesion</Link>
             </li>

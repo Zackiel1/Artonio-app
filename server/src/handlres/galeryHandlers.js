@@ -2,6 +2,7 @@ require("dotenv").config();
 const getImg = require("../controllers/getImg");
 const postUpImg = require("../controllers/postUpImg");
 const deleteImage = require("../controllers/deleteImage");
+const patchIsFavorite = require("../controllers/patchIsFavorite");
 const cloudinary = require("cloudinary").v2;
 
 cloudinary.config({
@@ -12,7 +13,6 @@ cloudinary.config({
 
 const postUpload = async (req, res) => {
   const { name, description, price, destination } = req.body;
-  console.log(req.body);
 
   try {
     //upload img Cloudinary
@@ -34,7 +34,7 @@ const postUpload = async (req, res) => {
 
     await postUpImg(name, nameCloud, imageUrl, description, price, destination);
 
-    res.status(200).json("Imagen subida");
+    res.status(200).json({ message: "Imagen Subida" });
   } catch (error) {
     res.status(400).json(error.message);
   }
@@ -51,13 +51,25 @@ const searchImg = async (req, res) => {
 };
 
 const deleteImg = async (req, res) => {
-  const data = req.body;
-  try {
-    const delet = await deleteImage(data);
+  const { name_cloud } = req.headers;
 
-    res.status(200).json(delet);
+  try {
+    const result = await deleteImage(name_cloud);
+    res.status(200).json(result);
   } catch (error) {
     res.status(400).json(error.message);
+  }
+};
+
+const isFavorite = async (req, res) => {
+  const { id } = req.body;
+
+  try {
+    const result = await patchIsFavorite(id);
+    res.status(200).json(result);
+  } catch (error) {
+    console.log(error.message);
+    res.status(400).json("id no existe");
   }
 };
 
@@ -65,4 +77,5 @@ module.exports = {
   postUpload,
   searchImg,
   deleteImg,
+  isFavorite,
 };

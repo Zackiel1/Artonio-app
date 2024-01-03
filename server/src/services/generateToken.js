@@ -4,7 +4,7 @@ const generateToken = (user) => {
   const secret = process.env.JWT_SECRET;
   const payload = {
     userId: user.id,
-    is_verified: user.is_verified,
+    isAdmin: user.isAdmin,
   };
 
   const options = {
@@ -12,7 +12,7 @@ const generateToken = (user) => {
   };
 
   let token = jwt.sign(payload, secret, options);
-  
+
   return token;
 };
 

@@ -3,6 +3,7 @@ const {
   postUpload,
   searchImg,
   deleteImg,
+  isFavorite,
 } = require("../handlres/galeryHandlers");
 const fileUpload = require("../services/configMulter");
 
@@ -12,5 +13,6 @@ galeryRouter.post("/upload", fileUpload, postUpload);
 //galeryRouter.post("/upload", postUpload);
 galeryRouter.get("/searchImg", searchImg);
 galeryRouter.delete("/deleteImg", deleteImg);
+galeryRouter.patch("/isFavorite", isFavorite);
 
 module.exports = galeryRouter;

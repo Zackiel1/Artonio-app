@@ -10,6 +10,7 @@ import {
   MESSAGE_ERROR,
   CLEAR_USER_INFO,
   MESSAGE_SUCCESS,
+  DELETE_IMG,
 } from "./index.js";
 
 const inicialState = {
@@ -29,37 +30,44 @@ const reducer = (state = inicialState, action) => {
         ...state,
         messageSuccess: action.payload,
       };
+
     case CLEAR_MESSAGE:
       return {
         ...state,
         messageSuccess: null,
         messageError: null,
       };
+
     case CLEAR_USER_INFO:
       return {
         ...state,
         userInfo: false,
       };
+
     case MESSAGE_ERROR:
       return {
         ...state,
         messageError: action.payload,
       };
+
     case MESSAGE_SUCCESS:
       return {
         ...state,
         messageSuccess: action.payload,
       };
+
     case POST_LOGIN:
       return {
         ...state,
         userInfo: action.payload,
       };
+
     case RE_LOGIN:
       return {
         ...state,
         userInfo: action.payload,
       };
+
     case GET_IMAGES:
       const tattos = action.payload.filter(
         (image) => image.destination === "tatto"
@@ -73,21 +81,36 @@ const reducer = (state = inicialState, action) => {
         tatto: tattos,
         paint: paints,
       };
+
+    case DELETE_IMG:
+      return {
+        ...state,
+        tatto: state.tatto.filter(
+          (image) => image.nameCloud !== action.payload
+        ),
+        paint: state.paint.filter(
+          (image) => image.nameCloud !== action.payload
+        ),
+      };
+
     case SEARCH_USER:
       return {
         ...state,
         searchInfoUser: action.payload,
       };
+
     case USE_DISCOUNT:
       return {
         ...state,
         messageSuccess: action.payload,
       };
+
     case ADD_DISCOUNT:
       return {
         ...state,
         messageSuccess: action.payload,
       };
+
     default:
       return { ...state };
   }

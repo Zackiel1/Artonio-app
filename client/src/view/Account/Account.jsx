@@ -6,14 +6,18 @@ import validations from "../../services/validations";
 import Cookies from "universal-cookie";
 import style from "./Account.module.css";
 import AccountNoVerify from "../AccountNoVerify/AccountNoVerify";
+import { jwtDecoded } from "../../services/jwtDecoded";
 
 const Account = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  //const secret = import.meta.env.VITE_JWT_SECRET;
+
+  //let ekis = jwtDecoded(token);
 
   //const userInfo = useSelector((state) => state.userInfo);
   const userInfo = JSON.parse(localStorage.userInfo);
-  console.log(userInfo.is_verified);
+  //console.log(userInfo);
   const discountData = userInfo.discount;
 
   const [message, setMessage] = useState("");

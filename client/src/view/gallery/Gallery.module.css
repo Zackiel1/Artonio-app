@@ -1,11 +1,15 @@
 .container {
-  height: calc(100% - 60px);
-  width: 100%;
+  min-height: 100vh;
+  max-height: calc(100% - 60px);
+  min-width: 100%;
+  max-width: max-content;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--color-bg-app);
+  background-image: url("../../../images/z1.jpg");
+  background-position: center;
+  background-size: cover;
   margin: 60px auto;
   margin-bottom: 0px;
 }
@@ -21,7 +25,7 @@
 
 .tattoButton, .paintButton {
   color: #fdfefe28;
-  background-color: var(--color-bg-app);
+  background-color: transparent;
   border: none;
   font-family: var(--font-sub);
   font-size: 2rem;
@@ -29,7 +33,7 @@
 
 .activeTattoButton, .activePaintButton {
   color: var(--color-font);
-  background-color: var(--color-bg-app);
+  background-color: transparent;
   border: none;
   font-family: var(--font-sub);
   font-size: var(--font-size-title);

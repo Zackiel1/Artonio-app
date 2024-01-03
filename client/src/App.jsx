@@ -26,6 +26,8 @@ import Footer from "./components/Footer/Footer";
 const App = () => {
   const location = useLocation();
 
+  const dataImgs = useSelector((state) => state.dataImgs);
+
   useEffect(() => {
     const scrollToSection = location.hash;
     if (scrollToSection) {
@@ -44,6 +46,13 @@ const App = () => {
   //const user = JSON.parse(loginUserJSON);
 
   // loginUserJSON !== null && dispatch(reLogin(user));
+
+  useEffect(() => {
+    if (dataImgs.length === 0) {
+      dispatch(getImg());
+    }
+    //window.scrollTo(0, 0);
+  }, []);
 
   return (
     <main className={style.appContainer}>

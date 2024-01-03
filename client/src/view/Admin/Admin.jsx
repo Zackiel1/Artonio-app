@@ -16,10 +16,11 @@ const Admin = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const userInfo = useSelector((state) => state.userInfo);
   const searchInfoUser = useSelector((state) => state.searchInfoUser);
   const messageSuccess = useSelector((state) => state.messageSuccess);
   const messageError = useSelector((state) => state.messageError);
-
+  console.log(userInfo);
   useEffect(() => {
     if (messageSuccess !== null) {
       showAlertSuccess(messageSuccess.data.message);
@@ -34,11 +35,10 @@ const Admin = () => {
     }
   }, [messageError]);
 
-  const userInfo = localStorage.getItem("userInfo");
-  const infoSession = userInfo ? JSON.parse(userInfo) : {};
+  const infoSession = userInfo ? userInfo.isAdmin : {};
 
   useEffect(() => {
-    if (!infoSession.isAdmin) {
+    if (!infoSession) {
       navigate("/");
     }
   }, []);

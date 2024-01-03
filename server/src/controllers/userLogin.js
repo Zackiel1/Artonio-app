@@ -11,7 +11,7 @@ const userLogin = async (email, password) => {
   //const userForToken =
   console.log(user);
   const token = generateToken(user);
-  
+
   const userInfo = {
     id: user.id,
     name: user.name,

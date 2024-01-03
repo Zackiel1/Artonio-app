@@ -1,6 +1,7 @@
 .cardContainer {
   height: 300px;
   width: 220px;
+  display: flex;
 }
 
 .image {
