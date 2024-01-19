@@ -1,15 +1,13 @@
 .container {
-  height: calc(100% - 60px);
-  margin-top: 60px;
+  height: 960px;
+  padding-top: 30px;
   display: flex;
-  margin: auto;
   flex-direction: column;
   align-items: center;
   /* background-color: var(--color-font); */
   background-image: url("../../../images/muro-hormigon-gris.jpg");
   background-position: center;
   background-size: cover;
-  padding: 30px 50px;
   font-weight: bold;
 }
 
@@ -18,71 +16,82 @@
 }
 
 .container h2 {
-  font-size: var(--font-size-title);
+  font-size: var(--font-size-title-m);
   font-family: var(--font-sub);
   font-weight: bold;
   color: var(--color-bg);
-  margin-top: 40px;
-  margin-bottom: 50px;
+  margin-top: 50px;
+  margin-bottom: 30px;
   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
 }
 
-.container h3 {
-  font-size: var(--font-size-subTitle);
-  margin-top: 20px;
-}
 .container section {
   display: flex;
-  flex-wrap: nowrap;
+  justify-content: center;
   gap: 100px;
-  margin-bottom: 30px;
 }
 
 .articleText {
   height: auto;
-  width: 50%;
-  text-align: center;
-  justify-content: center;
-
-  font-size: var(--font-size-text);
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  
 }
 
-.articlePhoto {
-  height: 740px;
-  width: 50%;
-  border-radius: 10px;
-  background-image: url("../../../images/about1.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top center;
+.articleText h3 {
+  font-family: var(--font-primary);
+  font-size: 4.2rem;
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  align-self: center;
 }
 
-@media (max-width: 1098px) {
-  .container {
-    padding-left: 4%;
-    padding-right: 4%;
+.text1{
+  font-family: var(--font-primary);
+  font-size: 1.9rem;
+}
+
+.text2{
+  font-family: var(--font-sub);
+  font-size: 2rem
+}
+
+.articlePhoto img{
+  border-radius: 20px;
+  height: 580px;
+  width: 353px;
+}
+@media (max-width: 1366px) {
+  .container{  
+  height: 100%;
+  }
+  .container h2{
+    font-size: var(--font-size-title-s);
   }
 
-  .container h2 {
-    margin-top: 10px;
-    margin-bottom: 60px;
-    font-size: var(--font-size-title);
-    font-family: var(--font-sub);
-  }
-  .container h3 {
-    margin-top: 5px;
-    margin-bottom: 0;
-    font-size: var(--font-size-subTitle);
-  }
-
-  .container section {
-    gap: 40px;
+  .articlePhoto img{
+    border-radius: 20px;
+    height: 522px;
+    width: 317px;
   }
 }
 
 @media (max-width: 673px) {
+  .container{
+    height: 100%;
+    padding-top: 15px;
+  }
+
+  .container h2{
+    margin-bottom: 19px;
+    font-size: var(--font-size-title-s);
+  }
+
   .container section {
     flex-wrap: wrap-reverse;
+    gap: 10px;
   }
 
   .articleText {
@@ -90,9 +99,21 @@
     margin: auto;
     margin-bottom: 10px;
   }
-
-  .articlePhoto {
+  .articlePhoto img{
     width: calc(100vw - 50px);
     margin: auto;
   }
+
+  .text1{
+    font-family: var(--font-primary);
+    font-size: 1.5rem;
+  }
+  
+  .text2{
+    font-family: var(--font-sub);
+    font-size: 1.6rem;
+    padding: 10px 20px;
+    margin: 0;
+  }
+  
 }

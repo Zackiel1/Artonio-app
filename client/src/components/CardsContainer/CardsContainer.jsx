@@ -9,9 +9,15 @@ import Card from "../Card/Card";
 import style from "../CardsContainer/CardsContainer.module.css";
 import { useEffect, useState } from "react";
 import { deleteImg, isFavoriteImg } from "../../redux/actions";
+import { jwtDecode } from "jwt-decode";
 
 const CardsContainer = (props) => {
   const dispach = useDispatch();
+
+  //const userInfo = JSON.parse(localStorage.userInfo);
+  let userInfo = localStorage.userInfo
+    ? JSON.parse(localStorage.userInfo)
+    : null;
 
   const tatto = useSelector((state) => state.tatto);
   const paint = useSelector((state) => state.paint);
@@ -22,6 +28,7 @@ const CardsContainer = (props) => {
   const [slideNumber, setSlideNumber] = useState(0);
   const [openModal, setOpenModal] = useState(false);
   const [current, setCurrent] = useState("");
+  const [payloadUser, setPayloadUser] = useState("");
 
   useEffect(() => {
     if (props.galleryState === "tatto") {
@@ -74,6 +81,12 @@ const CardsContainer = (props) => {
     dispach(isFavoriteImg({ id: value }));
   };
 
+  useEffect(() => {
+    if (userInfo !== null) {
+      setPayloadUser(jwtDecode(userInfo.token));
+    }
+  }, []);
+
   //console.log(currentTattoFav.length);
   return (
     <div className={style.container}>
@@ -115,16 +128,23 @@ const CardsContainer = (props) => {
                     description={img.description}
                   />
                 </div>
-                <button onClick={() => handlerDeleteImg(img.nameCloud)}>
-                  Delete Img
-                </button>
 
-                {img.isFavorite ? (
-                  <button onClick={() => handleDeleteFavorite(img.id)}>
-                    ❤️
-                  </button>
-                ) : (
-                  <button onClick={() => handleAddFavorite(img.id)}>🤍</button>
+                {payloadUser.isAdmin && (
+                  <div>
+                    <button onClick={() => handlerDeleteImg(img.nameCloud)}>
+                      Delete Img
+                    </button>
+
+                    {img.isFavorite ? (
+                      <button onClick={() => handleDeleteFavorite(img.id)}>
+                        ❤️
+                      </button>
+                    ) : (
+                      <button onClick={() => handleAddFavorite(img.id)}>
+                        🤍
+                      </button>
+                    )}
+                  </div>
                 )}
               </div>
             );

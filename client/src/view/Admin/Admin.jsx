@@ -11,37 +11,16 @@ import {
 import { useNavigate } from "react-router-dom";
 import { searchUser } from "../../redux/actions";
 import { showAlertError, showAlertSuccess } from "../../services/showAlert";
+import { jwtDecode } from "jwt-decode";
 
 const Admin = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const userInfo = useSelector((state) => state.userInfo);
+  //const userInfo = useSelector((state) => state.userInfo);
   const searchInfoUser = useSelector((state) => state.searchInfoUser);
   const messageSuccess = useSelector((state) => state.messageSuccess);
   const messageError = useSelector((state) => state.messageError);
-  console.log(userInfo);
-  useEffect(() => {
-    if (messageSuccess !== null) {
-      showAlertSuccess(messageSuccess.data.message);
-      dispatch(clearMessage());
-    }
-  }, [messageSuccess]);
-
-  useEffect(() => {
-    if (messageError !== null) {
-      showAlertError(messageError.data);
-      dispatch(clearMessage());
-    }
-  }, [messageError]);
-
-  const infoSession = userInfo ? userInfo.isAdmin : {};
-
-  useEffect(() => {
-    if (!infoSession) {
-      navigate("/");
-    }
-  }, []);
 
   const [img, setImg] = useState({
     name: "",
@@ -58,6 +37,44 @@ const Admin = () => {
     discount: "",
     reason: "",
   });
+
+  const [payloadUser, setPayloadUser] = useState({
+    isAdmin: true,
+  });
+
+  let userInfo = localStorage.userInfo
+    ? JSON.parse(localStorage.userInfo)
+    : null;
+
+  useEffect(() => {
+    if (userInfo !== null) {
+      setPayloadUser(jwtDecode(userInfo.token));
+    } else {
+      setPayloadUser({
+        isAdmin: false,
+      });
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!payloadUser.isAdmin) {
+      navigate("/");
+    }
+  }, [payloadUser]);
+
+  useEffect(() => {
+    if (messageSuccess !== null) {
+      showAlertSuccess(messageSuccess.data.message);
+      dispatch(clearMessage());
+    }
+  }, [messageSuccess]);
+
+  useEffect(() => {
+    if (messageError !== null) {
+      showAlertError(messageError.data);
+      dispatch(clearMessage());
+    }
+  }, [messageError]);
 
   const handlerChangeAddDiscount = (event) => {
     let property = event.target.name;

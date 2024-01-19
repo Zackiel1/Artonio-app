@@ -6,10 +6,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("../../../images/fondo-p-1\ -\ copia.png");
+  background-image: url("../../../images/json.webp");
   background-size: cover;
-  background-position: top center;
+  
   background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: top center;
 }
 
 .container::before {

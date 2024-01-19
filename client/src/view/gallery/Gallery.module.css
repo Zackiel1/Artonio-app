@@ -7,7 +7,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url("../../../images/z1.jpg");
+  background: linear-gradient(45deg, #FBB03B, #D4145A);
+
   background-position: center;
   background-size: cover;
   margin: 60px auto;

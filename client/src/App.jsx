@@ -30,9 +30,10 @@ const App = () => {
 
   useEffect(() => {
     const scrollToSection = location.hash;
+
     if (scrollToSection) {
       scroller.scrollTo(scrollToSection.slice(1), {
-        duration: 500,
+        duration: 800,
         smooth: true,
       });
     }

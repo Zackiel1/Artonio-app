@@ -7,21 +7,21 @@ import CardsContainer from "../../components/CardsContainer/CardsContainer";
 
 const Gallery = () => {
   const userInfo = useSelector((state) => state.userInfo);
-  console.log(userInfo);
+
   const dispatch = useDispatch();
 
   const [galleryState, setGalleryState] = useState("tatto");
 
-  //const dataImgs = useSelector((state) => state.dataImgs);
+  const dataImgs = useSelector((state) => state.dataImgs);
 
   const galleryRef = useRef(null);
 
-  // useEffect(() => {
-  //   if (dataImgs.length === 0) {
-  //     dispatch(getImg());
-  //   }
-  //   //window.scrollTo(0, 0);
-  // }, []);
+  useEffect(() => {
+    if (dataImgs.length === 0) {
+      dispatch(getImg());
+    }
+    window.scrollTo(0, 0);
+  }, []);
 
   const handlerGallery = (event) => {
     setGalleryState(event.target.value);

@@ -32,7 +32,7 @@ const Contact = () => {
             </p>
             <div className={style.block}>
               <label>Mensaje</label>
-              <textarea name="message" rows="8"></textarea>
+              <textarea name="message" rows="5"></textarea>
             </div>
             <button className={style.button} type="submit">
               Enviar

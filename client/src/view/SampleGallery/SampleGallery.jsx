@@ -12,6 +12,8 @@ const SampleGallery = () => {
   const imgSampleGallery = tattoFav.slice(0, 10);
 
   const handlerImg = (index) => {
+    // console.log(index);
+    // console.log(imagenActiva);
     if (imagenActiva === index) {
       setImagenActiva("");
     } else {

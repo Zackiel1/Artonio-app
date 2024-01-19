@@ -4,12 +4,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 40px;
+    background: linear-gradient(240deg,rgb(78, 78, 78),  rgb(0, 0, 0));
+    padding: 20px;
 }
 
 
 .container h2{
-    font-size: var(--font-size-title);
+    font-size: var(--font-size-title-s);
     font-family: var(--font-sub);
 }
 
@@ -20,10 +21,8 @@
 }
 
 .container p a:hover{
-    font-size: calc(var(--font-size-subTitle) + 0.5rem);
+    text-shadow: 3px 3px 30px var(--color-trx);
 }
-
-
 
 .container section{
     display: flex;
@@ -33,7 +32,7 @@
 }
 .img{
     cursor: pointer;
-    height: 55em;
+    height: 47em;
     width: 0px;
     flex-grow: 1;
     object-fit: cover;
@@ -44,20 +43,38 @@
 }
 
 .img.active{
-    width: 300px;
+    width: 220px;
     opacity: 1;
     filter: contrast(120%);
 }
 
 .container p, a{
     font-family: var(--font-sub);
-    font-size: var(--font-size-subTitle);
+    font-size: var(--font-size-subTitle-s);
 }
 
-@media (min-width: 980px){
-    .container section{
-        width: 800px;
+@media (min-width: 768px) and (max-width: 899px){
+
+    .container h2{
+        font-size: var(--font-size-title-m);
     }
+
+    .container section{
+        width: 450px;
+        gap: 5px; 
+        margin-top: 10px;
+        margin-bottom: 15px; 
+    }
+
+    .img{
+        height: 47rem;
+    }
+
+    .img.active{
+        width: 0;
+        opacity: .5;
+    }
+
     .img:hover{
         width: 300px;
         opacity: 1;
@@ -65,11 +82,60 @@
     }
 }
 
-@media (min-width: 678px){
-    
-    .container section{
-        width: 500px;
+@media (min-width: 900px) and (max-width: 1600px){
+    .img{
+        height: 55rem;
     }
 
+    .container section{
+        width: 540px;
+        gap: 8px;
+        margin-top: 10px;
+        margin-bottom: 15px; 
+    }
+
+    .img.active{
+        width: 0;
+        opacity: .5;
+    }
+
+    .img:hover{
+        width: 300px;
+        opacity: 1;
+        filter: contrast(120%);
+    }
 }
 
+@media (min-width: 1600px){
+
+    .container h2{
+        font-size: var(--font-size-title-m);
+
+    }
+
+    .container section{
+        width: 700px;
+        gap: 9px;
+        margin-top: 10px;
+        margin-bottom: 15px; 
+    }
+
+    .img{
+        height: 55rem;
+    }
+
+    .container p, a{
+        font-size: var(--font-size-subTitle);
+    }
+
+    .img.active{
+        width: 0;
+        opacity: .5;
+    }
+
+    .img:hover{
+        width: 300px;
+        opacity: 1;
+        filter: contrast(120%);
+    }
+}
