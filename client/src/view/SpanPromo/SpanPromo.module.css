@@ -6,12 +6,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("../../../images/json.webp");
+  background-image: url("../../../images/sample-bg.jpeg");
   background-size: cover;
   
   background-attachment: fixed;
   background-repeat: no-repeat;
-  background-position: top center;
+  background-position: top left;
 }
 
 .container::before {
@@ -36,10 +36,11 @@
 
 .container a{
   font-family: var(--font-sub);
-  font-size: var(--font-size-title);
+  font-size: var(--font-size-title-xl);
   color: var(--color-font);
   text-decoration: none;
   transition: 0.5s ease;
+  text-shadow: 3px 3px 15px var(--color-primary);
 }
 
 .container a:hover{
@@ -49,7 +50,7 @@
 .container p {
   color: var(--color-primary);
   font-family: var(--font-sub);
-  font-size: var(--font-size-title);
+  font-size: var(--font-size-title-xl);
   letter-spacing: 2px;
   margin: 10px 20px;
   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.9);

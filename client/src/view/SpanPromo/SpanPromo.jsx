@@ -6,8 +6,8 @@ const SpanPromo = () => {
     <section className={style.container}>
       <article>
         <p>
-          Obten un 20% de descuento resgistrandote{" "}
-          <Link to="/createUser">Aqui...</Link>
+          Obten un 20% de descuento
+          <br /> registrandote <Link to="/createUser">Aqui...</Link>
         </p>
       </article>
     </section>

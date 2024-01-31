@@ -27,10 +27,6 @@ app.use((req, res, next) => {
 
 app.use(mainRouter);
 
-// app.get("/x", (req, res) => {
-//   res.cookie("cokkie", "12333334");
-//   res.send("hola loco");
-// });
 
 // Error catching endware.
 app.use((err, req, res, next) => {

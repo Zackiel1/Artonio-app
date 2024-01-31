@@ -41,8 +41,9 @@ const Nav = ({ onContactClick }) => {
   };
 
   return (
-    <>
+    <div className={style.mainNav}>
       <Link className={style.icono} to="/"></Link>
+
       <nav
         className={`${style.navContainer} ${scrolled ? style.scrolled : ""}`}
       >
@@ -55,6 +56,10 @@ const Nav = ({ onContactClick }) => {
           <div></div>
           <div></div>
         </button>
+
+        {/* <Link className={style.bannerDiscount} to="/">
+          Registrate y obten un 20% de descuento
+        </Link> */}
 
         <ul
           className={`${style.navItems} ${menuOpen ? style.open : style.close}`}
@@ -93,7 +98,7 @@ const Nav = ({ onContactClick }) => {
           )}
         </ul>
       </nav>
-    </>
+    </div>
   );
 };
 
