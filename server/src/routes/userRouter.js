@@ -11,6 +11,9 @@ const {
 const { Router } = require("express");
 const OAuth2 = require("../services/oAuth2");
 const EnviarMail = require("../services/EnviarMail");
+const express = require('express');
+const passport = require('passport');
+require("../services/google.js")
 
 const userRouter = Router();
 
@@ -24,5 +27,21 @@ userRouter.put("/updatePass", putPasswordHandler); // actuliza la pass -- falta 
 userRouter.post("/contact", postContactHandler);
 userRouter.post("/recover", postUserRecoverHandler);
 userRouter.post("/ResendVerifyMessage", postResendMessageHandler);
+
+
+
+// userRouter.get('/google', passport.authenticate("auth-google", {
+//   scope: [ 'profile', 'email' ]
+// }));
+
+// userRouter.get('/google/callback',
+//   passport.authenticate('auth-google', { 
+//     successRedirect: "http://localhost:3000/",
+//     failureRedirect: 'http://localhost:3000/login' 
+//   }),
+// );
+
+
+
 
 module.exports = userRouter;

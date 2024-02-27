@@ -21,7 +21,7 @@ const Account = () => {
   const [payloadUser, setPayloadUser] = useState("");
 
   useEffect(() => {
-    if (userInfo !== null) {
+    if (userInfo !== null && userInfo.token) {
       setPayloadUser(jwtDecode(userInfo.token));
     }
   }, []);

@@ -1,4 +1,4 @@
-import { Outlet, Route, Routes, useLocation } from "react-router-dom";
+import { Outlet, Route, Routes, useLocation, useParams } from "react-router-dom";
 import { Element, scroller } from "react-scroll";
 import React, { useRef } from "react";
 import Nav from "./components/Nav/Nav";
@@ -79,6 +79,7 @@ const App = () => {
       <Routes>
         <Route path="/" />
         <Route path="/login" element={<Login />} />
+        <Route path="/login/:userGoogle" element={<Login />} />
         <Route path="/createUser" element={<CreateUser />} />
         <Route path="/account" element={<Account />} />
         <Route path="/admin" element={<Admin />} />

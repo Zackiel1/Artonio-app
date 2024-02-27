@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { postLogin } from "../../redux/actions";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,6 +14,10 @@ const Login = () => {
   //const userInfo = useSelector((state) => state.userInfo);
   //const userInfos = JSON.parse(localStorage.userInfo);
   //console.log(userInfo);
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const serializedUser = urlParams.get('userGoogle'); 
+  window.localStorage.setItem("userInfo", serializedUser);
 
   let userOnline = localStorage.userInfo;
 

@@ -7,6 +7,10 @@ module.exports = (sequelize) => {
       primaryKey: true,
       autoIncrement: true,
     },
+    googleId: {
+      type: DataTypes.STRING,
+      unique: true,
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -18,11 +22,11 @@ module.exports = (sequelize) => {
     },
     password: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     phone: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     is_verified: {
       type: DataTypes.BOOLEAN,

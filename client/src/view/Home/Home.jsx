@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import style from "./Home.module.css";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
 
 const Home = () => {
+
   return (
     <main className={style.main}>
       <div className={style.homeContainer}>
