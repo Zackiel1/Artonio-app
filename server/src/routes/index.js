@@ -15,9 +15,9 @@ mainRouter.use("/gallery", galeryRouter);
 mainRouter.use("/admin", adminRouter);
 
 
-mainRouter.use("/auth", passport.authenticate("auth-google", {
-    scope: [ 'profile', 'email' ],
-    session: false
-  }), googleRouter)
+// mainRouter.use("/auth", passport.authenticate("auth-google", {
+//     scope: [ 'profile', 'email' ],
+//     session: false
+//   }), googleRouter)
 
 module.exports = mainRouter;
