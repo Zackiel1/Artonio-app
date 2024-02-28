@@ -11,13 +11,13 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   //pegao en login solucionar.............
-  //const userInfo = useSelector((state) => state.userInfo);
-  //const userInfos = JSON.parse(localStorage.userInfo);
+  // const userInfo = useSelector((state) => state.userInfo);
+  // const userInfos = JSON.parse(localStorage.userInfo);
   //console.log(userInfo);
 
   const urlParams = new URLSearchParams(window.location.search);
   const serializedUser = urlParams.get('userGoogle'); 
-  window.localStorage.setItem("userInfo", serializedUser);
+  serializedUser !== null ? window.localStorage.setItem("userInfo", serializedUser) : "";
 
   let userOnline = localStorage.userInfo;
 

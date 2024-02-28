@@ -5,18 +5,18 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 const Nav = ({ onContactClick }) => {
-  //const userInfo = useSelector((state) => state.userInfo);
+  const userInfo = useSelector((state) => state.userInfo);
   let userOnline = localStorage.userInfo;
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  //const [currentUserInfo, setCurrentUserInfo] = useState(false);
+  const [currentUserInfo, setCurrentUserInfo] = useState(false);
 
-  // setCurrentUserInfo(userInfo);
+  //setCurrentUserInfo(userInfo);
 
-  // useEffect(() => {
-  //   setCurrentUserInfo(userInfo);
-  // }, [userInfo]);
+  useEffect(() => {
+    setCurrentUserInfo(userInfo);
+  }, [userInfo]);
 
   // console.log(userInfo);
   // console.log(current);
