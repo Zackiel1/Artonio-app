@@ -1,5 +1,5 @@
 const generateToken = require("../services/generateToken");
-const sendEmailResend = require("../services/sendMailResend");
+
 const tokenDecoded = require("../services/tokenDecoded");
 const tokenVerify = require("../services/tokenVerify");
 const getUserByEmail = require("./getUserByEmail");
@@ -17,7 +17,7 @@ const recoverUser = async (email) =>{
     puedas cambiar tu contraseña dale al siguiente click al siguiente link: 
     http://localhost:3000/recoverPass?token=${token}`;
 
-    await sendEmailResend(email, subject = "Recover User", text);
+    
 
     return `Se envio un mensaje al correo: ${email}`
     
