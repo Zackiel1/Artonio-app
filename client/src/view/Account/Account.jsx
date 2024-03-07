@@ -143,6 +143,7 @@ const Account = () => {
             <label className={style.errorMsg}>{comparisonPass}</label>
 
             <button
+              className={style.sendNewPassButton}
               type="submit"
               disabled={
                 !newPass.newPassword ||

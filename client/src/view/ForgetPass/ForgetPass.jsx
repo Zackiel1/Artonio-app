@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearMessage, postForgetPass } from "../../redux/actions";
 import { showAlertError, showAlertSuccess } from "../../services/showAlert";
 import { useNavigate } from "react-router-dom";
+import Footer from "../../components/Footer/Footer";
 
 const ForgetPass = () => {
   const dispatch = useDispatch();
@@ -63,6 +64,10 @@ const ForgetPass = () => {
           </button>
         </form>
       </section>
+
+      <footer className={style.footer}>
+        <Footer />
+      </footer>
     </main>
   );
 };
