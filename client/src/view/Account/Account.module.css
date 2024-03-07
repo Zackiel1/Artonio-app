@@ -18,7 +18,7 @@
 } */
 
 .container{
-    min-height:  100vh;
+    min-height:  99vh;
     margin-top: 60px;
     display: flex;
     align-items: center;
@@ -125,13 +125,13 @@
     grid-column-end: 3;
 }
 
-.changePass, .logout{
+.changePass, .logout, .sendNewPassButton{
     height: 38px;
     margin: 3px;
     padding: 3px;
     font-family: var(--font-sub);
     background-color: var(--color-trx);
-    font-size: var(--font-size-button);
+    font-size: var(--font-size-button-s);
     
 }
 

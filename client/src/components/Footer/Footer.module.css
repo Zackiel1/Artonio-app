@@ -89,12 +89,13 @@
 }
 
 @media (min-width: 1000px){
+    .container{
+        height: 100px;
+    }
     .setionsFooter{
         justify-content: space-around;
     }
-
     
-
     .links a{
         font-size: 1.9rem;
         

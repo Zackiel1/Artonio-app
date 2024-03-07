@@ -1,7 +1,8 @@
 .container{
-    height: calc(100vh);
+    height: 99vh;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     margin-top: 60px;
     background: var(--color-bg-s);
     color: var(--color-font);

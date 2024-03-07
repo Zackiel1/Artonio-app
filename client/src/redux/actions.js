@@ -74,16 +74,15 @@ export const postForgetPass = (data) => {
 
 export const putPass = (data) => {
   return async (dispatch) => {
-    try {
-      const response = await axios.put(
-        "http://localhost:3001/user/updatePass",
-        data
-      );
-      dispatch({ type: MESSAGE_SUCCESS, payload: true });
-    } catch (error) {
-      console.log(error);
-      dispatch({ type: MESSAGE_ERROR, payload: error.response });
-    }
+    return await axios
+      .put("http://localhost:3001/user/updatePass",
+      data)
+      .then((response) => {
+        dispatch({ type: MESSAGE_SUCCESS, payload: response.data });
+      })
+      .catch((error) => {
+        dispatch({ type: MESSAGE_ERROR, payload: error.response.data });
+      });
   };
 };
 

@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 import style from "./Login.module.css";
+import Footer from "../../components/Footer/Footer";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ const Login = () => {
   const serializedUser = urlParams.get('userGoogle'); 
   serializedUser !== null ? window.localStorage.setItem("userInfo", serializedUser) : "";
 
-  let userOnline = localStorage.userInfo;
+  //let userOnline = localStorage.userInfo;
 
   const [message, setMessage] = useState("");
 
@@ -37,7 +38,6 @@ const Login = () => {
 
   const handlerSubmit = async (event) => {
     event.preventDefault();
-
     try {
       await dispatch(postLogin(user));
       navigate("/");
@@ -47,11 +47,11 @@ const Login = () => {
     }
   };
 
-  useEffect(() => {
-    if (userOnline !== undefined) {
-      navigate("/");
-    }
-  }, [userOnline]);
+  // useEffect(() => {
+  //   if (userOnline !== undefined) {
+  //     navigate("/");
+  //   }
+  // }, [userOnline]);
 
   return (
     <main className={style.container}>
@@ -66,7 +66,7 @@ const Login = () => {
               name="email"
               value={user.email}
               onChange={handlerChange}
-              placeholder="Correo Electronico"
+              placeholder="ejemplo@mail.com"
             />
           </p>
           <p>
@@ -77,7 +77,7 @@ const Login = () => {
               className={style.input}
               value={user.password}
               onChange={handlerChange}
-              placeholder="Contraseña"
+              placeholder="********"
             />
           </p>
 
@@ -89,6 +89,10 @@ const Login = () => {
 
         {message && <p className={style.message}>{message}</p>}
       </section>
+
+      <footer className={style.footer}>
+        <Footer />
+      </footer>
     </main>
   );
 };
