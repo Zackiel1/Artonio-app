@@ -191,6 +191,7 @@ export const resendVerifyMessage = (data) => {
         data
       );
       dispatch({ type: MESSAGE_SUCCESS, payload: response });
+      console.log(response);
     } catch (error) {
       dispatch({ type: MESSAGE_ERROR, payload: error.response });
     }

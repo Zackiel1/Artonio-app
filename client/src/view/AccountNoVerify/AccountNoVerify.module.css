@@ -3,7 +3,10 @@
     margin-top: 60px;
     display: flex;
     justify-content: center;
-    background: linear-gradient(0deg,  #37383b, var(--color-bg));
+    
+    background-image: url("../../../images/fondo-textura-hormigon-negro-grunge.jpg");
+    background-position: center;
+    background-size: cover;
 }
 
 .section{

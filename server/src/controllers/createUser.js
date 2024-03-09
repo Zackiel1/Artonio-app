@@ -1,15 +1,18 @@
 const { Users } = require("../db.js");
 const generateToken = require("../services/generateToken.js");
 const { templateSendMailWithButton } = require("../services/nodemailer.js");
+const bcrypt = require('bcryptjs');
 
 const createUser = async (name, email, password, phone) => {
   const regexEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
   if (!regexEmail.test(email)) throw Error("Formato de email incorrecto");
 
+  const hashedPassword = await bcrypt.hash(password, 10);
+
   // si created es true quiere decir que el email no existe dentro de la DB
   const [user, created] = await Users.findOrCreate({
     where: { email: email },
-    defaults: { name: name, password: password, phone: phone },
+    defaults: { name: name, password: hashedPassword, phone: phone },
   });
 
   if (!created) throw Error("Ese correo ya fue utilizado");

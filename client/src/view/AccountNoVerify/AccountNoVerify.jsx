@@ -1,10 +1,12 @@
 import { useDispatch } from "react-redux";
 import style from "./AccountNoVerify.module.css";
-import { resendVerifyMessage } from "../../redux/actions";
+import { clearUserInfo, resendVerifyMessage } from "../../redux/actions";
+import { useNavigate } from "react-router-dom";
 
 const AccountNoVerify = (props) => {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
+  
   const data = {
     email: props.userInfo.email,
     userId: props.userInfo.id,
@@ -12,6 +14,10 @@ const AccountNoVerify = (props) => {
 
   const handlerSubmit = () => {
     dispatch(resendVerifyMessage(data));
+
+    localStorage.removeItem("userInfo");
+    dispatch(clearUserInfo());
+    navigate("/");
   };
 
   return (

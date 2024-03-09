@@ -71,7 +71,7 @@ const Account = () => {
     dispatch(clearUserInfo());
     navigate("/");
   };
-
+  
   return !userInfo.is_verified ? (
     <AccountNoVerify userInfo={userInfo} />
   ) : (
