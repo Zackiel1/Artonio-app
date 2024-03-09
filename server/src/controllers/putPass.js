@@ -1,7 +1,10 @@
 const { Users } = require("../db.js");
+const bcrypt = require('bcryptjs');
 
 const putPass = async (userId, newPassword) => {
-  await Users.update({ password: newPassword }, { where: { id: userId } });
+  const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+  await Users.update({ password: hashedPassword }, { where: { id: userId } });
 
   return "contraseña actualizada";
 };
