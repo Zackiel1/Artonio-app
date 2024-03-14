@@ -4,22 +4,118 @@
   position: relative;
   overflow: auto;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  padding: 30px;
   align-items: center;
-  background-image: url("../../../images/uno.jpg");
+  background-image: url("../../../images/sample-bg-opa.jpeg");
   background-size: cover;
-  background-position: top center;
+  
   background-attachment: fixed;
-
+  background-repeat: no-repeat;
+  background-position: top right;
 }
 
 .container h3 {
+  margin: 30px;
   color: var(--color-primary);
   font-family: var(--font-secundary);
   font-weight: bold;
-  font-size: 5rem;
-  opacity: 1;
+  font-size: 6rem;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8);
+
 }
+
+.networks{
+  display: flex;
+  gap: 100px;    
+}
+
+.networks a{
+  font-size: 60px;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8);
+  filter: drop-shadow(8px 8px 5px rgba(0, 0, 0, 0.8));
+}
+
+@media (max-width: 910px) {
+  .container h3{
+    font-size: 5rem;
+  }
+
+  .networks{
+    gap: 70px;    
+  }
+
+  .networks a{
+    font-size: 50px;
+  }
+}
+
+@media (max-width: 715px) {
+  .container h3{
+    font-size: 5rem;
+  }
+
+  .networks{
+    gap: 60px;    
+  }
+
+  .networks a{
+    font-size: 50px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container h3{
+    font-size: 5rem;
+  }
+
+  .networks{
+    gap: 50px;    
+  }
+
+  .networks a{
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 470px) {
+  .container{
+    height: 250px;
+    justify-content: center;
+    padding: 5px;
+  }
+  .container h3{
+    font-size: 3.5rem;
+    margin: 10px;
+  }
+
+  .networks{
+    gap: 40px;    
+  }
+
+  .networks a{
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 360px) {
+  .container{
+    height: 250px;
+  }
+  .container h3{
+    font-size: 3.5rem;
+    margin: 13px;
+  }
+
+  .networks{
+    gap: 25px;    
+  }
+
+  .networks a{
+    font-size: 35px;
+  }
+}
+
 
 /* .bgImg {
   position: fixed;

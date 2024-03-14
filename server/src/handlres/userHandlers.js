@@ -24,8 +24,7 @@ const postUserHandler = async (req, res) => {
 };
 
 const getVerifyHandler = async (req, res) => {
-  const token = req.query.token;
-  const userId = req.query.userId;
+  const { token, userId } = req.query;
 
   try {
     tokenVerify(token);
@@ -42,17 +41,16 @@ const getVerifyHandler = async (req, res) => {
 
 //verifica el token del correo enviado
 const getVerifyRecoverUserHandler = async (req, res) => {
-  const token = req.body.token;
-
+  const { token } = req.query;
+ 
   try {
-    let decoded = tokenDecoded(token);
-    res.status(200).json(decoded);
+    tokenDecoded(token);
+    res.cookie('tokenId', token);
+    res.redirect(302, 'http://localhost:3000/recoverPass');
+    //res.redirect(302, `http://localhost:3000/recoverPass/${token}`);
   } catch (error) {
-    if (error.name === "TokenExpiredError") {
-      res.status(400).send("Token has expired");
-    } else {
-      res.status(400).send("Token is invalid");
-    }
+    console.log(error);
+    res.redirect(302, `http://localhost:3000/recoverPass/${error.message}`);
   }
 };
 
@@ -63,11 +61,6 @@ const postLoginHandler = async (req, res) => {
 
   try {
     const login = await userLogin(email_LC, password);
-    // res.cookie("token", login.token, {
-    //   httpOnly: false,
-    //   expires: new Date(Date.now() + 3600000),
-    // });
-    // console.log(req.cookies);
     res.status(200).json(login);
   } catch (error) {
     res.status(400).json(error.message);
@@ -79,6 +72,7 @@ const putPasswordHandler = async (req, res) => {
 
   try {
     let data = await putPass(userId, newPassword);
+    console.log(data);
     res.status(200).json(data);
   } catch (error) {
     res.status(400).json(error.message);
@@ -98,10 +92,10 @@ const postUserRecoverHandler = async (req, res) => {
 };
 
 const postContactHandler = async (req, res) => {
-  const { email, subject, text } = req.body;
+  const { name, email, phone, subject, message } = req.body;
 
   try {
-    let data = await contact(email, subject, text);
+    let data = await contact(name, email, phone, subject, message);
     res.status(200).json(data);
   } catch (error) {
     res.status(400).json(error.message);

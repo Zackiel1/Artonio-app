@@ -1,32 +1,33 @@
 import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import style from "./RecoverPass.module.css";
 import validations from "../../services/validations";
 import { clearMessage, getVerifyToken, putPass } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { showAlertSuccess } from "../../services/showAlert";
+import { jwtDecode } from "jwt-decode";
+import Footer from "../../components/Footer/Footer";
 
 const RecoverPass = () => {
   const dispatch = useDispatch();
-  const location = useLocation();
   const navigate = useNavigate();
-  const searchParams = new URLSearchParams(location.search);
-  const token = searchParams.get("token");
-
-  useEffect(() => {
-    dispatch(getVerifyToken(token)).then((resolvedUserId) => {
-      setUserId(resolvedUserId);
-    });
-  }, []);
 
   const messageSuccess = useSelector((state) => state.messageSuccess);
-
-  const [userId, setUserId] = useState("");
+  
+  const [userId, setUserId] = useState(0);
   const [error, setError] = useState({});
   const [activeMsgErr, setActiveMsgErr] = useState(false);
   const [message, setMessage] = useState("");
   const [password, setPassword] = useState(true);
+ 
+  const tokenId = document.cookie.split('; ').find(row => row.startsWith('tokenId')).split('=')[1];
+
+  if(tokenId !== undefined && userId === 0){
+    const decode = jwtDecode(tokenId);
+    const { userId } = decode;
+    setUserId(userId)
+  }
 
   const handlerChange = (event) => {
     let property = event.target.name;
@@ -36,9 +37,8 @@ const RecoverPass = () => {
     setPassword({ ...password, [property]: value });
   };
 
-  const handlerSubmit = (event) => {
-    event.preventDefault();
-
+  const handlerSubmit = (e) => {
+    e.preventDefault();
     let data = {
       userId: userId,
       newPassword: password.newPassword,
@@ -47,6 +47,7 @@ const RecoverPass = () => {
   };
 
   useEffect(() => {
+    
     if (messageSuccess !== null) {
       showAlertSuccess(messageSuccess);
       dispatch(clearMessage());
@@ -105,6 +106,10 @@ const RecoverPass = () => {
         </form>
         {message && <p className={style.message}>{message}</p>}
       </section>
+
+      <footer className={style.footer}>
+        <Footer />
+      </footer>
     </main>
   );
 };

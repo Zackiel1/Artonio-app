@@ -71,7 +71,7 @@ const Account = () => {
     dispatch(clearUserInfo());
     navigate("/");
   };
-
+  
   return !userInfo.is_verified ? (
     <AccountNoVerify userInfo={userInfo} />
   ) : (
@@ -143,6 +143,7 @@ const Account = () => {
             <label className={style.errorMsg}>{comparisonPass}</label>
 
             <button
+              className={style.sendNewPassButton}
               type="submit"
               disabled={
                 !newPass.newPassword ||

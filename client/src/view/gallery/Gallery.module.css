@@ -1,18 +1,19 @@
 .container {
-  min-height: 100vh;
-  max-height: calc(100% - 60px);
+  min-height: 99vh;
+  max-height: calc(99% - 60px);
   min-width: 100%;
   max-width: max-content;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(45deg, #FBB03B, #D4145A);
 
-  background-position: center;
-  background-size: cover;
   margin: 60px auto;
   margin-bottom: 0px;
+
+  background-image: url("../../../images/fondo-textura-hormigon-negro-grunge.jpg");
+  background-position: center;
+  background-size: cover;
 }
 
 .tittleContainer{
@@ -30,6 +31,26 @@
   border: none;
   font-family: var(--font-sub);
   font-size: 2rem;
+  
+  text-shadow: 1px 1px 1px #a7a7a728;
+  animation: crecer-encoger 3s infinite linear;
+  transition: all 0.5s ease;
+
+
+}
+
+@keyframes crecer-encoger {
+  0% {
+    text-shadow: 0.1px 0.1px .1px #a7a7a728;
+  }
+
+  50% {
+    text-shadow: 0.5px 0.5px .5px rgba(255, 211, 0, 0.5);;
+  }
+
+  100% {
+    text-shadow: 0.1px 0.1px .1px #a7a7a728;
+  }
 }
 
 .activeTattoButton, .activePaintButton {
@@ -38,6 +59,7 @@
   border: none;
   font-family: var(--font-sub);
   font-size: var(--font-size-title);
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8);
 }
 
 .container h2 {
@@ -68,11 +90,17 @@
 .containerImages {
   width: 400px;
   padding: 30px;
+  margin-bottom: 30px;
   background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
+}
+
+.footer{
+  margin-top: auto;
+  width: 100%;
 }
 
 @media (min-width: 764px){

@@ -74,16 +74,15 @@ export const postForgetPass = (data) => {
 
 export const putPass = (data) => {
   return async (dispatch) => {
-    try {
-      const response = await axios.put(
-        "http://localhost:3001/user/updatePass",
-        data
-      );
-      dispatch({ type: MESSAGE_SUCCESS, payload: true });
-    } catch (error) {
-      console.log(error);
-      dispatch({ type: MESSAGE_ERROR, payload: error.response });
-    }
+    return await axios
+      .put("http://localhost:3001/user/updatePass",
+      data)
+      .then((response) => {
+        dispatch({ type: MESSAGE_SUCCESS, payload: response.data });
+      })
+      .catch((error) => {
+        dispatch({ type: MESSAGE_ERROR, payload: error.response.data });
+      });
   };
 };
 
@@ -192,6 +191,7 @@ export const resendVerifyMessage = (data) => {
         data
       );
       dispatch({ type: MESSAGE_SUCCESS, payload: response });
+      console.log(response);
     } catch (error) {
       dispatch({ type: MESSAGE_ERROR, payload: error.response });
     }
@@ -216,7 +216,7 @@ export const deleteImg = (nameCloud) => {
 };
 
 export const isFavoriteImg = (data) => {
-  return async (dispatch) => {
+  return async () => {
     try {
       let result = await axios.patch(
         "http://localhost:3001/gallery/isFavorite",
@@ -227,6 +227,22 @@ export const isFavoriteImg = (data) => {
     } catch (error) {
       console.log(error);
       throw error;
+    }
+  };
+};
+
+export const postContact = (data) => {
+  return async (dispatch) => {
+    try {
+      let result = await axios.post(
+        "http://localhost:3001/user/contact",
+        data
+      );
+      
+      dispatch({ type: MESSAGE_SUCCESS, payload: result.data });
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: MESSAGE_ERROR, payload: error.response });
     }
   };
 };

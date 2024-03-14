@@ -1,7 +1,14 @@
 .container{
-    height: calc(100vh + 30px);
+    height: 99vh;
+    margin-top: 60px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+
+    background-image: url("../../../images/fondo-textura-hormigon-negro-grunge.jpg");
+    background-position: center;
+    background-size: cover;
 }
 
 .section{
@@ -13,7 +20,7 @@
     align-items: center;
     color: var(--color-font);
     background-color: var(--color-bg-form);
-    border: 4px outset rgba(133, 132, 132, 0.7);
+    border: 4px outset rgba(133, 132, 132, 0.4);
     box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.3);
     border-radius: 10px;
 }
@@ -30,6 +37,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 10px;
     padding: 10px;
 }
 
@@ -54,9 +62,9 @@
 
 .button{
   height: 46px;
-  width: 100%;
+  width: 80%;
   font-family: var(--font-sub);
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: bold;
   margin-top: 15px;
   background: var(--color-trx);
@@ -71,8 +79,21 @@
     color: red;
 }
 
+.footer{
+    margin-top: auto;
+    width: 100%;
+  }
+
 @media (max-width: 700px){
     .section{
-        width: 380px;
+        width: 340px;
+    }
+
+    .button{
+        font-size: 1.5rem;
+    }
+
+    .tittle{
+        font-size: var(--font-size-subTitle-s);
     }
 }
