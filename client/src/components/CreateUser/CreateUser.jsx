@@ -6,6 +6,7 @@ import validations from "../../services/validations";
 import style from "./CreateUser.module.css";
 import { showAlertError, showAlertSuccess } from "../../services/showAlert";
 import Footer from "../Footer/Footer";
+import Loading from "../Loading/Loading";
 
 const CreateUser = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const CreateUser = () => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState({});
   const [activeMsgErr, setActiveMsgErr] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const [createUser, setCreateUser] = useState({
     name: "",
@@ -28,6 +30,7 @@ const CreateUser = () => {
 
   useEffect(() => {
     if (messageSuccess !== null) {
+      setLoading(false);
       showAlertSuccess(messageSuccess);
     }
     dispatch(clearMessage("messageSuccess"));
@@ -35,6 +38,7 @@ const CreateUser = () => {
 
   useEffect(() => {
     if (messageError !== null) {
+      setLoading(false);
       showAlertError(messageError);
     }
     dispatch(clearMessage("messageError"));
@@ -53,6 +57,7 @@ const CreateUser = () => {
 
     if (Object.keys(error).length !== 0) {
       setActiveMsgErr(true);
+      setLoading(false);
     } else {
       setActiveMsgErr(false);
       dispatch(postCreateUser(createUser));
@@ -63,7 +68,9 @@ const CreateUser = () => {
         confirmPassword: "",
         phone: "",
       });
+      setLoading(true);
     }
+
     //
 
     //   try {
@@ -150,6 +157,7 @@ const CreateUser = () => {
           </div>
 
           <button type="submit">Crear Cuenta</button>
+          {loading && <Loading />}
         </form>
 
         {message && <p className={style.error}>{message}</p>}

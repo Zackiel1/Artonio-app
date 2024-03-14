@@ -216,7 +216,7 @@ export const deleteImg = (nameCloud) => {
 };
 
 export const isFavoriteImg = (data) => {
-  return async (dispatch) => {
+  return async () => {
     try {
       let result = await axios.patch(
         "http://localhost:3001/gallery/isFavorite",
@@ -227,6 +227,22 @@ export const isFavoriteImg = (data) => {
     } catch (error) {
       console.log(error);
       throw error;
+    }
+  };
+};
+
+export const postContact = (data) => {
+  return async (dispatch) => {
+    try {
+      let result = await axios.post(
+        "http://localhost:3001/user/contact",
+        data
+      );
+      
+      dispatch({ type: MESSAGE_SUCCESS, payload: result.data });
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: MESSAGE_ERROR, payload: error.response });
     }
   };
 };

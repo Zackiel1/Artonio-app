@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getImg } from "../../redux/actions";
 import CardsContainer from "../../components/CardsContainer/CardsContainer";
+import Footer from "../../components/Footer/Footer";
 
 const Gallery = () => {
   const userInfo = useSelector((state) => state.userInfo);
@@ -61,6 +62,10 @@ const Gallery = () => {
       <section className={style.containerImages}>
         <CardsContainer galleryState={galleryState} />
       </section>
+
+      <footer className={style.footer}>
+        <Footer />
+      </footer>
     </div>
   );
 };

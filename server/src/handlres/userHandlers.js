@@ -92,10 +92,10 @@ const postUserRecoverHandler = async (req, res) => {
 };
 
 const postContactHandler = async (req, res) => {
-  const { email, subject, text } = req.body;
+  const { name, email, phone, subject, message } = req.body;
 
   try {
-    let data = await contact(email, subject, text);
+    let data = await contact(name, email, phone, subject, message);
     res.status(200).json(data);
   } catch (error) {
     res.status(400).json(error.message);

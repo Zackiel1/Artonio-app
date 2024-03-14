@@ -12,10 +12,9 @@ const SampleGallery = () => {
   const imgSampleGallery = tattoFav.slice(0, 10);
 
   const handlerImg = (index) => {
-    // console.log(index);
-    // console.log(imagenActiva);
+    
     if (imagenActiva === index) {
-      setImagenActiva("");
+      setImagenActiva(null);
     } else {
       setImagenActiva(index);
     }
@@ -29,6 +28,7 @@ const SampleGallery = () => {
         {imgSampleGallery.map((img, index) => {
           return (
             <img
+              key={img.id}
               className={`${style.img} ${
                 imagenActiva === index ? style.active : ""
               }`}

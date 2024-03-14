@@ -96,6 +96,21 @@
   width: 100%;
 }
 
+.loader{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 3px solid var(--color-trx);
+  border-top-color: transparent;
+  animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin{
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @media (max-width: 700px){
   .section{
     width: 350px;
@@ -109,6 +124,16 @@
   .form button{
     width: 200px;
     font-size: var(--font-size-button-m);
+  }
+}
+
+@media (max-width: 400px){
+  .section{ 
+    margin-top: 23rem;
+  }
+
+  .title{
+    font-size: var(--font-size-title-s);
   }
 }
 
