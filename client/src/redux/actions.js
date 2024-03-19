@@ -1,27 +1,24 @@
 import axios from "axios";
 import {
-  POST_CREATE_USER,
   CLEAR_MESSAGE,
   POST_LOGIN,
-  PUT_PASS,
   MESSAGE_ERROR,
   RE_LOGIN,
   GET_IMAGES,
-  POST_FORGET_PASS,
   SEARCH_USER,
   USE_DISCOUNT,
-  ADD_DISCOUNT,
   CLEAR_USER_INFO,
   MESSAGE_SUCCESS,
-  RESEND_VERIFY_MESSAJE,
   DELETE_IMG,
 } from "./index.js";
+
+const urlBack = import.meta.env.VITE_URL_BACK
 
 export const postCreateUser = (data) => {
   return async (dispatch) => {
     try {
       const response = await axios.post(
-        "http://localhost:3001/user/createUser",
+        `${urlBack}/user/createUser`,
         data
       );
       dispatch({ type: MESSAGE_SUCCESS, payload: response.data });
@@ -48,7 +45,7 @@ export const clearUserInfo = () => {
 export const postLogin = (data) => {
   return async (dispatch) => {
     await axios
-      .post("http://localhost:3001/user/login", data)
+      .post(`${urlBack}/user/login`, data)
       .then((response) => {
         window.localStorage.setItem("userInfo", JSON.stringify(response.data));
         dispatch({ type: POST_LOGIN, payload: response.data });
@@ -62,7 +59,7 @@ export const postLogin = (data) => {
 export const postForgetPass = (data) => {
   return async (dispatch) => {
     return await axios
-      .post("http://localhost:3001/user/recover", data)
+      .post(`${urlBack}3001/user/recover`, data)
       .then((response) => {
         dispatch({ type: MESSAGE_SUCCESS, payload: response.data });
       })
@@ -75,7 +72,7 @@ export const postForgetPass = (data) => {
 export const putPass = (data) => {
   return async (dispatch) => {
     return await axios
-      .put("http://localhost:3001/user/updatePass",
+      .put(`${urlBack}/user/updatePass`,
       data)
       .then((response) => {
         dispatch({ type: MESSAGE_SUCCESS, payload: response.data });
@@ -97,7 +94,7 @@ export const uploadImg = (data) => {
   return async (dispatch) => {
     try {
       const response = await axios.post(
-        "http://localhost:3001/gallery/upload",
+        `${urlBack}/gallery/upload`,
         data
       );
       dispatch({ type: MESSAGE_SUCCESS, payload: response });
@@ -111,11 +108,12 @@ export const getImg = () => {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        "http://localhost:3001/gallery/searchImg"
+        `${urlBack}/gallery/searchImg`
       );
 
       dispatch({ type: GET_IMAGES, payload: response.data });
     } catch (error) {
+      console.log(error);
       throw error;
     }
   };
@@ -125,12 +123,14 @@ export const getVerifyToken = (token) => {
   return async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3001/user/verifyToken",
+        `${urlBack}/user/verifyToken`,
         { token: token }
       );
       return response.data.userId;
     } catch (error) {
+      console.log(error);
       throw error;
+
     }
   };
 };
@@ -139,7 +139,7 @@ export const searchUser = (email) => {
   return async (dispatch) => {
     try {
       const response = await axios.post(
-        "http://localhost:3001/admin/searchUser",
+        `${urlBack}/admin/searchUser`,
         { email: email }
       );
       dispatch({ type: SEARCH_USER, payload: response.data });
@@ -153,7 +153,7 @@ export const useDiscount = (email, id) => {
   return async (dispatch) => {
     try {
       const response = await axios.delete(
-        "http://localhost:3001/admin/deleteDiscount",
+        `${urlBack}/admin/deleteDiscount`,
         {
           headers: {
             email: email,
@@ -172,7 +172,7 @@ export const AddDiscount = (data) => {
   return async (dispatch) => {
     try {
       const response = await axios.post(
-        "http://localhost:3001/admin/addDiscount",
+        `${urlBack}/admin/addDiscount`,
         data
       );
       console.log(response);
@@ -187,7 +187,7 @@ export const resendVerifyMessage = (data) => {
   return async (dispatch) => {
     try {
       const response = await axios.post(
-        "http://localhost:3001/user/ResendVerifyMessage",
+        `${urlBack}/user/ResendVerifyMessage`,
         data
       );
       dispatch({ type: MESSAGE_SUCCESS, payload: response });
@@ -201,7 +201,7 @@ export const resendVerifyMessage = (data) => {
 export const deleteImg = (nameCloud) => {
   return async (dispatch) => {
     try {
-      await axios.delete("http://localhost:3001/gallery/deleteImg", {
+      await axios.delete(`${urlBack}/gallery/deleteImg`, {
         headers: {
           name_cloud: nameCloud,
         },
@@ -219,7 +219,7 @@ export const isFavoriteImg = (data) => {
   return async () => {
     try {
       let result = await axios.patch(
-        "http://localhost:3001/gallery/isFavorite",
+        `${urlBack}/gallery/isFavorite`,
         data
       );
       console.log(result);
@@ -235,7 +235,7 @@ export const postContact = (data) => {
   return async (dispatch) => {
     try {
       let result = await axios.post(
-        "http://localhost:3001/user/contact",
+        `${urlBack}/user/contact`,
         data
       );
       

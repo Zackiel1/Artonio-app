@@ -32,10 +32,10 @@ const getVerifyHandler = async (req, res) => {
     //change verify status
     const verifyAccount = await statusVerify(userId);
 
-    res.redirect(302, `http://localhost:3000/verifyUser/${verifyAccount}`);
+    res.redirect(302, `${process.env.URL_FRONT}/verifyUser/${verifyAccount}`);
   } catch (error) {
     //const errorMessage = error.message || "An unknown error occurred.";
-    res.redirect(302, `http://localhost:3000/verifyUser/${error.message}`);
+    res.redirect(302, `${process.env.URL_FRONT}/verifyUser/${error.message}`);
   }
 };
 
@@ -46,11 +46,11 @@ const getVerifyRecoverUserHandler = async (req, res) => {
   try {
     tokenDecoded(token);
     res.cookie('tokenId', token);
-    res.redirect(302, 'http://localhost:3000/recoverPass');
+    res.redirect(302, `${process.env.URL_FRONT}/recoverPass`);
     //res.redirect(302, `http://localhost:3000/recoverPass/${token}`);
   } catch (error) {
     console.log(error);
-    res.redirect(302, `http://localhost:3000/recoverPass/${error.message}`);
+    res.redirect(302, `${process.env.URL_FRONT}/recoverPass/${error.message}`);
   }
 };
 
