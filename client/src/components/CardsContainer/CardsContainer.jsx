@@ -117,7 +117,7 @@ const CardsContainer = (props) => {
       {props.galleryState === "tatto"
         ? orderTatto.map((img, index) => {
             return (
-              <div>
+              <div key={img.id}>
                 <div key={index} onClick={() => handlerOpenModal(index)}>
                   <Card
                     key={img.id}
@@ -130,7 +130,7 @@ const CardsContainer = (props) => {
                 </div>
 
                 {payloadUser.isAdmin && (
-                  <div>
+                  <div >
                     <button onClick={() => handlerDeleteImg(img.nameCloud)}>
                       Delete Img
                     </button>
@@ -151,7 +151,7 @@ const CardsContainer = (props) => {
           })
         : paint.map((img, index) => {
             return (
-              <div>
+              <div key={img.id}>
                 <div key={index} onClick={() => handlerOpenModal(index)}>
                   <Card
                     key={img.id}
