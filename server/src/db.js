@@ -1,6 +1,6 @@
 require("dotenv").config();
 const { Sequelize } = require("sequelize");
-const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB } = process.env;
 const cartModel = require("./models/Carts");
 const clothesModel = require("./models/Clothes");
 const orderModel = require("./models/Orders");
@@ -8,7 +8,7 @@ const paintingModel = require("./models/Paintings");
 const userModel = require("./models/Users");
 
 const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/artonio`,
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB}`,
   {
     logging: false,
     native: false,

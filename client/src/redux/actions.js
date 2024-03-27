@@ -23,6 +23,7 @@ export const postCreateUser = (data) => {
       );
       dispatch({ type: MESSAGE_SUCCESS, payload: response.data });
     } catch (error) {
+      console.log(error);
       dispatch({ type: MESSAGE_ERROR, payload: error.response.data });
     }
   };

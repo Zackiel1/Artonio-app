@@ -161,9 +161,24 @@ const CardsContainer = (props) => {
                     description={img.description}
                   />
                 </div>
-                <button onClick={() => handlerDeleteImg(img.nameCloud)}>
-                  Delete Img
-                </button>
+                
+                {payloadUser.isAdmin && (
+                  <div >
+                    <button onClick={() => handlerDeleteImg(img.nameCloud)}>
+                      Delete Img
+                    </button>
+
+                    {img.isFavorite ? (
+                      <button onClick={() => handleDeleteFavorite(img.id)}>
+                        ❤️
+                      </button>
+                    ) : (
+                      <button onClick={() => handleAddFavorite(img.id)}>
+                        🤍
+                      </button>
+                    )}
+                  </div>
+                )}
               </div>
             );
           })}
