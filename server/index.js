@@ -1,7 +1,7 @@
 const app = require("./src/app.js");
 const { sequelize } = require("./src/db.js");
 
-const port = proccess.env.PORT || 3001;
+const port = process.env.PORT || 3001;
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(port, () => {
