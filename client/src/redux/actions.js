@@ -111,7 +111,7 @@ export const getImg = () => {
       const response = await axios.get(
         `${urlBack}/gallery/searchImg`
       );
-
+      console.log(response)
       dispatch({ type: GET_IMAGES, payload: response.data });
     } catch (error) {
       console.log(error);

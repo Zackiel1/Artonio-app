@@ -12,6 +12,7 @@ const { Router } = require("express");
 
 const express = require('express');
 const passport = require('passport');
+const { CrossOrigin } = require('cors');
 require("../services/google.js")
 
 const userRouter = Router();
@@ -23,7 +24,7 @@ userRouter.get("/verify", getVerifyHandler); //maneja la verificacion del token 
 userRouter.get("/verifyToken", getVerifyRecoverUserHandler); //maneja la verificacion del token al recuperar la contraseña
 userRouter.post("/login", postLoginHandler);
 userRouter.put("/updatePass", putPasswordHandler); // actuliza la pass -- falta acomodarlo bien/ cambiar a metodo pacth
-userRouter.post("/contact", postContactHandler);
+userRouter.post("/contact", CrossOrigin(), postContactHandler);
 userRouter.post("/recover", postUserRecoverHandler);
 userRouter.post("/ResendVerifyMessage", postResendMessageHandler);
 
