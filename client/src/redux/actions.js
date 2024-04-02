@@ -60,7 +60,7 @@ export const postLogin = (data) => {
 export const postForgetPass = (data) => {
   return async (dispatch) => {
     return await axios
-      .post(`${urlBack}3001/user/recover`, data)
+      .post(`${urlBack}/user/recover`, data)
       .then((response) => {
         dispatch({ type: MESSAGE_SUCCESS, payload: response.data });
       })

@@ -45,7 +45,9 @@ const getVerifyRecoverUserHandler = async (req, res) => {
  
   try {
     tokenDecoded(token);
-    res.cookie('tokenId', token);
+    res.cookie('tokenId', token, {
+      secure: true
+    });
     res.redirect(302, `${process.env.URL_FRONT}/recoverPass`);
     //res.redirect(302, `http://localhost:3000/recoverPass/${token}`);
   } catch (error) {
