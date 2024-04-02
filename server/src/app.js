@@ -13,7 +13,7 @@ require("../src/services/google.js")
 const app = express();
 
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: "*",
   credentials: true,
   allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization']
 }))
