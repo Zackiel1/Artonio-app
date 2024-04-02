@@ -26,7 +26,6 @@ app.use((req, res, next) => {
     );
     next();
 });
-
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(passport.initialize());
