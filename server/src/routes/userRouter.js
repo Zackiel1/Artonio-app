@@ -9,7 +9,7 @@ const {
   postResendMessageHandler,
 } = require("../handlres/userHandlers");
 const { Router } = require("express");
-const cors = require('cors')
+
 const express = require('express');
 const passport = require('passport');
 require("../services/google.js")
@@ -23,7 +23,7 @@ userRouter.get("/verify", getVerifyHandler); //maneja la verificacion del token 
 userRouter.get("/verifyToken", getVerifyRecoverUserHandler); //maneja la verificacion del token al recuperar la contraseña
 userRouter.post("/login", postLoginHandler);
 userRouter.put("/updatePass", putPasswordHandler); // actuliza la pass -- falta acomodarlo bien/ cambiar a metodo pacth
-userRouter.post("/contact", cors(), postContactHandler);
+userRouter.post("/contact", postContactHandler);
 userRouter.post("/recover", postUserRecoverHandler);
 userRouter.post("/ResendVerifyMessage", postResendMessageHandler);
 
