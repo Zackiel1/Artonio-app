@@ -9,9 +9,7 @@ import {
 import style from "./Footer.module.css";
 import { Link } from "react-router-dom";
 import {
-  faEnvelope,
-  faEnvelopeCircleCheck,
-  faSquareEnvelope,
+  faEnvelope
 } from "@fortawesome/free-solid-svg-icons";
 
 const Footer = () => {
@@ -69,7 +67,7 @@ const Footer = () => {
         </section>
 
         <section className={style.logo}>
-          <img src="../../../images/artonio-negro.png" alt="logo Artonio" />
+          <img src="/../../../images/artonio-negro.png" alt="logo Artonio" />
         </section>
       </div>
 
