@@ -8,7 +8,7 @@ const About = () => {
       </h2>
       <section>
         <article className={style.articlePhoto}>
-          <img src="/images/img-about.jpeg"></img>
+          {/* <img src="/images/img-about.jpeg"></img> */}
         </article>
         <article className={style.articleText}>
           <p className={style.text1}>
