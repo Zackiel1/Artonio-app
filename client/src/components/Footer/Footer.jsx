@@ -67,7 +67,7 @@ const Footer = () => {
         </section>
 
         <section className={style.logo}>
-          <img src="/../../../images/artonio-negro.png" alt="logo Artonio" />
+          {/* <img src="/../../../images/artonio-negro.png" alt="logo Artonio" /> */}
         </section>
       </div>
 
