@@ -17,7 +17,6 @@ const urlBack = import.meta.env.VITE_URL_BACK
 export const postCreateUser = (data) => {
   return async (dispatch) => {
     try {
-      console.log(urlBack);
       const response = await axios.post(
         `${urlBack}/user/createUser`,
         data
@@ -112,7 +111,6 @@ export const getImg = () => {
       const response = await axios.get(
         `${urlBack}/gallery/searchImg`
       );
-      console.log(response)
       dispatch({ type: GET_IMAGES, payload: response.data });
     } catch (error) {
       console.log(error);
