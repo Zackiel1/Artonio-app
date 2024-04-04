@@ -43,6 +43,9 @@
 .logo{
   height: 80px;  
   width: 80px;
+  background-image: url("../../../images/artonio-negro.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .logo img{
