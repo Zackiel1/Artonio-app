@@ -58,10 +58,14 @@
   font-size: 2rem
 }
 
-.articlePhoto img{
+.articlePhoto{
   border-radius: 20px;
   height: 580px;
   width: 353px;
+
+  background-image: url("./../../../images/img-about.jpeg");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 @media (max-width: 1366px) {
   .container{  
