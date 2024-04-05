@@ -2,7 +2,7 @@ import style from "./About.module.css";
 
 const About = () => {
   return (
-    <div className={style.container}>
+    <section className={style.container}>
       <h2>
         ¿Quien es <br /> Antonio Fernández?
       </h2>
@@ -27,10 +27,10 @@ const About = () => {
         </article>
       </section>
       <p className={style.text2}>
-        "NADA NI NADIE TIENE EL PODER PARA HACERTE CREER QUE ES MUY TARDE PARA
-        LUCHAR POR TUS SUEÑOS. ES UNA SOLA VIDA, HAS QUE VALGA LA PENA!"
+      &quot;NADA NI NADIE TIENE EL PODER PARA HACERTE CREER QUE ES MUY TARDE PARA
+        LUCHAR POR TUS SUEÑOS. ES UNA SOLA VIDA, HAS QUE VALGA LA PENA!&quot;
       </p>
-    </div>
+    </section>
   );
 };
 

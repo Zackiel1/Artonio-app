@@ -41,10 +41,10 @@ const Nav = ({ onContactClick }) => {
   };
 
   return (
-    <div className={style.mainNav}>
+    <nav className={style.mainNav}>
       <Link className={style.icono} to="/"></Link>
 
-      <nav
+      <section
         className={`${style.navContainer} ${scrolled ? style.scrolled : ""}`}
       >
         {/* <button onClick={menu} className={style.openMenu}>
@@ -97,8 +97,8 @@ const Nav = ({ onContactClick }) => {
             </li>
           )}
         </ul>
-      </nav>
-    </div>
+      </section>
+    </nav>
   );
 };
 

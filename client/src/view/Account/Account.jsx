@@ -75,7 +75,7 @@ const Account = () => {
   return !userInfo.is_verified ? (
     <AccountNoVerify userInfo={userInfo} />
   ) : (
-    <div className={style.container}>
+    <section className={style.container}>
       <section className={style.sectionGrid}>
         <h2 className={`${style.item1}  ${style.tittle}`}>Cuenta</h2>
 
@@ -164,7 +164,7 @@ const Account = () => {
           Cerrar Seccion
         </button>
       </section>
-    </div>
+    </section>
   );
 };
 

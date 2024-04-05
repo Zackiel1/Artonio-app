@@ -1,6 +1,5 @@
-import { Outlet, Route, Routes, useLocation, useParams } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { Element, scroller } from "react-scroll";
-import React, { useRef } from "react";
 import Nav from "./components/Nav/Nav";
 import Home from "./view/Home/Home";
 import Login from "./view/Login/Login";
@@ -8,7 +7,7 @@ import CreateUser from "./components/CreateUser/CreateUser";
 import Account from "./view/Account/Account";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { clearMessage, reLogin, getImg } from "./redux/actions";
+import { getImg } from "./redux/actions";
 import Admin from "./view/Admin/Admin";
 import Gallery from "./view/gallery/Gallery";
 import Contact from "./view/Contact/Contact";
@@ -60,16 +59,16 @@ const App = () => {
       <Nav />
       {showScrollableContent && (
         <>
-          <Element name="home">
+          <Element name="home" >
             <Home />
           </Element>
-          <Element name="about">
+          <Element name="about" >
             <About />
           </Element>
           <SpanPromo />
           <SampleGallery />
           <SpanRedes />
-          <Element name="contact">
+          <Element name="contact" >
             <Contact />
           </Element>
           <Footer />
