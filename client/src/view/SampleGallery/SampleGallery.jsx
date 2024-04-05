@@ -21,7 +21,7 @@ const SampleGallery = () => {
   };
 
   return (
-    <div className={style.container}>
+    <section className={style.container}>
       <h2>Algunos trabajos</h2>
 
       <section>
@@ -43,7 +43,7 @@ const SampleGallery = () => {
       <p>
         Mira mas diseños <Link to="/gallery">Aqui...</Link>
       </p>
-    </div>
+    </section>
   );
 };
 

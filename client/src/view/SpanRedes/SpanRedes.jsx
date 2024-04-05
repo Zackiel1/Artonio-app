@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 
 const SpanRedes = () => {
   return (
-    <div className={style.container}>
+    <section className={style.container}>
       <h3>Redes Sociales</h3>
       <section className={style.networks}>
           <Link
@@ -57,7 +57,7 @@ const SpanRedes = () => {
           </Link>
         </section>
 
-    </div>
+    </section>
   );
 };
 

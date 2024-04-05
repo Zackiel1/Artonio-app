@@ -1,25 +1,23 @@
-import { useEffect, useState } from "react";
 import style from "./Home.module.css";
-import { Link, NavLink, useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Home = () => {
 
   return (
     <main className={style.main}>
-      <div className={style.homeContainer}>
+      <section className={style.homeContainer}>
         <article className={style.articleText}>
           <p>
-            " Te ayudo a reflejar en tu piel
+          &quot; Te ayudo a reflejar en tu piel
             <br />
-            vivencias, recuerdos, o simplemente Arte! "
+            vivencias, recuerdos, o simplemente Arte! &quot;
           </p>
 
           <NavLink to={{ pathname: "/", hash: "#contact" }}>
             <button>Cuentame tu Idea</button>
           </NavLink>
         </article>
-        {/* <article className={style.articlePhoto}></article> */}
-      </div>
+      </section>
     </main>
   );
 };

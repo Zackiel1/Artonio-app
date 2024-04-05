@@ -21,7 +21,7 @@ const AccountNoVerify = (props) => {
   };
 
   return (
-    <div className={style.container}>
+    <section className={style.container}>
       <section className={style.section}>
         <h2>No has verificado tu cuenta aun...</h2>
 
@@ -40,7 +40,7 @@ const AccountNoVerify = (props) => {
           Volver a enviar
         </button>
       </section>
-    </div>
+    </section>
   );
 };
 
