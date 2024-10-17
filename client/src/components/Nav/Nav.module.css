@@ -11,6 +11,7 @@
   position: fixed;
   z-index: 99;
   background-color: rgba(0, 0, 0, 0.85);
+  padding-right: 50px;
   transition: background-color 1s, opacity 1s;
 }
 
@@ -20,22 +21,24 @@
   color: var(--color-primary);
 }
 
-.navContainer.scrolled {
-  background-color: rgba(0, 0, 0, 0.85);
-  opacity: 1;
-}
+
 
 .icono {
   height: 100px;
   width: 100px;
   position: fixed;
   top: -8px;
-  left: 70px;
+  left: 100px;
   z-index: 100;
-
   background-image: url("../../../images/logo-artonio-c.png");
   background-position: center;
   background-size: cover;
+  
+}
+
+.scrolledNav {
+  background-color: rgba(0, 0, 0, 0.85);
+  opacity: 1;
 }
 
 .navContainer ul {

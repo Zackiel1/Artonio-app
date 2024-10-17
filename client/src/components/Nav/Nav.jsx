@@ -25,15 +25,16 @@ const Nav = ({ onContactClick }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 60;
+      const isScrolled = window.scrollY > 180;
       setScrolled(isScrolled);
     };
 
     window.addEventListener("scroll", handleScroll);
-
+    
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
+    
   }, []);
 
   const menu = () => {
@@ -42,10 +43,10 @@ const Nav = ({ onContactClick }) => {
 
   return (
     <nav className={style.mainNav}>
-      <Link className={style.icono} to="/"></Link>
-
+      <Link className={`${style.icono}`} to="/"></Link>
+      
       <section
-        className={`${style.navContainer} ${scrolled ? style.scrolled : ""}`}
+        className={`${style.navContainer} `}
       >
         {/* <button onClick={menu} className={style.openMenu}>
           Abrir

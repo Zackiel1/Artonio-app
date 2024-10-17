@@ -6,11 +6,15 @@ const Home = () => {
   return (
     <main className={style.main}>
       <section className={style.homeContainer}>
+
+        
+
         <article className={style.articleText}>
+          
           <p>
           &quot; Te ayudo a reflejar en tu piel
             <br />
-            vivencias, recuerdos, o simplemente Arte! &quot;
+            vivencias, recuerdos o simplemente Arte! &quot;
           </p>
 
           <NavLink to={{ pathname: "/", hash: "#contact" }}>
