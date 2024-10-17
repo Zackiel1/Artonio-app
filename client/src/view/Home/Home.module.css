@@ -1,46 +1,76 @@
 .main{
-  background: linear-gradient(120deg,rgb(78, 78, 78),  rgb(0, 0, 0));
+  /* background: linear-gradient(120deg,rgb(78, 78, 78),  rgb(0, 0, 0)); */
+  background-color: black;
 }
 
 .homeContainer {
-  height: calc(100vh + 60px);
-  margin-top: 60px;
-  background-image: url("../../../images/img-home.png");
+  height: calc(100vh);
 
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: right top;
+  margin: auto;
+  margin-top: 60px;
+  
   display: flex;
-  justify-content: baseline;
-  align-items: center;
+  align-items: end;
+  justify-content: center;
+
+  background-image: url("../../../images/picture.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+
   /* border-bottom: 20px solid var(--color-secundary); */
 }
 
 .articleText {
-  height: 390px;
-  width: 500px;
+  height: max-content;
+  
+  margin-bottom: 60px;
   display: flex;
   flex-direction: column;
-  justify-content: end;
   gap: 1rem;
-  text-align: center;
   padding: 30px;
-  margin-left: 250px;
+  
 }
 
 .articleText p {
   font-family: var(--font-sub);
   color: var(--color-font);
-  font-size: var( --font-size-text-m);
+  font-size: var( --font-size-text-l);
+  text-align: center;
   font-weight: bold;
-  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
 }
 
 .articleText a {
   text-decoration: none;
+  width: max-content;
+  margin: auto;
+
 }
 
 .articleText button {
+  height: 60px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: auto;
+  font-size: 3rem;
+  font-weight: bold;
+  font-family: var(--font-sub);
+  
+  color: var(--color-font);
+  background-color: rgba(0, 0, 0, 0.70);
+  border: 1px solid var(--color-trx);
+
+  animation: crecer-encoger 3s infinite linear;
+
+  box-shadow: 0.5px 0.5px 1px var(--color-primary);
+  transition: all 0.5s ease;
+}
+
+/* .articleText button {
   height: 50px;
   width: 300px;
   display: flex;
@@ -62,6 +92,16 @@
   box-shadow: 1px 1px 1px var(--color-primary);
   transition: all 0.5s ease;
 
+} */
+
+.logoLanding{
+  height: 60rem;
+  width: 60rem;
+  margin-left: 10%;
+  background-image: url(../../../images/logo-artonio-c.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 @keyframes crecer-encoger {
@@ -71,27 +111,25 @@
   }
 
   50% {
-    box-shadow: 3px 3px 30px var(--color-trx);
+    box-shadow: 2px 2px 20px var(--color-trx);
 
 
   }
 
   100% {
-    /* box-shadow: 0.1px 0.1px .1px var(--color-trx); */
+    box-shadow: 0.1px 0.1px .1px var(--color-trx);
   }
 }
 
 @media (max-width: 1457px) {
   .articleText {
-    margin-top: 150px;
-    height: 300px;
-    margin-left: 100px;
+    
   }
 
   
 }
 
-@media (max-width: 1270px) {
+/* @media (max-width: 1270px) {
   .homeContainer {
     background-position: center top;
     justify-content: center;
@@ -133,4 +171,4 @@
     margin: auto;
     width: 250px;
   }
-}
+} */
