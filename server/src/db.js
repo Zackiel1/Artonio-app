@@ -9,7 +9,7 @@ const paintingModel = require("./models/Paintings");
 const userModel = require("./models/Users");
 
 const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB}`,
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB}?sslmode=require`,
   {
     logging: false,
     native: false,
