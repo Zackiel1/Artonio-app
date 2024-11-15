@@ -35,16 +35,13 @@ const createUser = async (name, email, password, phone) => {
         },
   }
 
-  const emailSend = await templateSendMailWithButton(mail);
-
-  if (!emailSend.messageId) {
-    return 'Ocurrio un error al intentar enviar el mail';
-}
-
-return `Cuenta Creada. Porfavor, revisa tu correo electronico
-     y verificalo para poder continuar,
+  await templateSendMailWithButton(mail);
+  
+  return `Cuenta Creada. Porfavor, revisa tu correo electronico
+    y verificalo para poder continuar,
     
-     Nota: Si no te ha llegado el correo, revisa bien en Spam o Correo no deseado`;
+    Nota: Si no te ha llegado el correo, revisa bien en Spam o Correo no deseado`;
+
 };
 
 module.exports = createUser;
