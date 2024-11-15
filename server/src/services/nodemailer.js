@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer');
+const deleteUserByEmail = require('../controllers/deleteUserByEmail');
 
 const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
@@ -154,6 +155,8 @@ const templateSendMailWithButton = async (mail) => {
         return send;
     } catch (error) {
         console.log(error);
+        await deleteUserByEmail(to);
+        throw new Error("Hubo un error al intentar enviar el correo, disculpa pronto lo solucionaremos");
     }
 };
 
