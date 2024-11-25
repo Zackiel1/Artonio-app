@@ -45,33 +45,20 @@ const Nav = ({ onContactClick }) => {
     <nav className={style.mainNav}>
       <Link className={`${style.icono}`} to="/"></Link>
       
-      <section
-        className={`${style.navContainer} `}
-      >
-        {/* <button onClick={menu} className={style.openMenu}>
-          Abrir
-        </button> */}
+      <section className={`${style.navContainer}`}>
 
-        <button className={style.menu} onClick={menu}>
-          <div></div>
-          <div></div>
-          <div></div>
-        </button>
-
-        {/* <Link className={style.bannerDiscount} to="/">
-          Registrate y obten un 20% de descuento
-        </Link> */}
+        <Link className={`${style.icono}`} to="/"></Link>
 
         <ul
           className={`${style.navItems} ${menuOpen ? style.open : style.close}`}
           onClick={menu}
         >
           <li className={style.firstLi}>
-            <NavLink to={{ pathname: "/", hash: "#home" }}>Inicio</NavLink>
+            <NavLink to={"/"}>Inicio</NavLink>
           </li>
 
           <li>
-            <NavLink to={{ pathname: "/", hash: "#about" }}>Quien soy</NavLink>
+            <NavLink to={"/about"}>Quien soy</NavLink>
           </li>
 
           <li>
@@ -79,7 +66,7 @@ const Nav = ({ onContactClick }) => {
           </li>
 
           <li>
-            <NavLink to={{ pathname: "/", hash: "#contact" }}>Contacto</NavLink>
+            <NavLink to={"/contact"}>Contacto</NavLink>
           </li>
 
           {/* <li>
@@ -98,6 +85,17 @@ const Nav = ({ onContactClick }) => {
             </li>
           )}
         </ul>
+
+        <button className={style.buttonCotizacion} type="submit">
+
+          <Link to="/">Obtener Cotizacion</Link>
+        </button>
+
+        <button className={style.menu} onClick={menu}>
+          <div></div>
+          <div></div>
+          <div></div>
+        </button>
       </section>
     </nav>
   );
