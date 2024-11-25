@@ -56,27 +56,10 @@ const App = () => {
 
   return (
     <main className={style.appContainer}>
-      <Nav />
-      {showScrollableContent && (
-        <>
-          <Element name="home" >
-            <Home />
-          </Element>
-          <Element name="about" >
-            <About />
-          </Element>
-          <SpanPromo />
-          <SampleGallery />
-          <SpanRedes />
-          <Element name="contact" >
-            <Contact />
-          </Element>
-          <Footer />
-        </>
-      )}
+      <Nav /> 
 
       <Routes>
-        <Route path="/" />
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/login/:userGoogle" element={<Login />} />
         <Route path="/createUser" element={<CreateUser />} />
@@ -89,10 +72,7 @@ const App = () => {
         <Route path="/accountNoVerify" element={<AccountNoVerify />} />
       </Routes>
 
-      {/* <span className={`${style.frameBorder} ${style.frameTop}`}></span>
-      <span className={`${style.frameBorder} ${style.frameBottom}`}></span>
-      <span className={`${style.frameBorder} ${style.frameRigth}`}></span>
-      <span className={`${style.frameBorder} ${style.frameLeft}`}></span> */}
+      <Footer />
     </main>
   );
 };
