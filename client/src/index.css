@@ -7,6 +7,10 @@
   letter-spacing: 1px;
 }
 
+body{
+  margin: 0;
+}
+
 html {
   font-size: 62.5%;
   background-color: var(--color-bg);
@@ -49,7 +53,8 @@ input:-webkit-autofill {
   --font-size-title-s: 3rem;
   --font-size-subTitle: 3rem;
   --font-size-subTitle-s: 2.5rem;
-  --font-size-nav: 2.75rem;
+  --font-size-nav-xl: 2.3rem;
+  --font-size-nav-m: 2.1rem;
   --font-size-error: 1.33rem;
   --font-size-msg: 1.33rem;
   --font-size-button-s: 1.8rem;
