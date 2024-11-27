@@ -11,7 +11,7 @@
   margin: 60px auto;
   margin-bottom: 0px;
 
-  background-image: url("../../../images/fondo-textura-hormigon-negro-grunge.jpg");
+  background-image: url("../../../images/muro-hormigon-gris.jpg");
   background-position: center;
   background-size: cover;
 }
@@ -26,7 +26,7 @@
 }
 
 .tattoButton, .paintButton {
-  color: #fdfefe28;
+  color: var(--color-bg);
   background-color: transparent;
   border: none;
   font-family: var(--font-sub);
@@ -41,7 +41,7 @@
 
 @keyframes crecer-encoger {
   0% {
-    text-shadow: 0.1px 0.1px .1px #a7a7a728;
+    text-shadow: 0.1px 0.1px .1px var(--color-bg);
   }
 
   50% {
@@ -49,12 +49,12 @@
   }
 
   100% {
-    text-shadow: 0.1px 0.1px .1px #a7a7a728;
+    text-shadow: 0.1px 0.1px .1px var(--color-bg);
   }
 }
 
 .activeTattoButton, .activePaintButton {
-  color: var(--color-font);
+  color: var(--color-bg);
   background-color: transparent;
   border: none;
   font-family: var(--font-sub);
@@ -66,17 +66,18 @@
   font-size: var(--font-size-title);
   font-family: var(--font-sub);
   font-weight: bold;
-  color: var(--color-font);
+  color: var(--color-bg);
   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8);
   margin-top: 60px;
   margin-bottom: 0;
+  letter-spacing: 3px
 }
 
 .container p{
   font-size: 2rem;
   font-family: var(--font-sub);
   font-weight: bold;
-  color: var(--color-font);
+  color: var(--color-bg);
   margin: 0;
 
 }

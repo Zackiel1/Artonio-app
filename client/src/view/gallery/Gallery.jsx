@@ -32,7 +32,7 @@ const Gallery = () => {
     <div className={style.container} ref={galleryRef}>
       <div className={style.tittleContainer}>
         <h2>Galleria</h2>
-        <p>de</p>
+        {/* <p>de</p>
         <div className={style.buttonContainer}>
           <button
             value="tatto"
@@ -56,16 +56,13 @@ const Gallery = () => {
           >
             Pinturas
           </button>
-        </div>
+        </div> */}
       </div>
 
       <section className={style.containerImages}>
         <CardsContainer galleryState={galleryState} />
       </section>
 
-      <footer className={style.footer}>
-        <Footer />
-      </footer>
     </div>
   );
 };
