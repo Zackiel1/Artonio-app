@@ -1,10 +1,10 @@
 .container{
-    height: 130px;
+    height: 200px;
     width: 100%;
     display: flex;
     flex-direction: column;
     bottom: 0;
-    background: var(--color-trx);
+    background: var(--color-bg);
     padding: 10px;
     justify-content: center;
     align-items: center;
@@ -27,14 +27,22 @@
     font-size: 1.2rem;
     font-weight: bold;
     font-family: var(--font-primary);
+    color: var(--color-font);
 }
 
 .networks{
     display: flex;
-    gap: 7px;    
+    align-items: center;
+    flex-direction: column; 
+    gap: 25px;
 }
 
-.networks a{
+.networksList{
+    display: flex;
+    gap: 7px;
+}
+
+.networksList a{ 
     height: 40px;
     width: 40px;
     filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.8));
@@ -43,7 +51,7 @@
 .logo{
   height: 80px;  
   width: 80px;
-  background-image: url("../../../images/artonio-negro.png");
+  background-image: url("../../../images/logo-artonio-blanco.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -70,7 +78,7 @@
     }
 
     .links a{
-        color: var(--color-bg);
+        color: var(--color-font);
         font-family: var(--font-sub);
         font-size: 1.6rem;
         padding-left: 15px;
@@ -93,7 +101,7 @@
 
 @media (min-width: 1000px){
     .container{
-        height: 100px;
+        height: 150px;
     }
     .setionsFooter{
         justify-content: space-around;

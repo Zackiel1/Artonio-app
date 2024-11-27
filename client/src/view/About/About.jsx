@@ -4,8 +4,9 @@ const About = () => {
   return (
     <section className={style.container}>
       <h2>
-        ¿Quien es <br /> Antonio Fernández?
+        ¿Quien es <br/> Antonio Fernández?
       </h2>
+      
       <section>
         <article className={style.articlePhoto}>
           {/* <img src="/images/img-about.jpeg"></img> */}
@@ -26,6 +27,7 @@ const About = () => {
           </p>
         </article>
       </section>
+
       <p className={style.text2}>
       &quot;NADA NI NADIE TIENE EL PODER PARA HACERTE CREER QUE ES MUY TARDE PARA
         LUCHAR POR TUS SUEÑOS. ES UNA SOLA VIDA, HAS QUE VALGA LA PENA!&quot;
