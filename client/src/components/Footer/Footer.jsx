@@ -26,44 +26,47 @@ const Footer = () => {
         </section>
 
         <section className={style.networks}>
-          <Link
-            to="https://www.instagram.com/artoniotattoo/?hl=es"
-            target="_blank"
-          >
-            <FontAwesomeIcon icon={faInstagram} style={{ color: "#000000" }} />
-          </Link>
+          <div className={style.networksList}>
+            <Link
+              to="https://www.instagram.com/artoniotattoo/?hl=es"
+              target="_blank"
+            >
+              <FontAwesomeIcon icon={faInstagram} style={{ color: "#fdfefe" }} />
+            </Link>
 
-          <Link
-            to="https://www.instagram.com/artoniotattoo/?hl=es"
-            target="_blank"
-          >
-            <FontAwesomeIcon
-              icon={faSquareFacebook}
-              style={{ color: "#000000" }}
-            />
-          </Link>
+            <Link
+              to="https://www.instagram.com/artoniotattoo/?hl=es"
+              target="_blank"
+            >
+              <FontAwesomeIcon
+                icon={faSquareFacebook}
+                style={{ color: "#fdfefe" }}
+              />
+            </Link>
 
-          <Link
-            to="https://www.instagram.com/artoniotattoo/?hl=es"
-            target="_blank"
-          >
-            <FontAwesomeIcon icon={faXTwitter} style={{ color: "#000000" }} />
-          </Link>
+            <Link
+              to="https://www.instagram.com/artoniotattoo/?hl=es"
+              target="_blank"
+            >
+              <FontAwesomeIcon icon={faXTwitter} style={{ color: "#fdfefe" }} />
+            </Link>
 
-          <Link
-            to="https://www.instagram.com/artoniotattoo/?hl=es"
-            target="_blank"
-          >
-            <FontAwesomeIcon icon={faTiktok} style={{ color: "#000000" }} />
-          </Link>
+            <Link
+              to="https://www.instagram.com/artoniotattoo/?hl=es"
+              target="_blank"
+            >
+              <FontAwesomeIcon icon={faTiktok} style={{ color: "#fdfefe" }} />
+            </Link>
 
-          <Link to="https://wa.me/[+541134198811]" target="_blank">
-            <FontAwesomeIcon icon={faWhatsapp} style={{ color: "#000000" }} />
-          </Link>
+            <Link to="https://wa.me/[+541134198811]" target="_blank">
+              <FontAwesomeIcon icon={faWhatsapp} style={{ color: "#fdfefe" }} />
+            </Link>
 
-          <Link to="mailto:artonio@gmail.com" target="_blank">
-            <FontAwesomeIcon icon={faEnvelope} style={{ color: "#000000" }} />
-          </Link>
+            <Link to="mailto:artonio@gmail.com" target="_blank">
+              <FontAwesomeIcon icon={faEnvelope} style={{ color: "#fdfefe" }} />
+            </Link>
+          </div>
+          <span className={style.copyright}>© 2024 ArtonioTatto.com</span>
         </section>
 
         <section className={style.logo}>
@@ -71,7 +74,6 @@ const Footer = () => {
         </section>
       </div>
 
-      <span className={style.copyright}>© 2023 ArtonioTatto.com</span>
     </footer>
   );
 };

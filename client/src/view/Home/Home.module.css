@@ -1,6 +1,28 @@
 .main{
   /* background: linear-gradient(120deg,rgb(78, 78, 78),  rgb(0, 0, 0)); */
-  background-color: black;
+  /* background-color: black; */
+}
+
+
+
+.backgroundVideo{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
+.video{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  position: absolute;
+  z-index: 5;
+
 }
 
 .homeContainer {
@@ -12,10 +34,12 @@
   display: flex;
   align-items: end;
   justify-content: center;
-
-  background-image: url("../../../images/picture.webp");
+  background-color: rgba(0, 0, 0, 0.60);
+  position: relative;
+  z-index: 10;
+  /* background-image: url("../../../images/picture.webp");
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
   
 
   /* border-bottom: 20px solid var(--color-secundary); */

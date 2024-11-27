@@ -64,6 +64,7 @@ const App = () => {
         <Route path="/login/:userGoogle" element={<Login />} />
         <Route path="/createUser" element={<CreateUser />} />
         <Route path="/account" element={<Account />} />
+        <Route path="/about" element={<About />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/recoverPass" element={<RecoverPass />} />

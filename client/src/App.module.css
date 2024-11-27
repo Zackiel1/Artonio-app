@@ -1,6 +1,6 @@
 .appContainer{
     height: max-content;
-    background-color: var(--color-bg-app);
+    /* background-color: var(--color-bg-app); */
     margin-top: -60px;
     min-width: 100%;
 }
