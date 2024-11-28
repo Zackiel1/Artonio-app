@@ -1,13 +1,13 @@
 import style from "./Home.module.css";
 import { NavLink } from "react-router-dom";
-import ReactPlayer from 'react-player'
+import videoBg from "./VicmaL.mp4"
 
 const Home = () => {
 
   return (
     <main className={style.main}>
       <div className={style.backgroundVideo}>
-            <video className={style.video} src="../../../images/vicmaL.mp4" autoPlay muted loop></video>
+            <video className={style.video} src={videoBg} autoPlay muted loop></video>
       </div>
      
       <section className={style.homeContainer}>
