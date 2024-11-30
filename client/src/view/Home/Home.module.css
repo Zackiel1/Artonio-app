@@ -17,7 +17,7 @@
 }
 
 .video{
-  height: 100vh;
+  height: 99.9vh;
   width: 100%;
   object-fit: cover;
   position: absolute;
@@ -37,7 +37,7 @@
   background-color: rgba(0, 0, 0, 0.60);
   position: relative;
   z-index: 10;
-  /* background-image: url("../../../images/picture.webp");
+  /* background-image: url("../../../images/artoino.webp");
   background-size: cover;
   background-repeat: no-repeat; */
   
