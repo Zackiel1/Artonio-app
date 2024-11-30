@@ -80,7 +80,7 @@
 
 @media (max-width: 673px) {
   .container{
-    height: 100vh;
+    height: 100%;
   
   }
 

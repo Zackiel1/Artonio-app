@@ -94,10 +94,7 @@ const Login = () => {
 
         {message && <p className={style.message}>{message}</p>}
       </section>
-
-      <footer className={style.footer}>
-        <Footer />
-      </footer>
+      
     </main>
   );
 };

@@ -163,9 +163,7 @@ const CreateUser = () => {
         {message && <p className={style.error}>{message}</p>}
       </section>
 
-      <footer className={style.footer}>
-        <Footer />
-      </footer>
+     
     </main>
   );
 };
