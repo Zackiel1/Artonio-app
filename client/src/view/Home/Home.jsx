@@ -1,6 +1,7 @@
 import style from "./Home.module.css";
 import { NavLink } from "react-router-dom";
 import videoT from "./videoT.mp4"
+import logo from "../../../images/logo-artonio-borde4.png"
 
 const Home = () => {
 
@@ -12,6 +13,9 @@ const Home = () => {
      
       <section className={style.homeContainer}>
 
+      <img src={logo} className={style.logoLanding} alt="logo" />
+      {/* <div className={style.logoLanding}></div> */}
+
         <article className={style.articleText}>
           
           <p>
@@ -20,9 +24,18 @@ const Home = () => {
             vivencias, recuerdos o simplemente Arte! &quot;
           </p>
 
-          <NavLink to={{ pathname: "/", hash: "#contact" }}>
-            <button>Cuentame tu Idea</button>
-          </NavLink>
+          <div className={style.articleButton}>
+
+            <NavLink to={{ pathname: "/", hash: "#contact" }}>
+              <button>Cuentame tu Idea</button>
+            </NavLink>
+
+            <NavLink to={{ pathname: "/", hash: "#contact" }}>
+              <button>Concurso de diciembre</button>
+            </NavLink>
+
+          </div>
+
         </article>
       </section>
     </main>
