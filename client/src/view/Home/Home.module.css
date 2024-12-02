@@ -3,7 +3,27 @@
   /* background-color: black; */
 }
 
+.homeContainer {
+  height: calc(100vh);
 
+  margin: auto;
+  margin-top: 60px;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  background-color: rgba(0, 0, 0, 0.60);
+  background-image: url();
+  position: relative;
+  z-index: 10;
+  /* background-image: url(../../../images/logo-artonio-c.png);
+  background-size: contain;
+  background-repeat: no-repeat; */
+  
+
+  /* border-bottom: 20px solid var(--color-secundary); */
+}
 
 .backgroundVideo{
   height: 100vh;
@@ -25,34 +45,14 @@
 
 }
 
-.homeContainer {
-  height: calc(100vh);
-
-  margin: auto;
-  margin-top: 60px;
-  
-  display: flex;
-  align-items: end;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.60);
-  position: relative;
-  z-index: 10;
-  /* background-image: url("../../../images/artoino.webp");
-  background-size: cover;
-  background-repeat: no-repeat; */
-  
-
-  /* border-bottom: 20px solid var(--color-secundary); */
-}
-
 .articleText {
   height: max-content;
-  
+  width: auto;
+  z-index: 10;
   margin-bottom: 60px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 30px;
   
 }
 
@@ -65,14 +65,18 @@
   text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
 }
 
-.articleText a {
-  text-decoration: none;
-  width: max-content;
-  margin: auto;
-
+.articleButton{
+  display: flex;
+  gap: 30px;
 }
 
-.articleText button {
+.articleButton a {
+  text-decoration: none;
+  /* width: max-content; */
+  margin: auto;
+}
+
+.articleButton button {
   height: 60px;
   width: 300px;
   display: flex;
@@ -94,38 +98,11 @@
   transition: all 0.5s ease;
 }
 
-/* .articleText button {
-  height: 50px;
-  width: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  margin: auto;
-  font-size: 1.7rem;
-  font-weight: bold;
-  font-family: var(--font-primary);
-  font-style: italic;
-  color: black;
-
-  animation: crecer-encoger 3s infinite linear;
-
-  background-color: var(--color-trx);
-  border-radius: 20px;
-  border: 2px solid black;
-  box-shadow: 1px 1px 1px var(--color-primary);
-  transition: all 0.5s ease;
-
-} */
-
-.logoLanding{
-  height: 60rem;
-  width: 60rem;
-  margin-left: 10%;
-  background-image: url(../../../images/logo-artonio-c.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+.homeContainer img{
+  position: absolute;
+  height: 62rem;
+  filter: grayscale(100%);
+  top: 0;
 }
 
 @keyframes crecer-encoger {
@@ -146,53 +123,98 @@
 }
 
 @media (max-width: 1457px) {
-  .articleText {
+
+  .homeContainer img{
+    height: 50rem;
+  }
+
+  .articleText p {
+    font-size: var( --font-size-text-m);
     
   }
 
-  
-}
-
-/* @media (max-width: 1270px) {
-  .homeContainer {
-    background-position: center top;
-    justify-content: center;
-    align-items: end;
-  }
-
-  .articleText p {
-    font-size: 2.8rem;
-  }
-
-  .articleText {
-    justify-content: end;
-    gap: 60px;
-    margin: 0;
-  }
-}
-
-@media (max-width: 529px) {
-  .main{
-    background: none
-  }
-  
-  .homeContainer {
-    height: 100vh;
-    align-items: end;
-    background-size: cover;
-  }
-
-  .articleText {
-    margin-bottom: 53px;
-    gap: 5px;
-  }
-
-  .articleText p {
-    font-size: 2.3rem;
-  }
-
-  .articleText button {
-    margin: auto;
+  .articleButton button{
     width: 250px;
+    font-size: 2.3rem
+  }
+
+}
+
+@media (max-width: 580px) {
+
+  .homeContainer{
+    padding-bottom: 30px;
+  }
+
+  .homeContainer img{
+    height: 35rem;
+    top: 80px;
+  }
+
+  .articleText{
+    
+  }
+
+  .articleText p {
+    font-size: var( --font-size-text-s);
+ 
+  }
+
+  .articleButton{
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .articleButton button{
+    height: 50px;
+    width: 220px;
+    font-size: 2rem
+  }
+}
+
+@media (max-width: 361px) {
+  .homeContainer{
+    padding-bottom: 0px;
+  }
+
+  .homeContainer img{
+    height: 30rem;
+    top: 80px;
+  }
+
+  .articleText p {
+    font-size: var( --font-size-text-s);
+ 
+  }
+
+  .articleButton button{
+    height: 50px;
+    width: 220px;
+    font-size: 2rem
+  }
+}
+
+/* @media (max-width: 361px) {
+
+  .homeContainer img{
+    top: 80px;
+  }
+
+  .articleText{
+    width: 200px;
+  }
+
+  .articleText p {
+    font-size: var( --font-size-text-s);
+ 
+  }
+
+  .articleButton{
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .articleButton button{
+    
   }
 } */
