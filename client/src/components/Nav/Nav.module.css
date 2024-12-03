@@ -9,7 +9,7 @@
   gap: 30px;
   position: fixed;
   z-index: 99;
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: rgba(0, 0, 0);
   transition: background-color 1s, opacity 1s;
 }
 
@@ -21,7 +21,7 @@
   left: 100px;
   z-index: 100; */
   margin-top: 22px;
-  background-image: url("../../../images/logo-artonio-c.png");
+  background-image: url("../../../images/logo-artonio-borde1.png");
   background-position: center;
   background-size: cover;
   cursor: pointer;
@@ -29,6 +29,7 @@
 
 .buttonCotizacion {
   height: 40px;
+  padding: 0 5px 0 5px;
   min-width: max-content;
   color: var(--color-font);
   border: 1px solid var(--color-primary);
@@ -42,8 +43,11 @@
   padding: 5px;
   text-decoration: none;
   color: var(--color-font);
-  font-size: 19px;
-  
+  font-size: 19px; 
+}
+
+.buttonCotizacion a br{
+  display: none;
 }
 
 .scrolledNav {
@@ -121,9 +125,34 @@
 
 }
 
-@media (max-width: 984px) {
+@media (max-width: 1054px){
+  .buttonCotizacion a{
+    font-size: 17px;
+  }
+
+  .navContainer > .navItems > li > a {
+    font-size: var(--font-size-nav-s);
+  }
+
+}
+
+@media (max-width: 996px) {
   .navContainer{
-    background-color: rgba(0, 0, 0, 0.85);
+    justify-content: space-between;
+    gap: 0px;
+    padding: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .buttonCotizacion {
+    margin-left: 0%;
+  }
+
+  .icono{
+    height: 55px;
+    width: 55px;
+    margin-top: 0px;
   }
 
   .navContainer ul {
@@ -181,27 +210,17 @@
   }
 }
 
-@media (max-width: 984px) {
-  .navContainer{
-    justify-content: space-between;
-    gap: 0px;
-    padding: 0;
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-  
-  .buttonCotizacion {
-    margin-left: 0%;
-  }
-
-  .icono{
-    height: 55px;
-    width: 55px;
-    margin-top: 0px;
-  }
-
+@media (max-width: 419px){
   .buttonCotizacion{
-    height: 35px;
-    font-size: 15px
+    height: 45px;
+    padding: 0 10px 0 10px;
+  }
+
+  .buttonCotizacion a{
+    font-size: 14px;
+  }
+
+  .buttonCotizacion a br{
+    display: inline;
   }
 }
