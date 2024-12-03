@@ -88,7 +88,7 @@ const Nav = ({ onContactClick }) => {
 
         <button className={style.buttonCotizacion} type="submit">
 
-          <Link to="/">Obtener Cotizacion</Link>
+          <Link to="/createUser">Resgistrate y obten un <br/> 20% de descuento</Link>
         </button>
 
         <button className={style.menu} onClick={menu}>

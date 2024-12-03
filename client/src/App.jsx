@@ -47,12 +47,12 @@ const App = () => {
 
   // loginUserJSON !== null && dispatch(reLogin(user));
 
-  useEffect(() => {
-    if (dataImgs.length === 0) {
-      dispatch(getImg());
-    }
-    //window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   if (dataImgs.length === 0) {
+  //     dispatch(getImg());
+  //   }
+  //   //window.scrollTo(0, 0);
+  // }, []);
 
   return (
     <main className={style.appContainer}>
@@ -65,6 +65,7 @@ const App = () => {
         <Route path="/createUser" element={<CreateUser />} />
         <Route path="/account" element={<Account />} />
         <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/recoverPass" element={<RecoverPass />} />
