@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import {
   faEnvelope
 } from "@fortawesome/free-solid-svg-icons";
+import logoFooter from "../../images/logo-artonio-blanco.png"
 
 const Footer = () => {
   return (
@@ -69,9 +70,10 @@ const Footer = () => {
           <span className={style.copyright}>© 2024 ArtonioTatto.com</span>
         </section>
 
-        <section className={style.logo}>
-          {/* <img src="/../../../images/artonio-negro.png" alt="logo Artonio" /> */}
-        </section>
+        {/* <section className={style.logo}>
+        </section> */}
+
+        <img src={logoFooter} className={style.logo} alt="logo" />
       </div>
 
     </footer>

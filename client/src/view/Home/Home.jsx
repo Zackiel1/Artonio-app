@@ -1,20 +1,19 @@
 import style from "./Home.module.css";
 import { NavLink } from "react-router-dom";
-import videoT from "./videoT.mp4"
-import logo from "../../../images/logo-artonio-borde4.png"
+import videoBg from "../../images/videoBg.mp4"
+import logo from "../../images/logo-artonio-borde4.png"
 
 const Home = () => {
 
   return (
     <main className={style.main}>
       <div className={style.backgroundVideo}>
-            <video className={style.video} src={videoT} autoPlay muted loop></video>
+            <video className={style.video} src={videoBg} autoPlay muted loop></video>
       </div>
      
       <section className={style.homeContainer}>
 
       <img src={logo} className={style.logoLanding} alt="logo" />
-      {/* <div className={style.logoLanding}></div> */}
 
         <article className={style.articleText}>
           

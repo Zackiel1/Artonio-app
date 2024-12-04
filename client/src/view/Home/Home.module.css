@@ -1,6 +1,5 @@
 .main{
-  /* background: linear-gradient(120deg,rgb(78, 78, 78),  rgb(0, 0, 0)); */
-  /* background-color: black; */
+  background-color: black;
 }
 
 .homeContainer {
@@ -14,15 +13,8 @@
   align-items: center;
   justify-content: end;
   background-color: rgba(0, 0, 0, 0.60);
-  background-image: url();
   position: relative;
   z-index: 10;
-  /* background-image: url(../../../images/logo-artonio-c.png);
-  background-size: contain;
-  background-repeat: no-repeat; */
-  
-
-  /* border-bottom: 20px solid var(--color-secundary); */
 }
 
 .backgroundVideo{
@@ -72,7 +64,6 @@
 
 .articleButton a {
   text-decoration: none;
-  /* width: max-content; */
   margin: auto;
 }
 
@@ -151,10 +142,6 @@
     top: 80px;
   }
 
-  .articleText{
-    
-  }
-
   .articleText p {
     font-size: var( --font-size-text-s);
  
@@ -193,28 +180,3 @@
     font-size: 2rem
   }
 }
-
-/* @media (max-width: 361px) {
-
-  .homeContainer img{
-    top: 80px;
-  }
-
-  .articleText{
-    width: 200px;
-  }
-
-  .articleText p {
-    font-size: var( --font-size-text-s);
- 
-  }
-
-  .articleButton{
-    flex-direction: row;
-    gap: 10px;
-  }
-
-  .articleButton button{
-    
-  }
-} */
