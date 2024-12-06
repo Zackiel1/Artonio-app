@@ -89,6 +89,7 @@
 }
 
 .containerImages {
+  min-height: 600px;
   width: 400px;
   padding: 30px;
   margin-bottom: 30px;
