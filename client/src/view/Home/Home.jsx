@@ -1,5 +1,5 @@
 import style from "./Home.module.css";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import videoBg from "../../images/videoBg.mp4"
 import logo from "../../images/logo-artonio-borde4.png"
 
@@ -13,7 +13,7 @@ const Home = () => {
      
       <section className={style.homeContainer}>
 
-      <img src={logo} className={style.logoLanding} alt="logo" />
+        <img src={logo} className={style.logoLanding} alt="logo" />
 
         <article className={style.articleText}>
           
@@ -25,13 +25,13 @@ const Home = () => {
 
           <div className={style.articleButton}>
 
-            <NavLink to={{ pathname: "/", hash: "#contact" }}>
+            <Link to="/contact">
               <button>Cuentame tu Idea</button>
-            </NavLink>
+            </Link>
 
-            <NavLink to={{ pathname: "/", hash: "#contact" }}>
+            <Link to="/contact">
               <button>Concurso de diciembre</button>
-            </NavLink>
+            </Link>
 
           </div>
 
