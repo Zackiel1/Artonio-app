@@ -92,7 +92,7 @@
 .homeContainer img{
   /* position: absolute; */
   height: 62rem;
-  filter: grayscale(100%);
+  /* filter: grayscale(100%); */
   /* top: 0; */
 }
 
@@ -180,4 +180,27 @@
     width: 220px;
     font-size: 2rem
   }
+}
+
+@media (max-height: 740px){
+
+  .homeContainer{
+    padding: 30px 10px 20px 10px;
+
+  }
+  .homeContainer img{
+    height: 33rem;
+  }
+
+  .articleText p {
+    font-size: var( --font-size-text-s);
+ 
+  }
+
+  .articleButton button{
+    height: 50px;
+    width: 220px;
+    font-size: 2rem
+  }
+
 }
