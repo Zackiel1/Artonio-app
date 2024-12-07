@@ -92,7 +92,7 @@
 .homeContainer img{
   /* position: absolute; */
   height: 62rem;
-  filter: grayscale(100%);
+  filter: grayscale(99.9%);
   /* top: 0; */
 }
 
