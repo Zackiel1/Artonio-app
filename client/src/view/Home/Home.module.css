@@ -90,10 +90,8 @@
 }
 
 .homeContainer img{
-  /* position: absolute; */
   height: 62rem;
   filter: grayscale(99.9%);
-  /* top: 0; */
 }
 
 @keyframes crecer-encoger {
@@ -171,7 +169,7 @@
   }
 
   .articleText p {
-    font-size: var( --font-size-text-s);
+    font-size: var( --font-size-text-ss);
  
   }
 
@@ -182,7 +180,8 @@
   }
 }
 
-@media (max-height: 740px){
+/* medida para miniLaptos */
+@media (max-width: 740px) and (max-height: 740px){
 
   .homeContainer{
     padding: 30px 10px 20px 10px;
