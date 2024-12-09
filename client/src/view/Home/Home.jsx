@@ -1,6 +1,6 @@
 import style from "./Home.module.css";
 import { Link } from "react-router-dom";
-import videoBg from "../../images/videoBg.mp4"
+import videoBg from "../../images/Video2.mp4"
 import logo from "../../images/logo-artonio-borde4.png"
 
 const Home = () => {
