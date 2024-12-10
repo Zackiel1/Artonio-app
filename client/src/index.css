@@ -42,6 +42,7 @@ input:-webkit-autofill {
   --font-primary: 'Open Sans', sans-serif;
   /* --font-sub: 'Cinzel Decorative', serif; */
   --font-sub: 'Bebas Neue', sans-serif;
+  --font-phrase: "Eagle Lake", sans-serif;
 
   --font-size-text: 1.4rem;
   --font-size-text-ss: 1.8rem;
