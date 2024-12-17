@@ -1,5 +1,7 @@
 .container {
   height: 99vh;
+  min-height: max-content;
+
   margin-top: 60px;
   display: flex;
   flex-direction: column;

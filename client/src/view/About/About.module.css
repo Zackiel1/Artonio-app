@@ -1,5 +1,7 @@
 .container {
   height: 100vh;
+  min-height: max-content;
+
   margin-top: 60px;
   padding: 60px 20px 20px 20px;
   display: flex;
