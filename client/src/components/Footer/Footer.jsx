@@ -3,8 +3,6 @@ import {
   faInstagram,
   faWhatsapp,
   faTiktok,
-  faSquareFacebook,
-  faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import style from "./Footer.module.css";
 import { Link } from "react-router-dom";
@@ -14,14 +12,19 @@ import {
 import logoFooter from "../../images/logo-artonio-blanco.png"
 
 const Footer = () => {
+
+  //Verifica si esta en mobile o no, para saber si lo manda al whatsapp web o al la app mobile.
+  const isMobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  
   return (
     <footer className={style.container}>
       <div className={style.setionsFooter}>
+
         <section className={style.links}>
-          <Link to={{ pathname: "/", hash: "#home" }}>Inicio</Link>
-          <Link to={{ pathname: "/", hash: "#about" }}>Quien Soy</Link>
+          <Link to="/">Inicio</Link>
+          <Link to="/about">Quien Soy</Link>
           <Link to="/gallery">Galeria</Link>
-          <Link to={{ pathname: "/", hash: "#contact" }}>Contacto</Link>
+          <Link to="/contact">Contacto</Link>
           <Link to="/createUser">Crear Cuenta</Link>
           <Link to="/login">Iniciar Sesion</Link>
         </section>
@@ -36,42 +39,24 @@ const Footer = () => {
             </Link>
 
             <Link
-              to="https://www.instagram.com/artoniotattoo/?hl=es"
-              target="_blank"
-            >
-              <FontAwesomeIcon
-                icon={faSquareFacebook}
-                style={{ color: "#fdfefe" }}
-              />
-            </Link>
-
-            <Link
-              to="https://www.instagram.com/artoniotattoo/?hl=es"
-              target="_blank"
-            >
-              <FontAwesomeIcon icon={faXTwitter} style={{ color: "#fdfefe" }} />
-            </Link>
-
-            <Link
-              to="https://www.instagram.com/artoniotattoo/?hl=es"
+              to="https://www.tiktok.com/@artoniotattoo8"
               target="_blank"
             >
               <FontAwesomeIcon icon={faTiktok} style={{ color: "#fdfefe" }} />
             </Link>
-
-            <Link to="https://wa.me/[+541134198811]" target="_blank">
+              
+            <Link className={style.mobileWhatsapp}  to={`${isMobileRegex ? "https://wa.me/[+541128586391]" : "https://web.whatsapp.com/send?phone=+541128586391"} `} target="_blank">
               <FontAwesomeIcon icon={faWhatsapp} style={{ color: "#fdfefe" }} />
             </Link>
 
-            <Link to="mailto:artonio@gmail.com" target="_blank">
+
+            <Link to="mailto:ArtonioTatto@gmail.com" target="_blank">
               <FontAwesomeIcon icon={faEnvelope} style={{ color: "#fdfefe" }} />
             </Link>
           </div>
-          <span className={style.copyright}>© 2024 ArtonioTatto.com</span>
+          <span className={style.copyright}>© 2024 ArtonioTatto</span>
         </section>
 
-        {/* <section className={style.logo}>
-        </section> */}
 
         <img src={logoFooter} className={style.logo} alt="logo" />
       </div>

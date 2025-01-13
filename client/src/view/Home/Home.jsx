@@ -29,10 +29,6 @@ const Home = () => {
               <button>Cuentame tu Idea</button>
             </Link>
 
-            <Link to="/contact">
-              <button>Concurso de diciembre</button>
-            </Link>
-
           </div>
 
         </article>

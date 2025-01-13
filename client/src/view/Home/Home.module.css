@@ -12,7 +12,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   background-color: rgba(0, 0, 0, 0.60);
   position: relative;
   z-index: 10;
@@ -91,7 +91,7 @@
 }
 
 .homeContainer img{
-  height: 58rem;
+  height: 40rem;
   filter: grayscale(99.9%);
 }
 
@@ -115,7 +115,7 @@
 @media (max-width: 1457px) {
 
   .homeContainer img{
-    height: 50rem;
+    height: 37rem;
   }
 
   .articleText p {
@@ -137,7 +137,7 @@
   }
 
   .homeContainer img{
-    height: 35rem;
+    height: 25rem;
     top: 80px;
   }
 
@@ -164,7 +164,7 @@
   }
 
   .homeContainer img{
-    height: 30rem;
+    height: 22rem;
     top: 80px;
   }
 
