@@ -15,13 +15,13 @@
 
 @media (max-width: 764px){
   .cardContainer {
-    height: 150px;
-    width: 120px;
+    /* height: 150px;
+    width: 120px; */
   }
   
   .image {
-    height: 150px;
-    width: 120px;
+    height: 180px;
+    width: 150px;
     align-self: center;
     bottom: 7px;
     position: relative;

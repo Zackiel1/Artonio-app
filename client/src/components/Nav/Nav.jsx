@@ -1,10 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
-import React, { useRef } from "react";
 import style from "./Nav.module.css";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
-const Nav = ({ onContactClick }) => {
+const Nav = () => {
   const userInfo = useSelector((state) => state.userInfo);
   let userOnline = localStorage.userInfo;
 
@@ -17,9 +16,6 @@ const Nav = ({ onContactClick }) => {
   useEffect(() => {
     setCurrentUserInfo(userInfo);
   }, [userInfo]);
-
-  // console.log(userInfo);
-  // console.log(current);
 
   let current = 0;
 

@@ -73,14 +73,14 @@
   letter-spacing: 3px
 }
 
-.container p{
+/* .container p{
   font-size: 2rem;
   font-family: var(--font-sub);
   font-weight: bold;
   color: var(--color-bg);
   margin: 0;
 
-}
+} */
 
 .buttonContainer{
   display: flex;
@@ -90,19 +90,13 @@
 
 .containerImages {
   min-height: 600px;
-  width: 400px;
-  padding: 30px;
+  width: 100%;
   margin-bottom: 30px;
   background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
-}
-
-.footer{
-  margin-top: auto;
-  width: 100%;
 }
 
 @media (min-width: 764px){
@@ -115,6 +109,7 @@
   }
   .containerImages{
     width: 1000px;
+    padding: 30px;
   }
   
   .tattoButton, .paintButton{
