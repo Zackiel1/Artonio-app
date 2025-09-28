@@ -1,8 +1,8 @@
 .loading{
-    width: 30px;
-    height: 30px;
+    /* width: 60px;
+    height: 60px; */
     border-radius: 50%;
-    border: 3px solid var(--color-trx);
+    border: 5px solid black;
     border-top-color: transparent;
     animation: spin 1.2s linear infinite;
   }
