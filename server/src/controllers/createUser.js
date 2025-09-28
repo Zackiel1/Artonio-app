@@ -28,7 +28,7 @@ const createUser = async (name, email, password, phone) => {
         subject: 'Veficacion de usuario',
         title: 'Bienvenido a ArtonioTatto',
         message:
-            'Para terminar la creacion de tu cuenta y puedas optar por el 20% de decuento dale click al siguiente boton',
+            'Para terminar la creacion de tu cuenta y puedas optar por el 20% de descuento dale click al siguiente boton',
         button: {
             textButton: 'Verifica tu cuenta',
             linkButton: `${process.env.URL_BACK}/user/verify?token=${token}&userId=${userId}`,
