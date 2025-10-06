@@ -2,6 +2,7 @@ const { Router } = require("express");
 const userRouter = require("./userRouter");
 const galeryRouter = require("./galeryRouter");
 const adminRouter = require("./adminRouter");
+const blogRouter = require("./blogRouter.js")
 const passport = require('passport');
 const googleRouter = require("./googleRouter.js");
 require("../services/google.js")
@@ -13,6 +14,7 @@ const mainRouter = Router();
 mainRouter.use("/user", userRouter);
 mainRouter.use("/gallery", galeryRouter);
 mainRouter.use("/admin", adminRouter);
+mainRouter.use("/blog", blogRouter)
 
 
 // mainRouter.use("/auth", passport.authenticate("auth-google", {
